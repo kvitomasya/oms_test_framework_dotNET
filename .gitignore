@@ -285,3 +285,4 @@ oms_test_framework_dotNET.sln
 *.gitattributes
 TestResults/
 oms_test_framework_dotNET.csproj
+oms_test_framework_dotNET.csproj.user
