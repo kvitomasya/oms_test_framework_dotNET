@@ -31,6 +31,10 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//span[@id='recordsFound']")]
         public IWebElement CountOfProductFound { get; set; }
 
+        // SearchByTextLabel is unique ItemManagementPage element
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']//legend")]
+        public IWebElement SearchByTextLabel { get; set; }
+
         public ItemManagementPage(IWebDriver driver) : base(driver)
         {
         }
