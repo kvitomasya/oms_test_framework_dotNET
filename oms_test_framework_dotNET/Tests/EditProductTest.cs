@@ -37,7 +37,7 @@ namespace oms_test_framework_dotNET.Tests
         }
 
         [TestMethod]
-        public void testEditOrderAbility()
+        public void testEditProductAbility()
         {
             const String ProductNameForChange = "AnotherName";
             const String ProductDescriptionForChange = "AnotherDescription";
