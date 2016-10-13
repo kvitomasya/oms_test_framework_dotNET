@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 using oms_test_framework_dotNET.PageObject;
 
 namespace oms_test_framework_dotNET.Utils
@@ -19,13 +20,16 @@ namespace oms_test_framework_dotNET.Utils
         protected UserInfoPage userInfoPage;
         protected ItemManagementPage itemManagementPage;
         protected EditProductPage editProductPage;
+        protected AdministrationPage administrationPage;
+        protected CustomerOrderingPage customerOrderingPage;
+        protected MerchandiserOrderingPage merchandiserOrderingPage;
 
         protected IWebDriver Driver { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
         {
-            Driver = new FirefoxDriver();
+            Driver = new ChromeDriver();
          
             Driver.Manage()
                 .Timeouts()
