@@ -13,6 +13,9 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/descendant::a[@href='itemManagement.htm']")]
         public IWebElement ItemManagementLink { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "(//ul[@id='nav']//a)[1]")]
+        public IWebElement CustomerOrderingPageLink { get; set; }
+
         public UserInfoPage(IWebDriver driver) : base(driver)
         {
         }
@@ -21,6 +24,13 @@ namespace oms_test_framework_dotNET.PageObject
         {
             ItemManagementLink.Click();
             return new ItemManagementPage(Driver);
+        }
+
+
+        public CustomerOrderingPage ClickCustomerOrderingPageLink()
+        {
+            CustomerOrderingPageLink.Click();
+            return new CustomerOrderingPage (Driver);
         }
     }
 
