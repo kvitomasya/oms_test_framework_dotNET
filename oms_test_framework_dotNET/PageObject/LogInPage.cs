@@ -60,5 +60,4 @@ namespace oms_test_framework_dotNET.PageObject
             return this;
         }
     }
-
 }
