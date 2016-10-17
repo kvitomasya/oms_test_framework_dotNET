@@ -31,7 +31,7 @@ namespace oms_test_framework_dotNET.PageObject
         public IWebElement FirstTBodyEditLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[1]")]
-        public IWebElement FirstTBodyOrderNameTextLable { get; set; }
+        public IWebElement FirstBodyOrderNameTextLable { get; set; }
 
         public CustomerOrderingPage(IWebDriver driver) : base(driver)
         {
@@ -64,7 +64,7 @@ namespace oms_test_framework_dotNET.PageObject
 
         public String GetOrderName()
         {
-            return FirstTBodyOrderNameTextLable.Text;
+            return FirstBodyOrderNameTextLable.Text;
         }
     }
 }
