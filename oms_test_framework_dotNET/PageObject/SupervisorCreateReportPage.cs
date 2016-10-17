@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class SupervisorCreateReportPage : PageObject
     {
-        // SaveReportLink is unique SupervisorCreateReportPage element
+        // SaveReportLink is unique identifier of SupervisorCreateReportPage
         [FindsBy(How = How.XPath, Using = "//div[@id='list']/a")]
         public IWebElement SaveReportLink { get; set; }
 

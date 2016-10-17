@@ -20,12 +20,13 @@ namespace oms_test_framework_dotNET.PageObject
         public IWebElement ItemManagementLink { get; set; }
         [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
         public IWebElement UserInfoLink { get; set; }
-        // UserInfoPageExists is unique UserInfoPage element
+        // UserInfoFieldSet is unique element on UserInfoPage
         [FindsBy(How = How.XPath, Using = "//div[@id='content']//legend")]
-        public IWebElement UserInfoPageExists { get; set; }
+        public IWebElement UserInfoFieldSet { get; set; }
 
         public UserInfoPage(IWebDriver driver) : base(driver)
         {
+
         }
 
         public AdministrationPage ClickAdministrationLink()
@@ -58,5 +59,4 @@ namespace oms_test_framework_dotNET.PageObject
             return new UserInfoPage(Driver);
         }
     }
-
 }

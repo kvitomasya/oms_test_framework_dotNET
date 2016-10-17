@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class MerchandiserEditOrderPage : PageObject
     {
-        // IsGiftCheckbox is unique MerchandiserEditOrderPage element
+        // IsGiftCheckbox is unique identifier of MerchandiserEditOrderPage
         [FindsBy(How = How.XPath, Using = "//input[@type='checkbox']")]
         public IWebElement IsGiftCheckbox { get; set; }
 

@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class CreateNewOrderPage : PageObject
     {
-        // CVV2Text is unique CreateNewOrderPage element
+        // CVV2Text is unique identifier of CreateNewOrderPage
         [FindsBy(How = How.XPath, Using = "//form[@id='form2']//tr[3]/td[1]/strong")]
         public IWebElement CVV2Text { get; set; }
 

@@ -31,9 +31,12 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//span[@id='recordsFound']")]
         public IWebElement CountOfProductFound { get; set; }
 
-        // SearchByTextLabel is unique ItemManagementPage element
+        // SearchByFieldSet is unique identifier of ItemManagementPage
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//legend")]
-        public IWebElement SearchByTextLabel { get; set; }
+        public IWebElement SearchByFieldSet { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
+        public IWebElement UserInfoLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='list']/a[1]")]
         public IWebElement AddProductLink { get; set; }
@@ -64,6 +67,12 @@ namespace oms_test_framework_dotNET.PageObject
             return this;
         }
 
+        public UserInfoPage ClickUserInfoLink()
+        {
+            UserInfoLink.Click();
+            return new UserInfoPage(Driver);
+        }
+
         public AddProductPage ClickAddProductLink()
         {
             AddProductLink.Click();
@@ -76,5 +85,4 @@ namespace oms_test_framework_dotNET.PageObject
             return new SupervisorCreateReportPage(Driver);
         }
     }
-
 }

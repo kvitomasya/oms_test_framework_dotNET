@@ -20,7 +20,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void testMerchandiserOrderingPageLogOutAbility()
         {
-            Assert.IsTrue(merchandiserOrderingPage.SearchByTextLabel.Displayed,
+            Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed,
                 "Merchandiser Ordering page doesn't exist");
             merchandiserOrderingPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,

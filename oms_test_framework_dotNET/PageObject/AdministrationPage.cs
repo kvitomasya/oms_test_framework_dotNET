@@ -10,9 +10,12 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AdministrationPage : PageObject
     {
-        // FoundUsersTextLabel is unique AdministrationPage element
+        // FoundUsersTextLabel is unique identifier of AdministrationPage
         [FindsBy(How = How.XPath, Using = "//div[@id='list']/h4[1]")]
         public IWebElement FoundUsersTextLabel { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
+        public IWebElement UserInfoLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='list']/a")]
         public IWebElement CreateNewUserLink { get; set; }
@@ -26,6 +29,12 @@ namespace oms_test_framework_dotNET.PageObject
         public AdministrationPage(IWebDriver driver) : base(driver)
         {
 
+        }
+
+        public UserInfoPage ClickUserInfoLink()
+        {
+            UserInfoLink.Click();
+            return new UserInfoPage(Driver);
         }
 
         public CreateNewUserPage ClickCreateNewUserLink()

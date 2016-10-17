@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AddItemPage : PageObject
     {
-        // ResetButton is unique AddItemPage element
+        // ResetButton is unique identifier of AddItemPage
         [FindsBy(How = How.XPath, Using = "//form[@id='resetForm']/input[11]")]
         public IWebElement ResetButton { get; set; }
 

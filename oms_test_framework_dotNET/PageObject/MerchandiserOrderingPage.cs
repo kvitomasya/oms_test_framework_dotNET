@@ -10,16 +10,24 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class MerchandiserOrderingPage : PageObject
     {
-        // SearchByTextLabel is unique MerchandiserOrderingPage element
+        //SearchByText is unique identifier of MerchandiserOrderingPage
         [FindsBy(How = How.XPath, Using = "//form[@id='searchFilter']//tr/td[1]")]
-        public IWebElement SearchByTextLabel { get; set; }
+        public IWebElement SearchByText { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
+        public IWebElement UserInfoLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//tr[2]/td[6]/a")]
         public IWebElement EditFirstOrderLink { get; set; }
 
         public MerchandiserOrderingPage(IWebDriver driver) : base(driver)
         {
+        }
 
+        public UserInfoPage ClickUserInfoLink()
+        {
+            UserInfoLink.Click();
+            return new UserInfoPage(Driver);
         }
 
         public MerchandiserEditOrderPage ClickEditFirstOrderLink()

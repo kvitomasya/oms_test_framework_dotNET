@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class SupervisorReportPage : PageObject
     {
-        // ReportPageExists is unique SupervisorReportPage element
+        // ReportPageExists is unique identifier of SupervisorReportPage
         [FindsBy(How = How.Id, Using = "grid")]
         public IWebElement ReportPageExists { get; set; }
 

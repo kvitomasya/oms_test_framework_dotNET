@@ -20,7 +20,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         [TestMethod]
         public void testItemManagementPageLogOutAbility()
         {
-            Assert.IsTrue(itemManagementPage.SearchByTextLabel.Displayed,
+            Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed,
                 "Item Management page doesn't exist");
             itemManagementPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,

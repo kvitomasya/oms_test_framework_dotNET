@@ -1,12 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using oms_test_framework_dotNET.PageObject;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Utils
 {
@@ -39,7 +35,7 @@ namespace oms_test_framework_dotNET.Utils
         [TestInitialize]
         public void TestInitialize()
         {
-            Driver = new FirefoxDriver();
+            Driver = new WebDriverFactory().GetDriver(Browsers.FIREFOX);
          
             Driver.Manage()
                 .Timeouts()

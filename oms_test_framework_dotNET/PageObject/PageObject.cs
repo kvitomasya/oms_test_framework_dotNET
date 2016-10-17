@@ -28,5 +28,4 @@ namespace oms_test_framework_dotNET.PageObject
             return new LogInPage(Driver);
         }
     }
-
 }

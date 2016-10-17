@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class CreateNewUserPage : PageObject
     {
-        // PageInfoText is unique CreateNewUserPage element
+        // PageInfoText is unique identifier of CreateNewUserPage
         [FindsBy(How = How.XPath, Using = "//div[@id='edit']/h3")]
         public IWebElement PageInfoText { get; set; }
         

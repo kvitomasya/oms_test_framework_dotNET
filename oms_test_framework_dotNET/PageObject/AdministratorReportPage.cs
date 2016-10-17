@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AdministratorReportPage : PageObject
     {
-        // ReportPageExists is unique AdministratorReportPage element
+        // ReportPageExists is unique identifier of AdministratorReportPage
         [FindsBy(How = How.Id, Using = "grid")]
         public IWebElement ReportPageExists { get; set; }
 
