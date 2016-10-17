@@ -18,7 +18,7 @@ namespace oms_test_framework_dotNET.Utils
         protected AdministrationPage administrationPage;
         protected CustomerOrderingPage customerOrderingPage;
         protected MerchandiserOrderingPage merchandiserOrderingPage;
-
+        protected CreateNewOrderPage createNewOrderPage;
         protected IWebDriver Driver { get; set; }
 
         [TestInitialize]
