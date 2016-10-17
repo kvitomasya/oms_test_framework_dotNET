@@ -22,9 +22,9 @@ namespace oms_test_framework_dotNET.Tests.Customer
         {
 
             customerOrderingPage = userInfoPage.ClickCustomerOrdetingLink();
-            Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.Displayed);
+            Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.Displayed, "Current page is not {0}", customerOrderingPage);
             customerOrderingPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed);
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
 
         }
     }
