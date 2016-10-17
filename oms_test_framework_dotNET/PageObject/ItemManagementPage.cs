@@ -31,6 +31,13 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//span[@id='recordsFound']")]
         public IWebElement CountOfProductFound { get; set; }
 
+        // SearchByFieldSet is unique element on ItemManagementPage
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']//legend")]
+        public IWebElement SearchByFieldSet { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
+        public IWebElement UserInfoLink { get; set; }
+
         public ItemManagementPage(IWebDriver driver) : base(driver)
         {
         }
@@ -53,6 +60,11 @@ namespace oms_test_framework_dotNET.PageObject
             SearchButton.Click();
             return this;
         }
-    }
 
+        public UserInfoPage ClickUserInfoLink()
+        {
+            UserInfoLink.Click();
+            return new UserInfoPage(Driver);
+        }
+    }
 }

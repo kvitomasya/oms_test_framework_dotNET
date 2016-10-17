@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Firefox;
 using oms_test_framework_dotNET.PageObject;
 using oms_test_framework_dotNET.Enums;
 
@@ -20,6 +15,9 @@ namespace oms_test_framework_dotNET.Utils
         protected UserInfoPage userInfoPage;
         protected ItemManagementPage itemManagementPage;
         protected EditProductPage editProductPage;
+        protected AdministrationPage administrationPage;
+        protected CustomerOrderingPage customerOrderingPage;
+        protected MerchandiserOrderingPage merchandiserOrderingPage;
 
         protected IWebDriver Driver { get; set; }
 
