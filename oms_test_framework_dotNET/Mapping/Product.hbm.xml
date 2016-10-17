@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+       assembly="oms_test_framework_dotNET"
+       namespace="oms_test_framework_dotNET.Domains">
+
+  <class name="Product" table="Products">
+    <id name="Id">
+      <column name="ID"/>
+      <generator class="native"/>
+    </id>
+    <property name="IsProductActive"/>
+    <property name="ProductDescription"/>
+    <property name="ProductName"/>
+    <property name="ProductPrice"/>
+  </class>
+
+</hibernate-mapping>

@@ -41,6 +41,7 @@ namespace oms_test_framework_dotNET.PageObject
             ItemManagementLink.Click();
             return new ItemManagementPage(Driver);
         }
+<<<<<<< HEAD
 
         public CustomerOrderingPage ClickCustomerOrderingPageLink()
         {
@@ -65,5 +66,7 @@ namespace oms_test_framework_dotNET.PageObject
             MerchandiserOrderingLink.Click();
             return new MerchandiserOrderingPage(Driver);
         }
+=======
+>>>>>>> master
     }
 }

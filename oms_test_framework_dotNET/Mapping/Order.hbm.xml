@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+       assembly="oms_test_framework_dotNET"
+       namespace="oms_test_framework_dotNET.Domains">
+
+  <class name="Order" table="Orders">
+    <id name="Id">
+      <column name="ID"/>
+      <generator class="native"/>
+    </id>
+    <property name="DeliveryDate"/>
+    <property name="IsGift"/>
+    <property name="MaxDiscount"/>
+    <property name="OrderDate"/>
+    <property name="OrderName"/>
+    <property name="OrderNumber"/>
+    <property name="PreferableDeliveryDate"/>
+    <property name="TotalPrice"/>
+    <property name="Assigne"/>
+    <property name="Customer"/>
+    <property name="OrderStatusRef"/>
+
+  </class>
+
+</hibernate-mapping>
