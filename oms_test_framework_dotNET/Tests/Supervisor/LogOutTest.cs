@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
     [TestClass]
     public class LogOutTest : TestRunner
     {
-        private const String SupervisorLogin = "login2";
-        private const String SupervisorPassword = "qwerty";
 
         [TestInitialize]
         public void SetUp()
         {
+            const String SupervisorLogin = "login2";
+            const String SupervisorPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(SupervisorLogin, SupervisorPassword);
             itemManagementPage = userInfoPage.ClickItemManagementLink();
         }
 
         [TestMethod]
-        public void testItemManagementPageLogOutAbility()
+        public void TestItemManagementPageLogOutAbility()
         {
             Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed,
                 "Item Management page doesn't exist");
@@ -28,7 +28,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         }
 
         [TestMethod]
-        public void testSupervisorCreateReportPageLogOutAbility()
+        public void TestSupervisorCreateReportPageLogOutAbility()
         {
             supervisorCreateReportPage = itemManagementPage.ClickCreateReportLink();
             Assert.IsTrue(supervisorCreateReportPage.SaveReportLink.Displayed,
@@ -39,7 +39,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         }
 
         [TestMethod]
-        public void testAddProductPageLogOutAbility()
+        public void TestAddProductPageLogOutAbility()
         {
             addProductPage = itemManagementPage.ClickAddProductLink();
             Assert.IsTrue(addProductPage.OkButton.Displayed,
@@ -50,7 +50,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         }
 
         [TestMethod]
-        public void testEditProductPageLogOutAbility()
+        public void TestEditProductPageLogOutAbility()
         {
             editProductPage = itemManagementPage.ClickEditFirstProductLink();
             Assert.IsTrue(editProductPage.OkButton.Displayed,

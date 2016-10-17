@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
     [TestClass]
     public class LogOutTest : TestRunner
     {
-        private const String MerchandiserLogin = "login1";
-        private const String MerchandiserPassword = "qwerty";
 
         [TestInitialize]
         public void SetUp()
         {
+            const String MerchandiserLogin = "login1";
+            const String MerchandiserPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
             merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
         }
 
         [TestMethod]
-        public void testMerchandiserOrderingPageLogOutAbility()
+        public void TestMerchandiserOrderingPageLogOutAbility()
         {
             Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed,
                 "Merchandiser Ordering page doesn't exist");
@@ -28,7 +28,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         }
 
         [TestMethod]
-        public void testMerchandiserEditOrderPageLogOutAbility()
+        public void TestMerchandiserEditOrderPageLogOutAbility()
         {
             merchandiserEditOrderPage = merchandiserOrderingPage.ClickEditFirstOrderLink();
             Assert.IsTrue(merchandiserEditOrderPage.IsGiftCheckbox.Displayed,

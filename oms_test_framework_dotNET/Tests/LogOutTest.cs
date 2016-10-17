@@ -7,11 +7,9 @@ namespace oms_test_framework_dotNET.Tests
     [TestClass]
     public class LogOutTest : TestRunner
     {
-        private const String UserLogin = "vpopkin";
-        private const String UserPassword = "qwerty";
 
         [TestMethod]
-        public void testLogInPageLogOutAbility()
+        public void TestLogInPageLogOutAbility()
         {
             logInPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
@@ -19,8 +17,10 @@ namespace oms_test_framework_dotNET.Tests
         }
 
         [TestMethod]
-        public void testUserInfoPageLogOutAbility()
+        public void TestUserInfoPageLogOutAbility()
         {
+            const String UserLogin = "vpopkin";
+            const String UserPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(UserLogin, UserPassword);
             userInfoPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,

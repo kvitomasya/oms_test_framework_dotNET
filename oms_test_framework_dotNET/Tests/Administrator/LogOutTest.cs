@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.Tests.Administrator
     [TestClass]
     public class LogOutTest : TestRunner
     {
-        private const String AdministratorLogin = "iva";
-        private const String AdministratorPassword = "qwerty";
 
         [TestInitialize]
         public void SetUp()
         {
+            const String AdministratorLogin = "iva";
+            const String AdministratorPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(AdministratorLogin, AdministratorPassword);
             administrationPage = userInfoPage.ClickAdministrationLink();
         }
 
         [TestMethod]
-        public void testAdministrationPageLogOutAbility()
+        public void TestAdministrationPageLogOutAbility()
         {
             Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
                 "Administration page doesn't exist");
@@ -28,7 +28,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         }
 
         [TestMethod]
-        public void testCreateReportPageLogOutAbility()
+        public void TestCreateReportPageLogOutAbility()
         {
             administratorCreateReportPage = administrationPage.ClickCreateReportLink();
             Assert.IsTrue(administratorCreateReportPage.SaveReportLink.Displayed,
@@ -39,7 +39,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         }
 
         [TestMethod]
-        public void testCreateNewUserPageLogOutAbility()
+        public void TestCreateNewUserPageLogOutAbility()
         {
             createNewUserPage = administrationPage.ClickCreateNewUserLink();
             Assert.IsTrue(createNewUserPage.PageInfoText.Displayed,
@@ -50,10 +50,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         }
 
         [TestMethod]
-        public void testEditUserPageLogOutAbility()
+        public void TestEditUserPageLogOutAbility()
         {
             editUserPage = administrationPage.ClickEditFirstUserLink();
-            Assert.IsTrue(editUserPage.NewPasswordText.Displayed,
+            Assert.IsTrue(editUserPage.ConfirmPasswordText.Displayed,
                 "Edit user page doesn't exists");
             editUserPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,

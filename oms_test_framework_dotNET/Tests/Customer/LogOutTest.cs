@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.Tests.Customer
     [TestClass]
     public class LogOutTest : TestRunner
     {
-        private const String CustomerLogin = "vpopkin";
-        private const String CustomerPassword = "qwerty";
 
         [TestInitialize]
         public void SetUp()
         {
-            userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
+        const String CustomerLogin = "vpopkin";
+        const String CustomerPassword = "qwerty";
+        userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
         }
 
         [TestMethod]
-        public void testCustomerOrderingPageLogOutAbility()
+        public void TestCustomerOrderingPageLogOutAbility()
         {
             Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.Displayed,
                 "Customer Ordering page doesn't exist");
@@ -28,7 +28,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
         }
 
         [TestMethod]
-        public void testCreateNewOrderPageLogOutAbility()
+        public void TestCreateNewOrderPageLogOutAbility()
         {
             createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
             Assert.IsTrue(createNewOrderPage.CVV2Text.Displayed,
@@ -39,7 +39,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
         }
 
         [TestMethod]
-        public void testAddItemPageLogOutAbility()
+        public void TestAddItemPageLogOutAbility()
         {
             createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
             addItemPage = createNewOrderPage.ClickAddItemButton();
@@ -51,7 +51,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
         }
 
         [TestMethod]
-        public void testOrderItemsErrorMessagePageLogOutAbility()
+        public void TestOrderItemsErrorMessagePageLogOutAbility()
         {
             createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
             addItemPage = createNewOrderPage.ClickAddItemButton();
