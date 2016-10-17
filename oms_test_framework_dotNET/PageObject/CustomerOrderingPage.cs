@@ -26,5 +26,11 @@ namespace oms_test_framework_dotNET.PageObject
             UserInfoLink.Click();
             return new UserInfoPage(Driver);
         }
+
+        public CreateNewOrderPage ClickCreateNewOrderLink()
+        {
+            CreateNewOrderLink.Click();
+            return new CreateNewOrderPage(Driver);
+        }
     }
 }

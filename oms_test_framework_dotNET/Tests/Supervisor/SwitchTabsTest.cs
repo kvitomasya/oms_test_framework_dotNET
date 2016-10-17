@@ -14,9 +14,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         [TestInitialize]
         public void SetUpTest()
         {
-
             userInfoPage = logInPage.LogInAs(SupervisorLogin, SupervisorPassword);
-
         }
 
         [TestMethod]
@@ -26,7 +24,6 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
             Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed, "Current page is not {0}", itemManagementPage);
             itemManagementPage.ClickUserInfoLink();
             Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
-            
         }
     }
 }
