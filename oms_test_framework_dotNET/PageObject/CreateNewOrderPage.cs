@@ -67,7 +67,7 @@ namespace oms_test_framework_dotNET.PageObject
             return this;
         }
 
-        public CreateNewOrderPage SelectAssigneeDropdown(string AssigneeLogin)
+        public CreateNewOrderPage SelectAssigneeDropdown(String AssigneeLogin)
         {
             AssigneeDropdown.SendKeys(AssigneeLogin);
             return this;

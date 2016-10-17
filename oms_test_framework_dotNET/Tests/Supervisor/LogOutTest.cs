@@ -26,5 +26,38 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
                 "Logout is not working");
         }
+
+        [TestMethod]
+        public void testSupervisorCreateReportPageLogOutAbility()
+        {
+            supervisorCreateReportPage = itemManagementPage.ClickCreateReportLink();
+            Assert.IsTrue(supervisorCreateReportPage.SaveReportLink.Displayed,
+                "Supervisor create report page doesn't exist");
+            supervisorCreateReportPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
+
+        [TestMethod]
+        public void testAddProductPageLogOutAbility()
+        {
+            addProductPage = itemManagementPage.ClickAddProductLink();
+            Assert.IsTrue(addProductPage.OkButton.Displayed,
+                "Add product page doesn't exist");
+            addProductPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
+
+        [TestMethod]
+        public void testEditProductPageLogOutAbility()
+        {
+            editProductPage = itemManagementPage.ClickEditFirstProductLink();
+            Assert.IsTrue(editProductPage.OkButton.Displayed,
+                "Edit product page doesn't exist");
+            editProductPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
     }
 }

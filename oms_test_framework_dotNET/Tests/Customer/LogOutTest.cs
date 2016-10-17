@@ -26,5 +26,52 @@ namespace oms_test_framework_dotNET.Tests.Customer
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
                 "Logout is not working");
         }
+
+        [TestMethod]
+        public void testCreateNewOrderPageLogOutAbility()
+        {
+            createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
+            Assert.IsTrue(createNewOrderPage.CVV2Text.Displayed,
+                "Create new order page doesn't exists");
+            createNewOrderPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
+
+        [TestMethod]
+        public void testAddItemPageLogOutAbility()
+        {
+            createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
+            addItemPage = createNewOrderPage.ClickAddItemButton();
+            Assert.IsTrue(addItemPage.ResetButton.Displayed,
+                "Add item page doesn't exists");
+            addItemPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
+
+        [TestMethod]
+        public void testOrderItemsErrorMessagePageLogOutAbility()
+        {
+            createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
+            addItemPage = createNewOrderPage.ClickAddItemButton();
+            addItemPage
+                .ClickSelectFirstItemLink()
+                .ClickDoneButton();
+            createNewOrderPage
+                .OrderNumberField
+                .Clear();
+            orderItemsErrorMessagePage = createNewOrderPage
+                            .ClickPreferableDeliveryDateChooseLink()
+                            .ClickCalendarMonthForwardButton()
+                            .ClickDateLink()
+                            .SelectAssigneeDropdown("login1")
+                            .ClickSaveButtonFail();
+            Assert.IsTrue(orderItemsErrorMessagePage.OrderItemsErrorMessageText.Displayed,
+                "Order items error message page doesn't exists");
+            orderItemsErrorMessagePage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
+        }
     }
 }

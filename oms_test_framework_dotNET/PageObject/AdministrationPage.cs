@@ -34,13 +34,13 @@ namespace oms_test_framework_dotNET.PageObject
             return new CreateNewUserPage(Driver);
         }
 
-        public AdministratorCreateReportPage clickCreateReportLink()
+        public AdministratorCreateReportPage ClickCreateReportLink()
         {
             CreateReportLink.Click();
             return new AdministratorCreateReportPage(Driver);
         }
 
-        public EditUserPage clickEditFirstUserLink()
+        public EditUserPage ClickEditFirstUserLink()
         {
             EditFirstUserLink.Click();
             return new EditUserPage(Driver);

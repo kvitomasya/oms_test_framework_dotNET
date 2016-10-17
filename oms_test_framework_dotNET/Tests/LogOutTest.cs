@@ -11,18 +11,18 @@ namespace oms_test_framework_dotNET.Tests
         private const String UserPassword = "qwerty";
 
         [TestMethod]
-        public void testUserInfoPageLogOutAbility()
+        public void testLogInPageLogOutAbility()
         {
-            userInfoPage = logInPage.LogInAs(UserLogin, UserPassword);
-            userInfoPage.DoLogOut();
+            logInPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
                 "Logout is not working");
         }
 
         [TestMethod]
-        public void testLogInPageLogOutAbility()
+        public void testUserInfoPageLogOutAbility()
         {
-            logInPage.DoLogOut();
+            userInfoPage = logInPage.LogInAs(UserLogin, UserPassword);
+            userInfoPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
                 "Logout is not working");
         }
