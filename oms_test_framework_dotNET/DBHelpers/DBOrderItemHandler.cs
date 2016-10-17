@@ -1,21 +1,25 @@
-﻿using oms_test_framework_dotNET.Repository.Interfaces;
+﻿using NHibernate;
+using NHibernate.Criterion;
+using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using oms_test_framework_dotNET.Domains;
-using NHibernate;
-using oms_test_framework_dotNET.Utils;
-using NHibernate.Criterion;
 
-namespace oms_test_framework_dotNET.Repository
+namespace oms_test_framework_dotNET.DBHelpers
 {
-    public class OrderItemRepository : IOrderItemRepository
+    public sealed class DBOrderItemHandler
     {
         private const String ResetAutoIncrementQuery = "ALTER TABLE OrderItems AUTO_INCREMENT=0;";
 
-        public int CreateOrderItem(OrderItem orderItem)
+        private DBOrderItemHandler()
+        {
+
+        }
+
+        public static int CreateOrderItem(OrderItem orderItem)
         {
             object id = null;
             using (ISession session = NHibernateHelper.OpenSession())
@@ -29,7 +33,7 @@ namespace oms_test_framework_dotNET.Repository
             return int.Parse(id.ToString());
         }
 
-        public void DeleteOrderItemById(int orderItemId)
+        public static void DeleteOrderItemById(int orderItemId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -48,7 +52,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public void DeleteOrderItemByOrderRef(int orderRef)
+        public static void DeleteOrderItemByOrderRef(int orderRef)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -75,7 +79,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public OrderItem GetOrderItemById(int orderItemId)
+        public static OrderItem GetOrderItemById(int orderItemId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

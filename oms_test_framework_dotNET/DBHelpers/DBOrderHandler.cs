@@ -1,20 +1,24 @@
-﻿using oms_test_framework_dotNET.Repository.Interfaces;
+﻿using NHibernate;
+using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using oms_test_framework_dotNET.Domains;
-using NHibernate;
-using oms_test_framework_dotNET.Utils;
 
-namespace oms_test_framework_dotNET.Repository
+namespace oms_test_framework_dotNET.DBHelpers
 {
-    public class OrderRepository : IOrderRepository
+    public sealed class DBOrderHandler
     {
         private const String ResetAutoIncrementQuery = "ALTER TABLE Orders AUTO_INCREMENT=0;";
 
-        public int CreateOrder(Order order)
+        private DBOrderHandler()
+        {
+
+        }
+
+        public static int CreateOrder(Order order)
         {
             object id = null;
             using (ISession session = NHibernateHelper.OpenSession())
@@ -28,7 +32,7 @@ namespace oms_test_framework_dotNET.Repository
             return int.Parse(id.ToString());
         }
 
-        public void DeleteOrderById(int orderId)
+        public static void DeleteOrderById(int orderId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -47,7 +51,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public void DeleteOrderByNumber(int orderNumber)
+        public static void DeleteOrderByNumber(int orderNumber)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -69,7 +73,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public Order GetOrderById(int orderId)
+        public static Order GetOrderById(int orderId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -77,7 +81,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public Order GetOrderByNumber(int orderNumber)
+        public static Order GetOrderByNumber(int orderNumber)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

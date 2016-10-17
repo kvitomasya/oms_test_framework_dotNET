@@ -1,22 +1,26 @@
-﻿using oms_test_framework_dotNET.Repository.Interfaces;
+﻿using NHibernate;
+using NHibernate.Criterion;
+using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using oms_test_framework_dotNET.Domains;
-using NHibernate;
-using oms_test_framework_dotNET.Utils;
-using NHibernate.Criterion;
-using oms_test_framework_dotNET.Enums;
 
-namespace oms_test_framework_dotNET.Repository
+namespace oms_test_framework_dotNET.DBHelpers
 {
-    public class UserRepository : IUserRepository
+    public sealed class DBUserHandler
     {
         private const String ResetAutoIncrementQuery = "ALTER TABLE Users AUTO_INCREMENT=0;";
 
-        public int CreateUser(User user)
+        private DBUserHandler()
+        {
+
+        }
+
+        public static int CreateUser(User user)
         {
             object id = null;
             using (ISession session = NHibernateHelper.OpenSession())
@@ -30,7 +34,7 @@ namespace oms_test_framework_dotNET.Repository
             return int.Parse(id.ToString());
         }
 
-        public void DeleteUser(int userId)
+        public static void DeleteUser(int userId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -49,7 +53,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public User GetUserById(int userId)
+        public static User GetUserById(int userId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -57,7 +61,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public User GetUserByLogin(string userLogin)
+        public static User GetUserByLogin(String userLogin)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -67,7 +71,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public User GetUserByRole(Roles role)
+        public static User GetUserByRole(Roles role)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {

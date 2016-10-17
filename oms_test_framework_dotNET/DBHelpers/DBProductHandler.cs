@@ -1,20 +1,24 @@
-﻿using oms_test_framework_dotNET.Repository.Interfaces;
+﻿using NHibernate;
+using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using oms_test_framework_dotNET.Domains;
-using oms_test_framework_dotNET.Utils;
-using NHibernate;
 
-namespace oms_test_framework_dotNET.Repository
+namespace oms_test_framework_dotNET.DBHelpers
 {
-    public class ProductRepository : IProductRepository
+    public sealed class DBProductHandler
     {
         private const String ResetAutoIncrementQuery = "ALTER TABLE Products AUTO_INCREMENT=0;";
 
-        public int CreateProduct(Product product)
+        private DBProductHandler()
+        {
+
+        }
+
+        public static int CreateProduct(Product product)
         {
             object id = null;
             using (ISession session = NHibernateHelper.OpenSession())
@@ -28,7 +32,7 @@ namespace oms_test_framework_dotNET.Repository
             return int.Parse(id.ToString());
         }
 
-        public void DeleteProduct(int productId)
+        public static void DeleteProduct(int productId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -47,7 +51,7 @@ namespace oms_test_framework_dotNET.Repository
             }
         }
 
-        public Product GetProductById(int productId)
+        public static Product GetProductById(int productId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
