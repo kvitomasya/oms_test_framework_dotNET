@@ -10,7 +10,9 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AddProductPage : PageObject
     {
-
+        // OkButton is unique AddProductPage element
+        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/input[2]")]
+        public IWebElement OkButton { get; set; }
 
         public AddProductPage(IWebDriver driver) : base(driver)
         {

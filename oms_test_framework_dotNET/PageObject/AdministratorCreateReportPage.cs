@@ -10,11 +10,20 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AdministratorCreateReportPage : PageObject
     {
+        // SaveReportLink is unique AdministratorCreateReportPage element
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']/a")]
+        public IWebElement SaveReportLink { get; set; }
 
 
         public AdministratorCreateReportPage(IWebDriver driver) : base(driver)
         {
 
+        }
+
+        public AdministratorReportPage ClickSaveReportLink()
+        {
+            SaveReportLink.Click();
+            return new AdministratorReportPage(Driver);
         }
     }
 }

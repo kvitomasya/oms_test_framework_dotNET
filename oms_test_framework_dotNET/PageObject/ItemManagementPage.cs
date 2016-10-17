@@ -35,6 +35,12 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//legend")]
         public IWebElement SearchByTextLabel { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']/a[1]")]
+        public IWebElement AddProductLink { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']/a[2]"]
+        public IWebElement CreateReportLink { get; set; }
+
         public ItemManagementPage(IWebDriver driver) : base(driver)
         {
         }
@@ -56,6 +62,18 @@ namespace oms_test_framework_dotNET.PageObject
         {
             SearchButton.Click();
             return this;
+        }
+
+        public AddProductPage ClickAddProductLink()
+        {
+            AddProductLink.Click();
+            return new AddProductPage(Driver);
+        }
+
+        public SupervisorCreateReportPage ClickCreateReportLink()
+        {
+            CreateReportLink.Click();
+            return new SupervisorCreateReportPage(Driver);
         }
     }
 

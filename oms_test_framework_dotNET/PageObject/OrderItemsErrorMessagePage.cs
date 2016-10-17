@@ -10,7 +10,9 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class OrderItemsErrorMessagePage : PageObject
     {
-
+        // OrderItemsErrorMessageText is unique OrderItemsErrorMessagePage element
+        [FindsBy(How = How.XPath, Using = "//title[text() = 'Order Items']")]
+        public IWebElement OrderItemsErrorMessageText { get; set; }
 
         public OrderItemsErrorMessagePage(IWebDriver driver) : base(driver)
         {
