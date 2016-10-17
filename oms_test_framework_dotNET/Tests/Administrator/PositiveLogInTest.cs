@@ -13,7 +13,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         const string AdministratorName = "iva";
         const string AdministratorPassword = "qwerty";
         userInfoPage = logInPage.LogInAs(AdministratorName, AdministratorPassword);
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Valid data are incorrect.");
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with administrator valid credentials is not successful");
         }
     }
 }

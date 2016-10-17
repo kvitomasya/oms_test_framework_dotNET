@@ -38,23 +38,5 @@ namespace oms_test_framework_dotNET.PageObject
             ItemManagementLink.Click();
             return new ItemManagementPage(Driver);
         }
-
-        public CustomerOrderingPage ClickCustomerOrdetingLink()
-        {
-            CustomerOrderingLink.Click();
-            return new CustomerOrderingPage(Driver);
-        }
-
-        public AdministrationPage ClickAdministrationLink()
-        {
-            AdministrationLink.Click();
-            return new AdministrationPage(Driver);
-        }
-
-        public MerchandiserOrderingPage ClickMerchandiserOrderingLink()
-        {
-            MerchandiserOrderingLink.Click();
-            return new MerchandiserOrderingPage(Driver);
-        }
     }
 }

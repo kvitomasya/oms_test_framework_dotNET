@@ -13,7 +13,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         const string MerchandiserName = "login1";
         const string MerchandiserPassword = "qwerty";
         userInfoPage = logInPage.LogInAs(MerchandiserName, MerchandiserPassword);
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Valid data are incorrect.");
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with merchandiser valid credentials is not successful");
         }
     }
 }
