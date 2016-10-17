@@ -36,12 +36,11 @@ namespace oms_test_framework_dotNET.PageObject
             return this;
         }
 
-        public String GetChengedOrderNumber()
+        public String GetChangedOrderNumber()
         {
             return OrderNumberInputField
                 .GetAttribute("Value");
         }
-
 
         public CustomerOrderingPage ClickCustomerOrderingPageLink()
         {

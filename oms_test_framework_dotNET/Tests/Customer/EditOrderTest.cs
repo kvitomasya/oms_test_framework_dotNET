@@ -13,17 +13,19 @@ namespace oms_test_framework_dotNET.Tests
     [TestClass]
     public class EditOrderTest : TestRunner
     {
-
-        private const String CustomerLogin = "vpopkin";
-        private const String CustomerPassword = "qwerty";
-        private const String SearchedOrder = "OrderName6";
+        
         private const String OrderNumber = "7";
         private const String ChengedSearchedOrder = "OrderName7";
 
         [TestInitialize]
         public void SetUp()
         {
-            userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
+
+        const String SearchedOrder = "OrderName6";
+        const String CustomerLogin = "vpopkin";
+        const String CustomerPassword = "qwerty";
+
+        userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
 
             customerOrderingPage = userInfoPage.ClickCustomerOrderingPageLink();
 
@@ -44,7 +46,7 @@ namespace oms_test_framework_dotNET.Tests
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestEditOrder()
         {
             Assert.AreEqual(customerOrderingPage.GetOrderName(), ChengedSearchedOrder, "Order numbers aren't same");
         }
