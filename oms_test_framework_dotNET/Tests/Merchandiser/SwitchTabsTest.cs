@@ -6,12 +6,12 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
     [TestClass]
     public class SwitchTabsTest : TestRunner
     {
-        private const string MerchandiserLogin = "login1";
-        private const string MerchandiserPassword = "qwerty";
 
         [TestInitialize]
         public void SetUpTest()
         {
+            const string MerchandiserLogin = "login1";
+            const string MerchandiserPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
         }
 
