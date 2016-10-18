@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -9,10 +10,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
     {
         [TestMethod]
         public void TestValidLogInCustomer()
-        {
-        const string CustomerName = "login1";
-        const string CustomerPassword = "qwerty";
-        userInfoPage = logInPage.LogInAs(CustomerName, CustomerPassword);
+        {       
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
             Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with customer valid credentials is not successful");
         }
     }

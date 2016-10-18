@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
 {
@@ -11,9 +12,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestInitialize]
         public void SetUp()
         {
-            const String MerchandiserLogin = "login1";
-            const String MerchandiserPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
+            userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
             merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
         }
 

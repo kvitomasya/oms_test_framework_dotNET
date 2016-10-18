@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
@@ -9,10 +10,8 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
         [TestInitialize]
         public void SetUpTest()
-        {
-            const string MerchandiserLogin = "login1";
-            const string MerchandiserPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
+        {         
+            userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
         }
 
         [TestMethod]

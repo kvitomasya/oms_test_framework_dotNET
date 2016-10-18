@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 
 namespace oms_test_framework_dotNET.Tests.Administrator
@@ -10,9 +11,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         [TestInitialize]
         public void SetUpTest()
         {
-            const string AdministratorLogin = "iva";
-            const string AdministratorPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(AdministratorLogin, AdministratorPassword);
+            userInfoPage = logInPage.LogInAs(Roles.ADMINISTRATOR);
         }
 
         [TestMethod]

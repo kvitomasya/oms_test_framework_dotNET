@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -11,9 +12,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
         [TestInitialize]
         public void SetUp()
         {
-        const String CustomerLogin = "vpopkin";
-        const String CustomerPassword = "qwerty";
-        userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
         }
 

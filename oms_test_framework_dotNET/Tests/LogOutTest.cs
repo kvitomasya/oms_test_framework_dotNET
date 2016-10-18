@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -18,10 +19,8 @@ namespace oms_test_framework_dotNET.Tests
 
         [TestMethod]
         public void TestUserInfoPageLogOutAbility()
-        {
-            const String UserLogin = "vpopkin";
-            const String UserPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(UserLogin, UserPassword);
+        {           
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
             userInfoPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,
                 "Logout is not working");

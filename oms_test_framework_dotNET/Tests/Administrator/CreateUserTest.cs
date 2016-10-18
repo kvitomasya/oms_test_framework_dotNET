@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -13,12 +14,9 @@ namespace oms_test_framework_dotNET.Tests
     {
         [TestMethod]
         public void TestCreateNewUserAbility()
-        {
-            const String AdminLogin = "iva";
-            const String AdminPassword = "qwerty";
-
+        {          
             administrationPage = logInPage
-                     .LogInAs(AdminLogin, AdminPassword)
+                     .LogInAs(Roles.ADMINISTRATOR)
                      .ClickAdministrationLink();
 
             Assert
