@@ -38,9 +38,12 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.Id, Using = "save")]
         public IWebElement SaveButton { get; set; }
 
-        public CreateNewOrderPage(IWebDriver driver) : base(driver)
-        {
+        [FindsBy(How = How.XPath, Using = "(//ul[@id='nav']//a)[1]")]
+        public IWebElement CustomerOrderingPageLink { get; set; }
 
+        public CreateNewOrderPage(IWebDriver driver)
+            : base(driver)
+        {
         }
 
         public AddItemPage ClickAddItemButton()
@@ -77,6 +80,31 @@ namespace oms_test_framework_dotNET.PageObject
         {
             SaveButton.Click();
             return new OrderItemsErrorMessagePage(Driver);
+        }
+
+        public CreateNewOrderPage ChangeOrderByName(String orderNumber)
+        {
+            OrderNumberField.Clear();
+            OrderNumberField.SendKeys(orderNumber);
+            return this;
+        }
+
+        public CreateNewOrderPage ClickSaveButton()
+        {
+            SaveButton.Click();
+            return this;
+        }
+
+        public String GetChangedOrderNumber()
+        {
+            return OrderNumberField
+                .GetAttribute("Value");
+        }
+
+        public CustomerOrderingPage ClickCustomerOrderingPageLink()
+        {
+            CustomerOrderingPageLink.Click();
+            return new CustomerOrderingPage(Driver);
         }
     }
 }
