@@ -113,6 +113,7 @@
     <Compile Include="Tests\Merchandiser\PositiveLogInTest.cs" />
     <Compile Include="Tests\Merchandiser\SwitchTabsTest.cs" />
     <Compile Include="Tests\NegativeLogInPageTest.cs" />
+    <Compile Include="Tests\Supervisor\AddNewProductTest.cs" />
     <Compile Include="Tests\Supervisor\EditProductTest.cs" />
     <Compile Include="Tests\Supervisor\LogOutTest.cs" />
     <Compile Include="Tests\Supervisor\PositiveLogInTest.cs" />

@@ -58,5 +58,15 @@ namespace oms_test_framework_dotNET.DBHelpers
                 return session.Get<Product>(productId);
             }
         }
+
+        public static Product GetLastProduct()
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                return session.CreateQuery("FROM Product ORDER BY Id DESC")
+                    .SetMaxResults(1)
+                    .UniqueResult<Product>();
+            }
+        }
     }
 }
