@@ -24,7 +24,8 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='content']//legend")]
         public IWebElement UserInfoFieldSet { get; set; }
 
-        public UserInfoPage(IWebDriver driver) : base(driver)
+        public UserInfoPage(IWebDriver driver)
+            : base(driver)
         {
 
         }
@@ -51,6 +52,12 @@ namespace oms_test_framework_dotNET.PageObject
         {
             ItemManagementLink.Click();
             return new ItemManagementPage(Driver);
+        }
+
+        public CustomerOrderingPage ClickCustomerOrdetingLink()
+        {
+            CustomerOrderingLink.Click();
+            return new CustomerOrderingPage(Driver);
         }
 
         public UserInfoPage ClickUserInfoLink()
