@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>oms_test_framework_dotNET</RootNamespace>
     <AssemblyName>oms_test_framework_dotNET</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -18,6 +18,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,6 +105,7 @@
     <Compile Include="Tests\Administrator\LogOutTest.cs" />
     <Compile Include="Tests\Administrator\PositiveLogInTest.cs" />
     <Compile Include="Tests\Administrator\SwitchTabsTest.cs" />
+    <Compile Include="Tests\Customer\EditOrderTest.cs" />
     <Compile Include="Tests\Customer\LogOutTest.cs" />
     <Compile Include="Tests\Customer\PositiveLogInTest.cs" />
     <Compile Include="Tests\Customer\SwitchTabsTest.cs" />
