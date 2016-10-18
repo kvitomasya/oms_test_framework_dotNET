@@ -122,12 +122,14 @@
     <Compile Include="Utils\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hibernate.cfg.xml" />
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Locators\TextFile1.txt" />
-    <Content Include="Mapping\Order.hbm.xml" />
-    <Content Include="Mapping\OrderItem.hbm.xml" />
-    <Content Include="Mapping\Product.hbm.xml" />
-    <Content Include="Mapping\User.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Order.hbm.xml" />
+    <EmbeddedResource Include="Mapping\OrderItem.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Product.hbm.xml" />
+    <EmbeddedResource Include="Mapping\User.hbm.xml" />
     <Content Include="Readme.txt" />
     <Content Include="Resources\Drivers\chromedriver.exe" />
     <Content Include="Resources\Drivers\IEDriverServer.exe" />

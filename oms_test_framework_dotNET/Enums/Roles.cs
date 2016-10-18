@@ -11,6 +11,7 @@ namespace oms_test_framework_dotNET.Enums
         ADMINISTRATOR,
         MERCHANDISER,
         SUPERVISOR,
-        CUSTOMER
+        CUSTOMER,
+        INVALID_USER
     }
 }

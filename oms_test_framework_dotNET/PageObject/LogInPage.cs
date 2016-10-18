@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.DBHelpers;
 
 namespace oms_test_framework_dotNET.PageObject
 {
@@ -21,9 +24,26 @@ namespace oms_test_framework_dotNET.PageObject
 
         [FindsBy(How = How.Name, Using = "reset")]
         public IWebElement CancelButton { get; set; }
-
+              
         public LogInPage(IWebDriver driver) : base(driver)
         {
+        }
+
+        public UserInfoPage LogInAs(Roles role)
+        {
+            const String InvalidUserLogin = "Saruman";
+            const String InvalidUserPassword = "mordor";
+
+            if (role == Roles.INVALID_USER)
+            {
+                LogInAs(InvalidUserLogin, InvalidUserPassword);
+            }
+            else
+            {
+                User user = DBUserHandler.GetUserByRole(role);
+                LogInAs(user.Login, user.Password);
+            }
+            return new UserInfoPage(Driver);
         }
 
         public UserInfoPage LogInAs(String username, String password)
