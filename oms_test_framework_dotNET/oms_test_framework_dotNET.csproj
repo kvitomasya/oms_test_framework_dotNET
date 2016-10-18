@@ -85,8 +85,8 @@
     <Compile Include="PageObject\AddProductPage.cs" />
     <Compile Include="PageObject\AdministrationPage.cs" />
     <Compile Include="PageObject\CreateNewOrderPage.cs" />
-    <Compile Include="PageObject\CreateNewUserPage.cs" />
     <Compile Include="PageObject\AdministratorCreateReportPage.cs" />
+    <Compile Include="PageObject\CreateUserPage.cs" />
     <Compile Include="PageObject\CustomerOrderingPage.cs" />
     <Compile Include="PageObject\EditProductPage.cs" />
     <Compile Include="PageObject\EditUserPage.cs" />
@@ -100,6 +100,7 @@
     <Compile Include="PageObject\SupervisorCreateReportPage.cs" />
     <Compile Include="PageObject\SupervisorReportPage.cs" />
     <Compile Include="PageObject\UserInfoPage.cs" />
+    <Compile Include="Tests\Administrator\CreateUserTest.cs" />
     <Compile Include="Tests\Administrator\LogOutTest.cs" />
     <Compile Include="Tests\Administrator\PositiveLogInTest.cs" />
     <Compile Include="Tests\Administrator\SwitchTabsTest.cs" />
@@ -162,13 +163,13 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.2.24.0.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.2.24.0.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages\Selenium.Mozilla.Firefox.Webdriver.0.6.0.1\driver\wires-0.6.0-win.exe">
       <Link>wires-0.6.0-win.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
