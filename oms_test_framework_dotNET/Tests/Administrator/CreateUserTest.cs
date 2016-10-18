@@ -12,7 +12,7 @@ namespace oms_test_framework_dotNET.Tests
     public class CreateUserTest : TestRunner
     {
         [TestMethod]
-        public void testCreateNewUserAbility()
+        public void TestCreateNewUserAbility()
         {
             const String AdminLogin = "iva";
             const String AdminPassword = "qwerty";
