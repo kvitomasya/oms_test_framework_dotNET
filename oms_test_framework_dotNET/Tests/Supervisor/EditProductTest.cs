@@ -11,10 +11,6 @@ namespace oms_test_framework_dotNET.Tests
     [TestClass]
     public class EditProductTest : TestRunner
     {
-
-        private const String SupervisorLogin = "login2";
-        private const String SupervisorPassword = "qwerty";
-
         private String testProductName;
         private String testProductDescription;
         private String testProductPrice;
@@ -22,6 +18,8 @@ namespace oms_test_framework_dotNET.Tests
         [TestInitialize]
         public void SetUp()
         {
+            const String SupervisorLogin = "login2";
+            const String SupervisorPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(SupervisorLogin, SupervisorPassword);
 
             itemManagementPage = userInfoPage.ClickItemManagementLink();

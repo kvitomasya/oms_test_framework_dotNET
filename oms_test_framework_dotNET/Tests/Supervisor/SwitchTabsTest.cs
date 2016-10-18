@@ -8,12 +8,12 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
     [TestClass]
     public class SwitchTabsTest : TestRunner
     {
-        private const string SupervisorLogin = "login2";
-        private const string SupervisorPassword = "qwerty";
 
         [TestInitialize]
         public void SetUpTest()
         {
+            const string SupervisorLogin = "login2";
+            const string SupervisorPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(SupervisorLogin, SupervisorPassword);
         }
 

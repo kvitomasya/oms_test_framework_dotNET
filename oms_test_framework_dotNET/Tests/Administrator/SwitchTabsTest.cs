@@ -6,12 +6,12 @@ namespace oms_test_framework_dotNET.Tests.Administrator
     [TestClass]
     public class SwitchTabsTest : TestRunner
     {
-        private const string AdministratorLogin = "iva";
-        private const string AdministratorPassword = "qwerty";
 
         [TestInitialize]
         public void SetUpTest()
         {
+            const string AdministratorLogin = "iva";
+            const string AdministratorPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(AdministratorLogin, AdministratorPassword);
         }
 

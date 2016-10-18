@@ -6,12 +6,12 @@ namespace oms_test_framework_dotNET.Tests.Customer
     [TestClass]
     public class SwitchTabsTest : TestRunner
     {
-        private const string CusomerLogin = "vpopkin";
-        private const string CustomerPassword = "qwerty";
 
         [TestInitialize]
         public void SetUpTest()
         {
+            const string CusomerLogin = "vpopkin";
+            const string CustomerPassword = "qwerty";
             userInfoPage = logInPage.LogInAs(CusomerLogin, CustomerPassword);
         }
 
