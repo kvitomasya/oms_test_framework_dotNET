@@ -41,8 +41,8 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         [TestMethod]
         public void TestCreateNewUserPageLogOutAbility()
         {
-            createNewUserPage = administrationPage.ClickCreateNewUserLink();
-            Assert.IsTrue(createNewUserPage.PageInfoText.Displayed,
+            createNewUserPage = administrationPage.ClickCreateNewUser();
+            Assert.IsTrue(createUserPage.LoginNameLabel.Displayed,
                 "Create new user page doesn't exists");
             createNewUserPage.DoLogOut();
             Assert.IsTrue(logInPage.UsernameInput.Displayed,

@@ -16,8 +16,9 @@ namespace oms_test_framework_dotNET.Utils
         protected AdministrationPage administrationPage;
         protected AdministratorCreateReportPage administratorCreateReportPage;
         protected AdministratorReportPage administratorReportPage;
+        protected CreateUserPage createUserPage;
         protected CreateNewOrderPage createNewOrderPage;
-        protected CreateNewUserPage createNewUserPage;
+        protected CreateUserPage createNewUserPage;
         protected CustomerOrderingPage customerOrderingPage;
         protected EditProductPage editProductPage;
         protected EditUserPage editUserPage;

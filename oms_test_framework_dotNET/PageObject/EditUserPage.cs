@@ -16,7 +16,6 @@ namespace oms_test_framework_dotNET.PageObject
 
         public EditUserPage(IWebDriver driver) : base(driver)
         {
-
         }
     }
 }
