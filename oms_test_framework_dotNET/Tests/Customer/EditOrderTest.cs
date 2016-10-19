@@ -10,7 +10,6 @@ using oms_test_framework_dotNET.PageObject;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.DBHelpers;
 using OpenQA.Selenium.Remote;
-using System.Threading;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -18,7 +17,8 @@ namespace oms_test_framework_dotNET.Tests
     public class EditOrderTest : TestRunner
     {
         private String orderNumber = "10";
-        private String changedSearchedOrder;
+        private String changedSearchedOrderName = "OrderName10";
+        private String changedSearchedOrderId;
 
         private int testOrderId;
         private int testOrderItem;
@@ -39,14 +39,9 @@ namespace oms_test_framework_dotNET.Tests
                 .ClickEditLink();
 
             createNewOrderPage
-                .OrderNumberField
-                .Clear();
+                .ChangeOrderByNumber(orderNumber);
 
-            createNewOrderPage
-                .OrderNumberField
-                .SendKeys(orderNumber);
-
-            changedSearchedOrder = createNewOrderPage
+            changedSearchedOrderId = createNewOrderPage
                  .OrderNumberField
                  .GetAttribute("Value");
 
@@ -57,20 +52,15 @@ namespace oms_test_framework_dotNET.Tests
                 .ClickCustomerOrderingPageLink();
 
             customerOrderingPage
-                .SearchOrdersInputField
-                .Clear();
-
-            customerOrderingPage
-                .SelectOrderByName("OrderName10")
+                .SelectOrderByName(changedSearchedOrderName)
                 .ClickAplyButton();
         }
 
         [TestMethod]
         public void TestEditOrder()
         {
-            
 
-            Assert.AreEqual(customerOrderingPage.GetOrderName(), "OrderName10",
+            Assert.AreEqual(customerOrderingPage.GetOrderName(), changedSearchedOrderName,
                 "Order numbers should be different");
         }
 
@@ -78,7 +68,7 @@ namespace oms_test_framework_dotNET.Tests
         public void TearDown()
         {
             DBOrderHandler.DeleteOrderById(testOrderId);
-            DBOrderItemHandler.DeleteOrderItemById(int.Parse(changedSearchedOrder));
+            DBOrderItemHandler.DeleteOrderItemById(int.Parse(changedSearchedOrderId));
         }
     }
 }
