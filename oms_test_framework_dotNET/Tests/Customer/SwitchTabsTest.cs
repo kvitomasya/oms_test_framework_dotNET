@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 
 namespace oms_test_framework_dotNET.Tests.Customer
@@ -9,10 +10,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
 
         [TestInitialize]
         public void SetUpTest()
-        {
-            const string CusomerLogin = "vpopkin";
-            const string CustomerPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(CusomerLogin, CustomerPassword);
+        {           
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
         }
 
         [TestMethod]

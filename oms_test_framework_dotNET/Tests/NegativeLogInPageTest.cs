@@ -2,6 +2,7 @@
 using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -9,9 +10,7 @@ namespace oms_test_framework_dotNET.Tests
     public class NegativeLogInPageTest : TestRunner
     {
         private const string ValidName = "iva";
-        private const string ValidPassword = "qwerty";
-        private const string InvalidName = "Neo";
-        private const string InvalidPassword = "pizza";
+        private const string ValidPassword = "qwerty";      
         private const string EmptyField = "";
         [TestMethod]
         public void TestEmptyFieldsLogIn()
@@ -34,7 +33,7 @@ namespace oms_test_framework_dotNET.Tests
         [TestMethod]
         public void TestInvalidLogIn()
         {
-            userInfoPage = logInPage.LogInAs(InvalidName, InvalidPassword);
+            userInfoPage = logInPage.LogInAs(Roles.INVALID_USER);
             Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with invalid credentials is not successful");
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Supervisor
 {
@@ -10,10 +11,8 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
 
         [TestInitialize]
         public void SetUp()
-        {
-            const String SupervisorLogin = "login2";
-            const String SupervisorPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(SupervisorLogin, SupervisorPassword);
+        {          
+            userInfoPage = logInPage.LogInAs(Roles.SUPERVISOR);
             itemManagementPage = userInfoPage.ClickItemManagementLink();
         }
 
