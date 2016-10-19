@@ -45,7 +45,7 @@ namespace oms_test_framework_dotNET.PageObject
 
         public AddItemPage ClickAddItemButton()
         {
-            AddItemButton.Click();
+            AddItemButton.Submit();
             return new AddItemPage(Driver);
         }
 
