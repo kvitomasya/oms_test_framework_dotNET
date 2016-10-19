@@ -33,7 +33,7 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[1]")]
         public IWebElement FirstOrderNameCellTextField { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[8]/a")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']/table/tbody/tr[2]/td[8]")]
         public IWebElement FirstBodyDeleteLink { get; set; }
 
         public CustomerOrderingPage(IWebDriver driver)

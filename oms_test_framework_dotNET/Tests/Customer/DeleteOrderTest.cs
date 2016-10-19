@@ -8,6 +8,7 @@ using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Tests;
 using oms_test_framework_dotNET.PageObject;
 using oms_test_framework_dotNET.DBHelpers;
+using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -17,20 +18,13 @@ namespace oms_test_framework_dotNET.Tests.Customer
         private int testOrderId;
         private int testOrderItem;
 
-        [ClassInitialize]
-        public void CreateOrder()
-        {
-            testOrderId = DBHelper.createValidOrderInDB();
-            testOrderItem = DBHelper.createOrderItemInDB();
-        }
-
         [TestInitialize]
         public void SetUp()
         {
-            const String CustomerLogin = "vpopkin";
-            const String CustomerPassword = "qwerty";
+            testOrderId = DBHelper.createValidOrderInDB();
+            testOrderItem = DBHelper.createOrderItemInDB();
 
-            userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
 
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
         }
@@ -39,14 +33,14 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestDeleteOrder()
         {
             customerOrderingPage
-               .SelectOrderByName("OrderName" + testOrderId)
+               .SelectOrderByName("TestOrder")
                .ClickAplyButton()
                .ClickDeleteLink();
 
             Driver.SwitchTo().Alert().Dismiss();
 
             Assert.AreEqual(customerOrderingPage
-                .GetOrderName(), "OrderName" + testOrderId,
+                .GetOrderName(), "TestOrder",
                 "Order name should be equals");
 
             customerOrderingPage
@@ -54,16 +48,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
 
             Driver.SwitchTo().Alert().Accept();
 
-            Assert.IsTrue(customerOrderingPage
-                .FirstOrderNameCellTextField
-                .Displayed, "Order name should be displyed");
-        }
-
-        [TestCleanup]
-        public void TearDown()
-        {
-            DBOrderHandler.DeleteOrderById(testOrderId);
-            DBOrderHandler.DeleteOrderById(testOrderItem);
+            Assert.IsTrue(DBOrderHandler.GetOrderById(testOrderId) == null,
+                "Deleted order still exists !");
         }
     }
 }

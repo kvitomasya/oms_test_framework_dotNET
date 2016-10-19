@@ -18,12 +18,12 @@ namespace oms_test_framework_dotNET.Utils
                 .SetIsGift(0)
                 .SetMaxDiscount(0)
                 .SetOrderDate("2016-11-15 23:25:00")
-                .SetOrderName("NewOrderName")
+                .SetOrderName("TestOrder")
                 .SetOrderNumber(7)
                 .SetPreferableDeliveryDate("2016-11-14 19:10:00")
                 .SetTotalPrice(7500.0)
                 .SetAssignee(8)
-                .SetCustomer(13)
+                .SetCustomer(10)
                 .SetOrderStatusReference(1)
                 .Build());
         }
@@ -31,7 +31,7 @@ namespace oms_test_framework_dotNET.Utils
         public static int createOrderItemInDB()
         {
 
-            return DBOrderHandler.CreateItem(OrderItem.NewBuilder()
+            return DBOrderItemHandler.CreateOrderItem(OrderItem.NewBuilder()
                     .SetId(0)
                     .SetCost(7500.0)
                     .SetItemPrice(500.0)

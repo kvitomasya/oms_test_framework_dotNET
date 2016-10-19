@@ -7,59 +7,78 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Tests;
 using oms_test_framework_dotNET.PageObject;
+using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.DBHelpers;
+using OpenQA.Selenium.Remote;
+using System.Threading;
 
 namespace oms_test_framework_dotNET.Tests
 {
     [TestClass]
     public class EditOrderTest : TestRunner
     {
-        private const String OrderNumber = "100";
-        private const String ChangedSearchedOrder = "OrderName100";
+        private String orderNumber = "10";
+        private String changedSearchedOrder;
+
+        private int testOrderId;
+        private int testOrderItem;
 
         [TestInitialize]
         public void SetUp()
         {
-            const String OrderName = "OrderName7";
-            const String CustomerLogin = "vpopkin";
-            const String CustomerPassword = "qwerty";
+            testOrderId = DBHelper.createValidOrderInDB();
+            testOrderItem = DBHelper.createOrderItemInDB();
 
-            userInfoPage = logInPage.LogInAs(CustomerLogin, CustomerPassword);
+            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
 
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
 
-            customerOrderingPage
-                .SelectOrderByName(OrderName)
+            createNewOrderPage = customerOrderingPage
+                .SelectOrderByName("TestOrder")
                 .ClickAplyButton()
                 .ClickEditLink();
 
             createNewOrderPage
-                .ChangeOrderByNumber(OrderNumber)
+                .OrderNumberField
+                .Clear();
+
+            createNewOrderPage
+                .OrderNumberField
+                .SendKeys(orderNumber);
+
+            changedSearchedOrder = createNewOrderPage
+                 .OrderNumberField
+                 .GetAttribute("Value");
+
+            createNewOrderPage
                 .ClickSaveButton();
 
             createNewOrderPage
                 .ClickCustomerOrderingPageLink();
 
             customerOrderingPage
-               .SelectOrderByName(ChangedSearchedOrder);
+                .SearchOrdersInputField
+                .Clear();
+
+            customerOrderingPage
+                .SelectOrderByName("OrderName10")
+                .ClickAplyButton();
         }
 
         [TestMethod]
         public void TestEditOrder()
         {
-            Assert.AreEqual(customerOrderingPage.GetOrderName(), ChangedSearchedOrder, "Order numbers aren't same");
+            
+
+            Assert.AreEqual(customerOrderingPage.GetOrderName(), "OrderName10",
+                "Order numbers should be different");
         }
 
         [TestCleanup]
         public void TearDown()
         {
-            customerOrderingPage.ClickEditLink();
-
-            customerOrderingPage
-                .ClickEditLink();
-
-            createNewOrderPage
-                .ChangeOrderByNumber(OrderNumber)
-                .ClickSaveButton();
+            DBOrderHandler.DeleteOrderById(testOrderId);
+            DBOrderItemHandler.DeleteOrderItemById(int.Parse(changedSearchedOrder));
         }
     }
 }
