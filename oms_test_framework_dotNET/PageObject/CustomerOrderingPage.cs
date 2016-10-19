@@ -31,7 +31,10 @@ namespace oms_test_framework_dotNET.PageObject
         public IWebElement FirstBodyEditLink { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[1]")]
-        public IWebElement FirstBodyOrderNameTextLable { get; set; }
+        public IWebElement FirstOrderNameCellTextField { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[8]/a")]
+        public IWebElement FirstBodyDeleteLink { get; set; }
 
         public CustomerOrderingPage(IWebDriver driver)
             : base(driver)
@@ -65,13 +68,19 @@ namespace oms_test_framework_dotNET.PageObject
 
         public String GetOrderName()
         {
-            return FirstBodyOrderNameTextLable.Text;
+            return FirstOrderNameCellTextField.Text;
         }
 
         public CreateNewOrderPage ClickCreateNewOrderLink()
         {
             CreateNewOrderLink.Click();
             return new CreateNewOrderPage(Driver);
+        }
+
+        public CustomerOrderingPage ClickDeleteLink()
+        {
+            FirstBodyDeleteLink.Click();
+            return new CustomerOrderingPage(Driver);
         }
     }
 }

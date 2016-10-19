@@ -105,6 +105,7 @@
     <Compile Include="Tests\Administrator\LogOutTest.cs" />
     <Compile Include="Tests\Administrator\PositiveLogInTest.cs" />
     <Compile Include="Tests\Administrator\SwitchTabsTest.cs" />
+    <Compile Include="Tests\Customer\DeleteOrderTest.cs" />
     <Compile Include="Tests\Customer\EditOrderTest.cs" />
     <Compile Include="Tests\Customer\LogOutTest.cs" />
     <Compile Include="Tests\Customer\PositiveLogInTest.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Tests\Supervisor\LogOutTest.cs" />
     <Compile Include="Tests\Supervisor\PositiveLogInTest.cs" />
     <Compile Include="Tests\Supervisor\SwitchTabsTest.cs" />
+    <Compile Include="Utils\DBHelper.cs" />
     <Compile Include="Utils\NHibernateHelper.cs" />
     <Compile Include="Utils\TestRunner.cs" />
     <Compile Include="Utils\WebDriverFactory.cs" />

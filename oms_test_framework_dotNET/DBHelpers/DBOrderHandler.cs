@@ -51,6 +51,11 @@ namespace oms_test_framework_dotNET.DBHelpers
             }
         }
 
+        internal static int CreateItem(object p)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void DeleteOrderByNumber(int orderNumber)
         {
             using (ISession session = NHibernateHelper.OpenSession())
