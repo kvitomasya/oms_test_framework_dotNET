@@ -77,7 +77,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         }
 
         [TestCleanup]
-        public virtual void TearDown()
+        public void TearDown()
         {
             DBOrderItemHandler.DeleteOrderItemById(testOrderItemId);
             DBOrderHandler.DeleteOrderById(testOrderId);
