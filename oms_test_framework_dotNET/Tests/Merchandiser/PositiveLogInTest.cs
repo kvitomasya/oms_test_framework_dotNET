@@ -11,8 +11,11 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void TestValidLogInMerchandiser()
         {
-            userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with merchandiser valid credentials is not successful");
+            OnTestResult(() =>
+            {
+                userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
+                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with merchandiser valid credentials is not successful");
+            });
         }
     }
 }

@@ -14,48 +14,51 @@ namespace oms_test_framework_dotNET.Tests
     {
         [TestMethod]
         public void TestCreateNewUserAbility()
-        {          
-            administrationPage = logInPage
-                     .LogInAs(Roles.ADMINISTRATOR)
-                     .ClickAdministrationLink();
+        {
+            OnTestResult(() =>
+            {
+                administrationPage = logInPage
+                         .LogInAs(Roles.ADMINISTRATOR)
+                         .ClickAdministrationLink();
 
-            Assert
-                .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
-                "The Admin page should be displayed!");
+                Assert
+                    .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+                    "The Admin page should be displayed!");
 
-            createUserPage = administrationPage.ClickCreateNewUser();
+                createUserPage = administrationPage.ClickCreateNewUser();
 
-            Assert
-                .IsTrue(createUserPage.LoginNameLabel.Displayed,
-                "The CreateNewUserPage should be displayed!");
+                Assert
+                    .IsTrue(createUserPage.LoginNameLabel.Displayed,
+                    "The CreateNewUserPage should be displayed!");
 
-            createUserPage
-            .FillLoginField("StefDevis")
-            .FillFirstNameField("Stef")
-            .FillLastNameField("Devis")
-            .FillPasswordField("qwerty")
-            .FillConfirmPasswordField("qwerty")
-            .FillEmailField("StefDevis@gmail.com")
-            .ChooseRegion("North")
-            .ChooseRole("Customer");
+                createUserPage
+                .FillLoginField("StefDevis")
+                .FillFirstNameField("Stef")
+                .FillLastNameField("Devis")
+                .FillPasswordField("qwerty")
+                .FillConfirmPasswordField("qwerty")
+                .FillEmailField("StefDevis@gmail.com")
+                .ChooseRegion("North")
+                .ChooseRole("Customer");
 
-            createUserPage.ClickCreateButton();
+                createUserPage.ClickCreateButton();
 
-            Assert
-                .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
-                "The Admin page should be displayed!");
+                Assert
+                    .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+                    "The Admin page should be displayed!");
 
-            administrationPage
-                .FillFieldFilter("Login")
-                .FillConditionFilter("equal")
-                .FillSearchInputField("StefDevis")
-                .ClickSearchButton();
+                administrationPage
+                    .FillFieldFilter("Login")
+                    .FillConditionFilter("equal")
+                    .FillSearchInputField("StefDevis")
+                    .ClickSearchButton();
 
-            Assert
-                .AreEqual("StefDevis", administrationPage.LogInFirstCellLink.Text,
-                "As a result of the search should be a user with the specified login");
+                Assert
+                    .AreEqual("StefDevis", administrationPage.LogInFirstCellLink.Text,
+                    "As a result of the search should be a user with the specified login");
 
-            administrationPage.DeleteUserByLogIn("StefDevis");
+                administrationPage.DeleteUserByLogIn("StefDevis");
+            });
         }
     }
 }

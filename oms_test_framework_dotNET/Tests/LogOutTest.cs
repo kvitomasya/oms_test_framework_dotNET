@@ -12,18 +12,24 @@ namespace oms_test_framework_dotNET.Tests
         [TestMethod]
         public void TestLogInPageLogOutAbility()
         {
-            logInPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                "Logout is not working");
+            OnTestResult(() =>
+            {
+                logInPage.DoLogOut();
+                Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                    "Logout is not working");
+            });
         }
 
         [TestMethod]
         public void TestUserInfoPageLogOutAbility()
-        {           
-            userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
-            userInfoPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                "Logout is not working");
+        {
+            OnTestResult(() =>
+            {
+                userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
+                userInfoPage.DoLogOut();
+                Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                    "Logout is not working");
+            });
         }
     }
 }

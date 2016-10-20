@@ -36,35 +36,38 @@ namespace oms_test_framework_dotNET.Tests
         [TestMethod]
         public void TestEditProductAbility()
         {
-            const String ProductNameForChange = "AnotherName";
-            const String ProductDescriptionForChange = "AnotherDescription";
-            const String ProductPriceForChange = "50.0";
+            OnTestResult(() =>
+            {
+                const String ProductNameForChange = "AnotherName";
+                const String ProductDescriptionForChange = "AnotherDescription";
+                const String ProductPriceForChange = "50.0";
 
-            editProductPage.FillProductNameInput(ProductNameForChange)
-                .FillProductDescriptionInput(ProductDescriptionForChange)
-                .FillProductPriceInput(ProductPriceForChange)
-                .ClickOkButton();
+                editProductPage.FillProductNameInput(ProductNameForChange)
+                    .FillProductDescriptionInput(ProductDescriptionForChange)
+                    .FillProductPriceInput(ProductPriceForChange)
+                    .ClickOkButton();
 
-            itemManagementPage.FillSearchInput(testProductName)
-                .ClickSearchButton();
+                itemManagementPage.FillSearchInput(testProductName)
+                    .ClickSearchButton();
 
-            Assert.IsTrue(itemManagementPage.CountOfProductFound.Text.Equals("0"),
-                "Old Product still exists !");
+                Assert.IsTrue(itemManagementPage.CountOfProductFound.Text.Equals("0"),
+                    "Old Product still exists !");
 
-            itemManagementPage.FillSearchInput(ProductNameForChange)
-                .ClickSearchButton();
+                itemManagementPage.FillSearchInput(ProductNameForChange)
+                    .ClickSearchButton();
 
-            Assert.AreEqual(itemManagementPage.FirstProductNameText.Text,
-                ProductNameForChange, "Product Name (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductNameText.Text, ProductNameForChange);
+                Assert.AreEqual(itemManagementPage.FirstProductNameText.Text,
+                    ProductNameForChange, "Product Name (actual={0}) should be changed to (expected={1})",
+                    itemManagementPage.FirstProductNameText.Text, ProductNameForChange);
 
-            Assert.AreEqual(itemManagementPage.FirstProductDescriptionText.Text,
-                ProductDescriptionForChange, "Product Description (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductDescriptionText.Text, ProductDescriptionForChange);
+                Assert.AreEqual(itemManagementPage.FirstProductDescriptionText.Text,
+                    ProductDescriptionForChange, "Product Description (actual={0}) should be changed to (expected={1})",
+                    itemManagementPage.FirstProductDescriptionText.Text, ProductDescriptionForChange);
 
-            Assert.AreEqual(itemManagementPage.FirstProductPriceText.Text,
-                ProductPriceForChange, "Product Price (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductPriceText.Text, ProductPriceForChange);
+                Assert.AreEqual(itemManagementPage.FirstProductPriceText.Text,
+                    ProductPriceForChange, "Product Price (actual={0}) should be changed to (expected={1})",
+                    itemManagementPage.FirstProductPriceText.Text, ProductPriceForChange);
+            });
         }
 
         [TestCleanup]
