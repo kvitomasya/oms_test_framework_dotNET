@@ -29,7 +29,7 @@ namespace oms_test_framework_dotNET.Utils
                 .SetPreferableDeliveryDate("2016-11-14 19:10:00")
                 .SetTotalPrice(7500.0)
                 .SetAssignee(8)
-                .SetCustomer(13)
+                .SetCustomer(10)
                 .SetOrderStatusReference(1)
                 .Build());
         }

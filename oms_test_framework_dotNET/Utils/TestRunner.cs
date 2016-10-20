@@ -1,5 +1,4 @@
-
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using OpenQA.Selenium;
 using oms_test_framework_dotNET.PageObject;
@@ -37,7 +36,7 @@ namespace oms_test_framework_dotNET.Utils
         public void TestInitialize()
         {
             Driver = new WebDriverFactory().GetDriver(Browsers.FIREFOX);
-         
+
             Driver.Manage()
                 .Timeouts()
                 .ImplicitlyWait(TimeSpan.FromSeconds(10));

@@ -8,7 +8,7 @@ namespace oms_test_framework_dotNET.Domains
 {
     public class Order
     {
-        public virtual int Id { get; protected set; }
+        public virtual int Id { get; set; }
         public virtual String DeliveryDate { get; set; }
         public virtual int IsGift { get; set; }
         public virtual int MaxDiscount { get; set; }

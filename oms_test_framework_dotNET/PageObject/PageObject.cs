@@ -24,8 +24,24 @@ namespace oms_test_framework_dotNET.PageObject
         public LogInPage DoLogOut()
         {
             LogOutButton.Click();
-            Driver.SwitchTo().Alert().Accept();
+            AcceptAlert();
             return new LogInPage(Driver);
+        }
+
+        public void AcceptAlert()
+        {
+            Driver
+                .SwitchTo()
+                .Alert()
+                .Accept();
+        }
+
+        public void DismissAlert()
+        {
+            Driver
+                .SwitchTo()
+                .Alert()
+                .Dismiss();
         }
     }
 }

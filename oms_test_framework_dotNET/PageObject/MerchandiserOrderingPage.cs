@@ -20,7 +20,7 @@ namespace oms_test_framework_dotNET.PageObject
         [FindsBy(How = How.XPath, Using = "//div[@id='list']//tr[2]/td[6]/a")]
         public IWebElement EditFirstOrderLink { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//select[@id='search")]
+        [FindsBy(How = How.XPath, Using = "//select[@id='search']")]
         public IWebElement SearchDropdown { get; set; }
 
         [FindsBy(How = How.Id, Using = "searchValue")]
@@ -66,6 +66,12 @@ namespace oms_test_framework_dotNET.PageObject
         public MerchandiserOrderingPage ClickApplyButton()
         {
             ApplyButton.Submit();
+            return this;
+        }
+
+        public MerchandiserOrderingPage ClickDeleteFirstOrderLink()
+        {
+            FirstOrderDeleteCell.Click();
             return this;
         }
     }

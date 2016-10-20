@@ -35,21 +35,25 @@ namespace oms_test_framework_dotNET.DBHelpers
 
         public static void DeleteOrderItemById(int orderItemId)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
+            try
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                using (ISession session = NHibernateHelper.OpenSession())
                 {
-                    session.Delete(session.Get<OrderItem>(orderItemId));
-                    transaction.Commit();
-                }
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Delete(session.Get<OrderItem>(orderItemId));
+                        transaction.Commit();
+                    }
 
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.CreateSQLQuery(ResetAutoIncrementQuery)
-                        .ExecuteUpdate();
-                    transaction.Commit();
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.CreateSQLQuery(ResetAutoIncrementQuery)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
                 }
             }
+            catch (Exception) { }
         }
 
         public static void DeleteOrderItemByOrderRef(int orderRef)
