@@ -2,10 +2,6 @@
 using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace oms_test_framework_dotNET.DBHelpers
 {
@@ -34,16 +30,20 @@ namespace oms_test_framework_dotNET.DBHelpers
 
         public static void DeleteOrderById(int orderId)
         {
-            try
+            using (ISession session = NHibernateHelper.OpenSession())
             {
-                using (ISession session = NHibernateHelper.OpenSession())
+                try
                 {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
                         session.Delete(session.Get<Order>(orderId));
                         transaction.Commit();
                     }
+                }
+                catch (Exception) { }
 
+                finally
+                {
                     using (ITransaction transaction = session.BeginTransaction())
                     {
                         session.CreateSQLQuery(ResetAutoIncrementQuery)
@@ -52,7 +52,6 @@ namespace oms_test_framework_dotNET.DBHelpers
                     }
                 }
             }
-            catch (Exception) { }
         }
 
         public static void DeleteOrderByNumber(int orderNumber)

@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using oms_test_framework_dotNET.DBHelpers;
+﻿using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Domains;
-using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Utils
 {
-    public class TestUtil
+    public class TestHelper
     {
-        private TestUtil()
+        private TestHelper()
         {
         }
 

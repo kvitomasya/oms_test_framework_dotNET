@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
 
         [TestInitialize]
         public void SetUpTest()
-        {           
+        {
             userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
         }
 

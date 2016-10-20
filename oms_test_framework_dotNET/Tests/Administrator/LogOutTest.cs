@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
 
@@ -11,7 +10,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         [TestInitialize]
         public void SetUp()
-        {    
+        {
             userInfoPage = logInPage.LogInAs(Roles.ADMINISTRATOR);
             administrationPage = userInfoPage.ClickAdministrationLink();
         }

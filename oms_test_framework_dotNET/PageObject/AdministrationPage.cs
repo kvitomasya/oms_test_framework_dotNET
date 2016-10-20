@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace oms_test_framework_dotNET.PageObject
@@ -25,7 +20,7 @@ namespace oms_test_framework_dotNET.PageObject
 
         [FindsBy(How = How.XPath, Using = "//table[@id='table']//a[@href='editUser.htm?userID=1']")]
         public IWebElement EditFirstUserLink { get; set; }
-    
+
         [FindsBy(How = How.XPath, Using = "//*[@id='table']/tbody/tr[1]/td[7]/a")]
         public IWebElement DeleteUserCell { get; set; }
 
@@ -99,7 +94,7 @@ namespace oms_test_framework_dotNET.PageObject
             UserInfoLink.Click();
             return new UserInfoPage(Driver);
         }
-      
+
         public AdministratorCreateReportPage ClickCreateReportLink()
         {
             CreateReportLink.Click();

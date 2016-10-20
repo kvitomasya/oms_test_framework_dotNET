@@ -130,10 +130,9 @@
     <Compile Include="Tests\Supervisor\LogOutTest.cs" />
     <Compile Include="Tests\Supervisor\PositiveLogInTest.cs" />
     <Compile Include="Tests\Supervisor\SwitchTabsTest.cs" />
-    <Compile Include="Utils\DBHelper.cs" />
     <Compile Include="Utils\NHibernateHelper.cs" />
     <Compile Include="Utils\TestRunner.cs" />
-    <Compile Include="Utils\TestUtil.cs" />
+    <Compile Include="Utils\TestHelper.cs" />
     <Compile Include="Utils\WebDriverFactory.cs" />
   </ItemGroup>
   <ItemGroup>

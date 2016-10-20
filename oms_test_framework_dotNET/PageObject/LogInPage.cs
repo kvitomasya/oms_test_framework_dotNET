@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using oms_test_framework_dotNET.Enums;
@@ -24,7 +20,7 @@ namespace oms_test_framework_dotNET.PageObject
 
         [FindsBy(How = How.Name, Using = "reset")]
         public IWebElement CancelButton { get; set; }
-              
+
         public LogInPage(IWebDriver driver) : base(driver)
         {
         }

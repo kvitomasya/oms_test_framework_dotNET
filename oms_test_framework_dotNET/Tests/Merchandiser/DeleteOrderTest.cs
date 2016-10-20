@@ -1,8 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
-using System;
+using System.Threading;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
 {
@@ -16,12 +17,10 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestInitialize]
         public void SetUp()
         {
-            const String MerchandiserLogin = "login1";
-            const String MerchandiserPassword = "qwerty";
-            testOrderId = TestUtil.CreateValidOrderInDB();
+            testOrderId = TestHelper.CreateValidOrderInDB();
             testOrder = DBOrderHandler.GetOrderById(testOrderId);
-            testOrderItemId = TestUtil.CreateOrderItemInDB();
-            userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
+            testOrderItemId = TestHelper.CreateOrderItemInDB();
+            userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
             merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
         }
 
@@ -72,15 +71,17 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
                 .ClickDeleteFirstOrderLink()
                 .AcceptAlert();
 
-            Assert.ReferenceEquals(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber), null);
+            Thread.Sleep(1000);
+
+            Assert.IsTrue(DBOrderHandler
+                .GetOrderByNumber(testOrder.OrderNumber) == null, "Deleted order still exists!");
         }
 
         [TestCleanup]
         public void TearDown()
         {
-            DBOrderItemHandler.DeleteOrderItemById(testOrderItemId);
             DBOrderHandler.DeleteOrderById(testOrderId);
+            DBOrderItemHandler.DeleteOrderItemById(testOrderItemId);
         }
     }
 }
