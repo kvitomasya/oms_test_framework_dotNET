@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
@@ -9,10 +10,8 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
         [TestInitialize]
         public void SetUpTest()
-        {
-            const string MerchandiserLogin = "login1";
-            const string MerchandiserPassword = "qwerty";
-            userInfoPage = logInPage.LogInAs(MerchandiserLogin, MerchandiserPassword);
+        {         
+            userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
         }
 
         [TestMethod]
@@ -20,10 +19,10 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         {
             OnTestResult(() =>
             {
-                merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
-                Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed, "Current page is not {0}", merchandiserOrderingPage);
-                merchandiserOrderingPage.ClickUserInfoLink();
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
+            Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed, "Current page is not {0}", merchandiserOrderingPage);
+            merchandiserOrderingPage.ClickUserInfoLink();
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
             });
         }
     }

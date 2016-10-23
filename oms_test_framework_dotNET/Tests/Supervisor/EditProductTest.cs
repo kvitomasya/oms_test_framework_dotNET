@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
@@ -18,7 +14,7 @@ namespace oms_test_framework_dotNET.Tests
 
         [TestInitialize]
         public void SetUp()
-        {           
+        {
             userInfoPage = logInPage.LogInAs(Roles.SUPERVISOR);
 
             itemManagementPage = userInfoPage.ClickItemManagementLink();

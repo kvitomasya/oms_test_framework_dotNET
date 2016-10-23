@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using oms_test_framework_dotNET.Utils;
-using System.Diagnostics;
 using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests.Supervisor
@@ -12,7 +10,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
 
         [TestInitialize]
         public void SetUpTest()
-        {           
+        {
             userInfoPage = logInPage.LogInAs(Roles.SUPERVISOR);
         }
 

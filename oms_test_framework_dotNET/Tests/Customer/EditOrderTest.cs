@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using oms_test_framework_dotNET.Utils;
-using oms_test_framework_dotNET.Tests;
-using oms_test_framework_dotNET.PageObject;
-using oms_test_framework_dotNET.Enums;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.DBHelpers;
-using OpenQA.Selenium.Remote;
+using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.Utils;
+using System;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -18,7 +11,6 @@ namespace oms_test_framework_dotNET.Tests
     {
         private String orderNumber = "10";
         private String changedSearchedOrderName = "OrderName10";
-        private String changedSearchedOrderId;
 
         private int testOrderId;
         private int testOrderItem;
@@ -26,24 +18,20 @@ namespace oms_test_framework_dotNET.Tests
         [TestInitialize]
         public void SetUp()
         {
-            testOrderId = DBHelper.createValidOrderInDB();
-            testOrderItem = DBHelper.createOrderItemInDB();
+            testOrderId = TestHelper.CreateValidOrderInDB();
+            testOrderItem = TestHelper.CreateOrderItemInDB();
 
             userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
 
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
 
             createNewOrderPage = customerOrderingPage
-                .SelectOrderByName("TestOrder")
+                .SelectOrderByName("NewOrderName")
                 .ClickAplyButton()
                 .ClickEditLink();
 
             createNewOrderPage
                 .ChangeOrderByNumber(orderNumber);
-
-            changedSearchedOrderId = createNewOrderPage
-                 .OrderNumberField
-                 .GetAttribute("Value");
 
             createNewOrderPage
                 .ClickSaveButton();
@@ -70,7 +58,7 @@ namespace oms_test_framework_dotNET.Tests
         public void TearDown()
         {
             DBOrderHandler.DeleteOrderById(testOrderId);
-            DBOrderItemHandler.DeleteOrderItemById(int.Parse(changedSearchedOrderId));
+            DBOrderItemHandler.DeleteOrderItemById(testOrderItem);
         }
     }
 }

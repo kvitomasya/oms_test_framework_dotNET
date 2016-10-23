@@ -1,7 +1,5 @@
-﻿using System;
-using oms_test_framework_dotNET.Utils;
+﻿using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading;
 using oms_test_framework_dotNET.Enums;
 
 namespace oms_test_framework_dotNET.Tests
@@ -10,7 +8,7 @@ namespace oms_test_framework_dotNET.Tests
     public class NegativeLogInPageTest : TestRunner
     {
         private const string ValidName = "iva";
-        private const string ValidPassword = "qwerty";      
+        private const string ValidPassword = "qwerty";
         private const string EmptyField = "";
         [TestMethod]
         public void TestEmptyFieldsLogIn()

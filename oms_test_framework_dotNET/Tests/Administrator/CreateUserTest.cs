@@ -1,64 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using oms_test_framework_dotNET.Utils;
+﻿using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.DBHelpers;
 
 namespace oms_test_framework_dotNET.Tests
 {
     [TestClass]
     public class CreateUserTest : TestRunner
     {
+        private string userLogin = "StefDevis";
+        private int createdUserId;
+
         [TestMethod]
         public void TestCreateNewUserAbility()
-        {
+        {          
             OnTestResult(() =>
             {
-                administrationPage = logInPage
-                         .LogInAs(Roles.ADMINISTRATOR)
-                         .ClickAdministrationLink();
+            administrationPage = logInPage
+                     .LogInAs(Roles.ADMINISTRATOR)
+                     .ClickAdministrationLink();
 
-                Assert
-                    .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
-                    "The Admin page should be displayed!");
+            Assert
+                .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+                "The Admin page should be displayed!");
 
-                createUserPage = administrationPage.ClickCreateNewUser();
+            createUserPage = administrationPage.ClickCreateNewUser();
 
-                Assert
-                    .IsTrue(createUserPage.LoginNameLabel.Displayed,
-                    "The CreateNewUserPage should be displayed!");
+            Assert
+                .IsTrue(createUserPage.LoginNameLabel.Displayed,
+                "The CreateNewUserPage should be displayed!");
 
-                createUserPage
-                .FillLoginField("StefDevis")
-                .FillFirstNameField("Stef")
-                .FillLastNameField("Devis")
-                .FillPasswordField("qwerty")
-                .FillConfirmPasswordField("qwerty")
-                .FillEmailField("StefDevis@gmail.com")
-                .ChooseRegion("North")
-                .ChooseRole("Customer");
+            createUserPage
+            .FillLoginField(userLogin)
+            .FillFirstNameField("Stef")
+            .FillLastNameField("Devis")
+            .FillPasswordField("qwerty")
+            .FillConfirmPasswordField("qwerty")
+            .FillEmailField("StefDevis@gmail.com")
+            .ChooseRegion("North")
+            .ChooseRole("Customer");
 
-                createUserPage.ClickCreateButton();
+            createUserPage.ClickCreateButton();
 
-                Assert
-                    .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
-                    "The Admin page should be displayed!");
+            createdUserId = DBUserHandler.GetUserByLogin(userLogin).Id;
 
-                administrationPage
-                    .FillFieldFilter("Login")
-                    .FillConditionFilter("equal")
-                    .FillSearchInputField("StefDevis")
-                    .ClickSearchButton();
+            Assert
+                .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+                "The Admin page should be displayed!");
 
-                Assert
-                    .AreEqual("StefDevis", administrationPage.LogInFirstCellLink.Text,
-                    "As a result of the search should be a user with the specified login");
+            administrationPage
+                .FillFieldFilter("Login")
+                .FillConditionFilter("equal")
+                .FillSearchInputField("StefDevis")
+                .ClickSearchButton();
 
-                administrationPage.DeleteUserByLogIn("StefDevis");
+            Assert
+                .AreEqual("StefDevis", administrationPage.LogInFirstCellLink.Text,
+                "As a result of the search should be a user with the specified login");
+
+            administrationPage.DeleteUserByLogIn("StefDevis");
             });
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            DBUserHandler.DeleteUser(createdUserId);
         }
     }
 }

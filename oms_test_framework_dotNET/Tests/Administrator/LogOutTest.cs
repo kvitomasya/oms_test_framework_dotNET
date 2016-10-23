@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
 
@@ -21,11 +20,11 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         {
             OnTestResult(() =>
             {
-                Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
-                    "Administration page doesn't exist");
-                administrationPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
+            Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+                "Administration page doesn't exist");
+            administrationPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
             });
         }
 
@@ -34,26 +33,26 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         {
             OnTestResult(() =>
             {
-                administratorCreateReportPage = administrationPage.ClickCreateReportLink();
-                Assert.IsTrue(administratorCreateReportPage.SaveReportLink.Displayed,
-                    "Create Report page doesn't exist");
-                administratorCreateReportPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
+            administratorCreateReportPage = administrationPage.ClickCreateReportLink();
+            Assert.IsTrue(administratorCreateReportPage.SaveReportLink.Displayed,
+                "Create Report page doesn't exist");
+            administratorCreateReportPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
             });
         }
 
         [TestMethod]
-        public void TestCreateNewUserPageLogOutAbility()
+        public void TestCreateUserPageLogOutAbility()
         {
             OnTestResult(() =>
-            {
-                createNewUserPage = administrationPage.ClickCreateNewUser();
-                Assert.IsTrue(createUserPage.LoginNameLabel.Displayed,
-                    "Create new user page doesn't exists");
-                createNewUserPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
+            { 
+            createUserPage = administrationPage.ClickCreateNewUser();
+            Assert.IsTrue(createUserPage.LoginNameLabel.Displayed,
+                "Create new user page doesn't exists");
+            createUserPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
             });
         }
 
@@ -62,12 +61,12 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         {
             OnTestResult(() =>
             {
-                editUserPage = administrationPage.ClickEditFirstUserLink();
-                Assert.IsTrue(editUserPage.ConfirmPasswordText.Displayed,
-                    "Edit user page doesn't exists");
-                editUserPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
+            editUserPage = administrationPage.ClickEditFirstUserLink();
+            Assert.IsTrue(editUserPage.ConfirmPasswordText.Displayed,
+                "Edit user page doesn't exists");
+            editUserPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
             });
         }
     }

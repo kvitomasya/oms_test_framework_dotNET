@@ -4,9 +4,6 @@ using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace oms_test_framework_dotNET.DBHelpers
 {
@@ -37,17 +34,24 @@ namespace oms_test_framework_dotNET.DBHelpers
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                using (ITransaction transaction = session.BeginTransaction())
+                try
                 {
-                    session.Delete(session.Get<OrderItem>(orderItemId));
-                    transaction.Commit();
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.Delete(session.Get<OrderItem>(orderItemId));
+                        transaction.Commit();
+                    }
                 }
+                catch (Exception) { }
 
-                using (ITransaction transaction = session.BeginTransaction())
+                finally
                 {
-                    session.CreateSQLQuery(ResetAutoIncrementQuery)
-                        .ExecuteUpdate();
-                    transaction.Commit();
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        session.CreateSQLQuery(ResetAutoIncrementQuery)
+                            .ExecuteUpdate();
+                        transaction.Commit();
+                    }
                 }
             }
         }
