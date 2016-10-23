@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using oms_test_framework_dotNET.PageObject;
+using System;
 
 namespace oms_test_framework_dotNET.PageObject
 {
@@ -41,11 +36,11 @@ namespace oms_test_framework_dotNET.PageObject
         {
         }
 
-         public UserInfoPage ClickUserInfoLink()
-         {
-             UserInfoLink.Click();
-             return new UserInfoPage(Driver);
-         }
+        public UserInfoPage ClickUserInfoLink()
+        {
+            UserInfoLink.Click();
+            return new UserInfoPage(Driver);
+        }
 
         public CustomerOrderingPage SelectOrderByName(String orderName)
         {

@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using oms_test_framework_dotNET.Utils;
+﻿using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.DBHelpers;
 
 namespace oms_test_framework_dotNET.Tests
 {
     [TestClass]
     public class CreateUserTest : TestRunner
     {
+        private string userLogin = "StefDevis";
+        private int createdUserId;
+
         [TestMethod]
         public void TestCreateNewUserAbility()
-        {          
+        {
             administrationPage = logInPage
                      .LogInAs(Roles.ADMINISTRATOR)
                      .ClickAdministrationLink();
@@ -30,7 +29,7 @@ namespace oms_test_framework_dotNET.Tests
                 "The CreateNewUserPage should be displayed!");
 
             createUserPage
-            .FillLoginField("StefDevis")
+            .FillLoginField(userLogin)
             .FillFirstNameField("Stef")
             .FillLastNameField("Devis")
             .FillPasswordField("qwerty")
@@ -40,6 +39,8 @@ namespace oms_test_framework_dotNET.Tests
             .ChooseRole("Customer");
 
             createUserPage.ClickCreateButton();
+
+            createdUserId = DBUserHandler.GetUserByLogin(userLogin).Id;
 
             Assert
                 .IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
@@ -56,6 +57,12 @@ namespace oms_test_framework_dotNET.Tests
                 "As a result of the search should be a user with the specified login");
 
             administrationPage.DeleteUserByLogIn("StefDevis");
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            DBUserHandler.DeleteUser(createdUserId);
         }
     }
 }

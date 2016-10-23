@@ -10,7 +10,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
         [TestInitialize]
         public void SetUpTest()
-        {         
+        {
             userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
         }
 

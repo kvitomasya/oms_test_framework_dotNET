@@ -4,10 +4,6 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace oms_test_framework_dotNET.Utils
 {
@@ -17,7 +13,7 @@ namespace oms_test_framework_dotNET.Utils
 
         public IWebDriver GetDriver(Browsers browser)
         {
-            switch(browser)
+            switch (browser)
             {
                 case Browsers.FIREFOX:
                     Driver = new FirefoxDriver();

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using oms_test_framework_dotNET.Utils;
-using oms_test_framework_dotNET.Tests;
-using oms_test_framework_dotNET.PageObject;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Enums;
+using oms_test_framework_dotNET.Utils;
+using System.Threading;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -21,8 +15,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
         [TestInitialize]
         public void SetUp()
         {
-            testOrderId = DBHelper.createValidOrderInDB();
-            testOrderItem = DBHelper.createOrderItemInDB();
+            testOrderId = TestHelper.CreateValidOrderInDB();
+            testOrderItem = TestHelper.CreateOrderItemInDB();
 
             userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
 
@@ -33,23 +27,30 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestDeleteOrder()
         {
             customerOrderingPage
-               .SelectOrderByName("TestOrder")
+               .SelectOrderByName("NewOrderName")
                .ClickAplyButton()
-               .ClickDeleteLink();
-
-            Driver.SwitchTo().Alert().Dismiss();
+               .ClickDeleteLink()
+               .DismissAlert();
 
             Assert.AreEqual(customerOrderingPage
-                .GetOrderName(), "TestOrder",
+                .GetOrderName(), "NewOrderName",
                 "Order name should be equals");
 
             customerOrderingPage
-                .ClickDeleteLink();
+                .ClickDeleteLink()
+                .AcceptAlert();
 
-            Driver.SwitchTo().Alert().Accept();
+            Thread.Sleep(1000);
 
             Assert.IsTrue(DBOrderHandler.GetOrderById(testOrderId) == null,
                 "Deleted order still exists !");
+        }
+
+        [TestCleanup]
+        public void TearDown()
+        {
+            DBOrderItemHandler.DeleteOrderItemById(testOrderItem);
+            DBOrderHandler.DeleteOrderById(testOrderId);
         }
     }
 }
