@@ -274,3 +274,6 @@ obj/
 packages/
 *.gitattributes
 TestResults/
+*.jpeg
+*.csv
+*.config

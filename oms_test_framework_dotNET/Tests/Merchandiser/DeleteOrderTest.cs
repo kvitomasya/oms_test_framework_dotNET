@@ -27,54 +27,63 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void TestOrdersElementsPresence()
         {
-            merchandiserOrderingPage
-                .SelectSearchDropdown("Order Name")
-                .FillSearchInput(testOrder.OrderName)
-                .ClickApplyButton();
+            OnTestResult(() =>
+            {
+                merchandiserOrderingPage
+                    .SelectSearchDropdown("Order Name")
+                    .FillSearchInput(testOrder.OrderName)
+                    .ClickApplyButton();
 
-            Assert.IsTrue(merchandiserOrderingPage
-                .FirstOrderNameCell
-                .Text
-                .Equals(testOrder.OrderName), "Order is not present");
+                Assert.IsTrue(merchandiserOrderingPage
+                    .FirstOrderNameCell
+                    .Text
+                    .Equals(testOrder.OrderName), "Order is not present");
 
-            Assert.IsTrue(merchandiserOrderingPage
-                .FirstOrderDeleteCell.Displayed, "Link delete order is not present");
+                Assert.IsTrue(merchandiserOrderingPage
+                    .FirstOrderDeleteCell.Displayed, "Link delete order is not present");
+            });
         }
 
         [TestMethod]
         public void TestDeleteOrderAndClickCancel()
         {
-            merchandiserOrderingPage
+            OnTestResult(() =>
+            {
+                merchandiserOrderingPage
                 .SelectSearchDropdown("Order Name")
                 .FillSearchInput(testOrder.OrderName)
                 .ClickApplyButton();
 
-            merchandiserOrderingPage
-                .ClickDeleteFirstOrderLink()
-                .DismissAlert();
+                merchandiserOrderingPage
+                    .ClickDeleteFirstOrderLink()
+                    .DismissAlert();
 
-            Assert.IsTrue(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber)
-                .OrderNumber
-                .Equals(testOrder.OrderNumber), "Order has been deleted");
+                Assert.IsTrue(DBOrderHandler
+                    .GetOrderByNumber(testOrder.OrderNumber)
+                    .OrderNumber
+                    .Equals(testOrder.OrderNumber), "Order has been deleted");
+            });
         }
 
         [TestMethod]
         public void TestDeleteOrderAndClickConfirm()
         {
-            merchandiserOrderingPage
+            OnTestResult(() =>
+            {
+                merchandiserOrderingPage
                 .SelectSearchDropdown("Order Name")
                 .FillSearchInput(testOrder.OrderName)
                 .ClickApplyButton();
 
-            merchandiserOrderingPage
-                .ClickDeleteFirstOrderLink()
-                .AcceptAlert();
+                merchandiserOrderingPage
+                    .ClickDeleteFirstOrderLink()
+                    .AcceptAlert();
 
-            Thread.Sleep(1000);
+                Thread.Sleep(1000);
 
-            Assert.IsTrue(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber) == null, "Deleted order still exists!");
+                Assert.IsTrue(DBOrderHandler
+                    .GetOrderByNumber(testOrder.OrderNumber) == null, "Deleted order still exists!");
+            });
         }
 
         [TestCleanup]

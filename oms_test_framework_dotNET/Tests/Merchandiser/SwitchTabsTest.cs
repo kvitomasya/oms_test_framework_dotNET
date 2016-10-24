@@ -10,17 +10,20 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
         [TestInitialize]
         public void SetUpTest()
-        {
+        {         
             userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
         }
 
         [TestMethod]
         public void TestSwitchTabsAbility()
         {
+            OnTestResult(() =>
+            {
             merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
             Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed, "Current page is not {0}", merchandiserOrderingPage);
             merchandiserOrderingPage.ClickUserInfoLink();
             Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            });
         }
     }
 }

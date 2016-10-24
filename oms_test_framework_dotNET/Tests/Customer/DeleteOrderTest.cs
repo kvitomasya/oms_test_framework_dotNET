@@ -26,6 +26,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
         [TestMethod]
         public void TestDeleteOrder()
         {
+            OnTestResult(() =>
+            {
             customerOrderingPage
                .SelectOrderByName("NewOrderName")
                .ClickAplyButton()
@@ -44,6 +46,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
 
             Assert.IsTrue(DBOrderHandler.GetOrderById(testOrderId) == null,
                 "Deleted order still exists !");
+            });
         }
 
         [TestCleanup]

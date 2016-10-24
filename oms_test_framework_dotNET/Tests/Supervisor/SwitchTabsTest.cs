@@ -17,10 +17,13 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         [TestMethod]
         public void TestSwitchTabsAbility()
         {
-            itemManagementPage = userInfoPage.ClickItemManagementLink();
-            Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed, "Current page is not {0}", itemManagementPage);
-            itemManagementPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            OnTestResult(() =>
+            {
+                itemManagementPage = userInfoPage.ClickItemManagementLink();
+                Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed, "Current page is not {0}", itemManagementPage);
+                itemManagementPage.ClickUserInfoLink();
+                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            });
         }
     }
 }

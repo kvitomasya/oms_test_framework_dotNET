@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oms_test_framework_dotNET", "oms_test_framework_dotNET.csproj", "{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oms_test_framework_dotNET", "oms_test_framework_dotNET.csproj", "{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

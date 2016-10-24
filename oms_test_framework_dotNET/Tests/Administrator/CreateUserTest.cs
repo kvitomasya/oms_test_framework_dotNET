@@ -13,7 +13,9 @@ namespace oms_test_framework_dotNET.Tests
 
         [TestMethod]
         public void TestCreateNewUserAbility()
-        {
+        {          
+            OnTestResult(() =>
+            {
             administrationPage = logInPage
                      .LogInAs(Roles.ADMINISTRATOR)
                      .ClickAdministrationLink();
@@ -57,6 +59,7 @@ namespace oms_test_framework_dotNET.Tests
                 "As a result of the search should be a user with the specified login");
 
             administrationPage.DeleteUserByLogIn("StefDevis");
+            });
         }
 
         [TestCleanup]

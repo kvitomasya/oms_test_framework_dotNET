@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E9A11D7-DB0E-49A2-B900-232133F0BFA1}</ProjectGuid>
+    <ProjectGuid>{07FFE6FA-41F9-4E93-838A-C2D6E8019AF6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>oms_test_framework_dotNET</RootNamespace>
@@ -51,6 +51,10 @@
     </Reference>
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.3.10\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -130,6 +134,7 @@
     <Compile Include="Tests\Supervisor\LogOutTest.cs" />
     <Compile Include="Tests\Supervisor\PositiveLogInTest.cs" />
     <Compile Include="Tests\Supervisor\SwitchTabsTest.cs" />
+    <Compile Include="Utils\LoggerNLog.cs" />
     <Compile Include="Utils\NHibernateHelper.cs" />
     <Compile Include="Utils\TestRunner.cs" />
     <Compile Include="Utils\TestHelper.cs" />
@@ -145,14 +150,21 @@
     <EmbeddedResource Include="Mapping\OrderItem.hbm.xml" />
     <EmbeddedResource Include="Mapping\Product.hbm.xml" />
     <EmbeddedResource Include="Mapping\User.hbm.xml" />
+    <Content Include="logs\screenshots\TextFile1.txt" />
+    <Content Include="logs\TextFile1.txt" />
     <Content Include="Readme.txt" />
     <Content Include="Resources\Drivers\chromedriver.exe" />
     <Content Include="Resources\Drivers\IEDriverServer.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="app.config" />
+    <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Resources\playlists\LogOutTests.playlist" />
     <None Include="Resources\scripts\execute_sql_dump.bat" />
   </ItemGroup>
