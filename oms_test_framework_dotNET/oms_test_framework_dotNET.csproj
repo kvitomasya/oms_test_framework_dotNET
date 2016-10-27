@@ -160,12 +160,12 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="app.config" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <None Include="Resources\playlists\LogOutTests.playlist" />
+    <None Include="Resources\scripts\execute_cmd_tests_run_selected.bat" />
     <None Include="Resources\scripts\execute_sql_dump.bat" />
   </ItemGroup>
   <Choose>
