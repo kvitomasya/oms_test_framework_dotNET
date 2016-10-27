@@ -165,7 +165,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Resources\playlists\LogOutTests.playlist" />
-    <None Include="Resources\scripts\execute_cmd_tests_run_selected.bat" />
+    <None Include="Resources\scripts\execute_tests_by_cmd.bat" />
     <None Include="Resources\scripts\execute_sql_dump.bat" />
   </ItemGroup>
   <Choose>
