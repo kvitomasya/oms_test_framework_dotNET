@@ -17,13 +17,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         [TestMethod]
         public void TestSwitchTabsAbility()
         {
-            OnTestResult(() =>
-            {
-                administrationPage = userInfoPage.ClickAdministrationLink();
-                Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed, "Current page is not {0}", administrationPage);
-                administrationPage.ClickUserInfoLink();
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
-            });
+            administrationPage = userInfoPage.ClickAdministrationLink();
+            Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed, "Current page is not {0}", administrationPage);
+            administrationPage.ClickUserInfoLink();
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
         }
     }
 }

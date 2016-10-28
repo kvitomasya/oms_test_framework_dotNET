@@ -18,28 +18,22 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void TestMerchandiserOrderingPageLogOutAbility()
         {
-            OnTestResult(() =>
-            {
-                Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed,
-                    "Merchandiser Ordering page doesn't exist");
-                merchandiserOrderingPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
-            });
+            Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed,
+                "Merchandiser Ordering page doesn't exist");
+            merchandiserOrderingPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
         }
 
         [TestMethod]
         public void TestMerchandiserEditOrderPageLogOutAbility()
         {
-            OnTestResult(() =>
-            {
-                merchandiserEditOrderPage = merchandiserOrderingPage.ClickEditFirstOrderLink();
-                Assert.IsTrue(merchandiserEditOrderPage.IsGiftCheckbox.Displayed,
-                    "Merchandiser edit order page doesn't exist");
-                merchandiserEditOrderPage.DoLogOut();
-                Assert.IsTrue(logInPage.UsernameInput.Displayed,
-                    "Logout is not working");
-            });
+            merchandiserEditOrderPage = merchandiserOrderingPage.ClickEditFirstOrderLink();
+            Assert.IsTrue(merchandiserEditOrderPage.IsGiftCheckbox.Displayed,
+                "Merchandiser edit order page doesn't exist");
+            merchandiserEditOrderPage.DoLogOut();
+            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+                "Logout is not working");
         }
     }
 }

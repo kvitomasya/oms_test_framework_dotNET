@@ -7,14 +7,12 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
     [TestClass]
     public class PositiveLogInTest : TestRunner
     {
+
         [TestMethod]
         public void TestValidLogInSupervisor()
-        {      
-            OnTestResult(() =>
-            {
+        {
             userInfoPage = logInPage.LogInAs(Roles.SUPERVISOR);
             Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with supervisor valid credentials is not successful");
-            });
         }
     }
 }

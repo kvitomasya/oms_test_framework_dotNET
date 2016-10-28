@@ -47,11 +47,8 @@ namespace oms_test_framework_dotNET.Tests
         [TestMethod]
         public void TestEditOrder()
         {
-            OnTestResult(() =>
-            {
-                Assert.AreEqual(customerOrderingPage.GetOrderName(), changedSearchedOrderName,
-                    "Order numbers should be different");
-            });
+            Assert.AreEqual(customerOrderingPage.GetOrderName(), changedSearchedOrderName,
+                "Order numbers should be different");
         }
 
         [TestCleanup]
