@@ -1,9 +1,5 @@
 ﻿using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace oms_test_framework_dotNET.Utils
 {
@@ -17,9 +13,9 @@ namespace oms_test_framework_dotNET.Utils
             logger.Log(LogLevel.Info, "Test passed: {0}", testClassName);
         }
 
-        public void LogFail(String exceptionMessage, String testClassName, String screenshotPath)
+        public void LogFail(String message, String testClassName, String screenshotFileName)
         {
-            logger.Log(LogLevel.Error, "The assertation error occurred: '{0}' in test class: '{1}', screenshot: {2} ", exceptionMessage, testClassName, screenshotPath);
+            logger.Log(LogLevel.Error, "The assertation error occurred: '{0}' in test class: '{1}' ScreenShot name: {2} ", message, testClassName, screenshotFileName);
         }
     }
 }

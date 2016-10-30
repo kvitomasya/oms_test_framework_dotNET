@@ -4,13 +4,15 @@ using OpenQA.Selenium;
 using oms_test_framework_dotNET.PageObject;
 using oms_test_framework_dotNET.Enums;
 using System.Drawing.Imaging;
-using OpenQA.Selenium.Support.Extensions;
+using System.IO;
 
 namespace oms_test_framework_dotNET.Utils
 {
     [TestClass]
     public class TestRunner
     {
+        public TestContext TestContext { get; set; }
+
         private const String OmsURL = "http://192.168.56.101:8080/oms5/login.htm";
 
         protected AddItemPage addItemPage;
@@ -34,32 +36,6 @@ namespace oms_test_framework_dotNET.Utils
 
         protected IWebDriver Driver { get; set; }
 
-        protected void OnTestResult(Action action)
-        {
-            try
-            {
-                action();
-                LoggerNLog log = new LoggerNLog();
-                log.LogInfo(action.Target.ToString());
-            }
-            catch (Exception exception)
-            {
-                var screenshot = Driver.TakeScreenshot();
-
-                var screenshotFileName = DateTime.Now.ToString("yyyy-MM-dd_H-mm-ss") + ".jpeg";
-
-                var screenshotFilePath = AppDomain.CurrentDomain.BaseDirectory + "/" + "../../logs/screenshots/"
-                    + screenshotFileName;
-
-                screenshot.SaveAsFile(screenshotFilePath, ImageFormat.Jpeg);
-
-                LoggerNLog log = new LoggerNLog();
-                log.LogFail(exception.Message, action.Target.ToString(), screenshotFileName);
-
-                throw;
-            }
-        }
-
         [TestInitialize]
         public void TestInitialize()
         {
@@ -81,8 +57,29 @@ namespace oms_test_framework_dotNET.Utils
         [TestCleanup]
         public void TestCleanup()
         {
+            LoggerNLog log = new LoggerNLog();
+
+            if (TestContext.CurrentTestOutcome == UnitTestOutcome.Passed)
+            {
+                log.LogInfo(TestContext.FullyQualifiedTestClassName);
+            }
+            else
+            {
+                Screenshot screenShot = ((ITakesScreenshot)Driver).GetScreenshot();
+
+                String screenshotFileName = DateTime.Now.ToString("yyyy-MM-dd_H-mm-ss") + ".png";
+
+                log.LogFail(TestContext.CurrentTestOutcome.ToString(), TestContext.FullyQualifiedTestClassName, screenshotFileName);
+
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/" + "../../logs/screenshots/");
+
+                String screenshotFilePath = AppDomain.CurrentDomain.BaseDirectory + "/" + "../../logs/screenshots/"
+                                            + screenshotFileName;
+
+                screenShot.SaveAsFile(screenshotFilePath, ImageFormat.Png);
+            }
+
             Driver.Quit();
         }
     }
-
 }

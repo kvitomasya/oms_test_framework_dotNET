@@ -9,19 +9,19 @@ namespace oms_test_framework_dotNET.Tests.Administrator
     public class UserSearchTest : TestRunner
     {
 
-        private TestContext testContextInstance;
+       // private TestContext testContextInstance;
 
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
+        //public TestContext TestContext
+        //{
+        //    get
+        //    {
+        //        return testContextInstance;
+        //    }
+        //    set
+        //    {
+        //        testContextInstance = value;
+        //    }
+        //}
 
         const string DataDriver = "System.Data.OleDb";
         const string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=${basedir}/../../../Resources/DataProvider/UserSearchTest.xlsx;Extended Properties=\"Excel 12.0 Xml;HDR=YES\";";
