@@ -95,6 +95,7 @@
     <Compile Include="Domains\User.cs" />
     <Compile Include="Enums\Browsers.cs" />
     <Compile Include="Enums\Roles.cs" />
+    <Compile Include="Locators\Locator.cs" />
     <Compile Include="PageObject\AddItemPage.cs" />
     <Compile Include="PageObject\AddProductPage.cs" />
     <Compile Include="PageObject\AdministrationPage.cs" />
@@ -140,12 +141,20 @@
     <Compile Include="Utils\TestRunner.cs" />
     <Compile Include="Utils\TestHelper.cs" />
     <Compile Include="Utils\WebDriverFactory.cs" />
+    <Compile Include="Wrappers\AbstractClicableElement.cs" />
+    <Compile Include="Wrappers\AbstractElement.cs" />
+    <Compile Include="Wrappers\Button.cs" />
+    <Compile Include="Wrappers\CheckBox.cs" />
+    <Compile Include="Wrappers\DropDown.cs" />
+    <Compile Include="Wrappers\Element.cs" />
+    <Compile Include="Wrappers\Link.cs" />
+    <Compile Include="Wrappers\TextInputField.cs" />
+    <Compile Include="Wrappers\TextLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Locators\TextFile1.txt" />
     <Content Include="Resources\scripts\OMS_DB_DUMP.sql" />
     <EmbeddedResource Include="Mapping\Order.hbm.xml" />
     <EmbeddedResource Include="Mapping\OrderItem.hbm.xml" />
@@ -194,6 +203,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="packages\Selenium.WebDriver.ChromeDriver.2.25.0.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.2.25.0.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
