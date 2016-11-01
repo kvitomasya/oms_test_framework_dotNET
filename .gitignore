@@ -276,4 +276,6 @@ packages/
 TestResults/
 *.jpeg
 *.csv
-*.config
+packages.config
+app.config
+Logs/
