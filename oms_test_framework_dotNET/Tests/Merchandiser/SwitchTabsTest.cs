@@ -18,9 +18,9 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         public void TestSwitchTabsAbility()
         {
             merchandiserOrderingPage = userInfoPage.ClickMerchandiserOrderingLink();
-            Assert.IsTrue(merchandiserOrderingPage.SearchByText.Displayed, "Current page is not {0}", merchandiserOrderingPage);
+            Assert.IsTrue(merchandiserOrderingPage.SearchByText.IsDisplayed(), "Current page is not {0}", merchandiserOrderingPage);
             merchandiserOrderingPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.IsDisplayed(), "Current page is not {0}", userInfoPage);
         }
     }
 }

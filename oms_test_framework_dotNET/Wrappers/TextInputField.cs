@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using oms_test_framework_dotNET.Locators;
+﻿using oms_test_framework_dotNET.Locators;
 using OpenQA.Selenium;
 
 namespace oms_test_framework_dotNET.Wrappers
@@ -14,12 +9,12 @@ namespace oms_test_framework_dotNET.Wrappers
         {
         }
 
-        public void clear()
+        public void Clear()
         {
             Driver.FindElement(ByLocator).Clear();
         }
 
-        public void sendKeys(string inputText)
+        public void SendKeys(string inputText)
         {
             Driver.FindElement(ByLocator).Clear();
             Driver.FindElement(ByLocator).SendKeys(inputText);

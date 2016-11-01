@@ -1,28 +1,39 @@
-﻿using OpenQA.Selenium;
+﻿using oms_test_framework_dotNET.Locators;
+using oms_test_framework_dotNET.Wrappers;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class UserInfoPage : PageObject
     {
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/descendant::a[@href='users.htm']")]
-        public IWebElement AdministrationLink { get; set; }
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/descendant::a[@href='order.htm']")]
-        public IWebElement CustomerOrderingLink { get; set; }
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/descendant::a[@href='order.htm']")]
-        public IWebElement MerchandiserOrderingLink { get; set; }
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/descendant::a[@href='itemManagement.htm']")]
-        public IWebElement ItemManagementLink { get; set; }
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
-        public IWebElement UserInfoLink { get; set; }
-        // UserInfoFieldSet is unique element on UserInfoPage
-        [FindsBy(How = How.XPath, Using = "//div[@id='content']//legend")]
-        public IWebElement UserInfoFieldSet { get; set; }
+        internal TextLabel UserInfoFieldSet;
+        internal Link AdministrationLink;
+        internal Link CustomerOrderingLink;
+        internal Link MerchandiserOrderingLink;
+        internal Link ItemManagementLink;
+        internal Link UserInfoLink;
 
-        public UserInfoPage(IWebDriver driver)
-            : base(driver)
+        public UserInfoPage(IWebDriver driver) : base(driver)
         {
+            // UserInfoFieldSet is unique element on UserInfoPage
+            UserInfoFieldSet = new TextLabel(Driver, new Locator("UserInfoFieldSet",
+                By.XPath("//div[@id='content']//legend")));
 
+            AdministrationLink = new Link(Driver, new Locator("AdministrationLink",
+                By.XPath("//ul[@id='nav']/descendant::a[@href='users.htm']")));
+
+            CustomerOrderingLink = new Link(Driver, new Locator("CustomerOrderingLink",
+                By.XPath("//ul[@id='nav']/descendant::a[@href='order.htm']")));
+
+            MerchandiserOrderingLink = new Link(Driver, new Locator("MerchandiserOrderingLink",
+                By.XPath("//ul[@id='nav']/descendant::a[@href='order.htm']")));
+
+            ItemManagementLink = new Link(Driver, new Locator("ItemManagementLink",
+                By.XPath("//ul[@id='nav']/descendant::a[@href='itemManagement.htm']")));
+
+            UserInfoLink = new Link(Driver, new Locator("UserInfoLink",
+                By.XPath("//ul[@id='nav']/li[2]/a")));
         }
 
         public AdministrationPage ClickAdministrationLink()

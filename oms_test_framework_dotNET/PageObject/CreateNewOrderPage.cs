@@ -1,45 +1,56 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using oms_test_framework_dotNET.Wrappers;
+using oms_test_framework_dotNET.Locators;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class CreateNewOrderPage : PageObject
     {
-        // CVV2Text is unique identifier of CreateNewOrderPage
-        [FindsBy(How = How.XPath, Using = "//form[@id='form2']//tr[3]/td[1]/strong")]
-        public IWebElement CVV2Text { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='addItem']/input[@value = 'Add Item']")]
-        public IWebElement AddItemButton { get; set; }
-
-        [FindsBy(How = How.Id, Using = "orderNum")]
-        public IWebElement OrderNumberField { get; set; }
-
-        [FindsBy(How = How.ClassName, Using = "dp-choose-date")]
-        public IWebElement PreferableDeliveryDateChooseLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='dp-popup']")]
-        public IWebElement CalendarPopupElement { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='dp-popup']/div[2]/a[2]")]
-        public IWebElement CalendarMonthForwardButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='dp-popup']//tbody/tr[3]/td[4]")]
-        public IWebElement DateLink { get; set; }
-
-        [FindsBy(How = How.Id, Using = "assignee")]
-        public IWebElement AssigneeDropdown { get; set; }
-
-        [FindsBy(How = How.Id, Using = "save")]
-        public IWebElement SaveButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "(//ul[@id='nav']//a)[1]")]
-        public IWebElement CustomerOrderingPageLink { get; set; }
+        internal TextLabel CVV2Text;
+        internal Button AddItemButton;
+        internal TextInputField OrderNumberField;
+        internal Link PreferableDeliveryDateChooseLink;
+        internal Element CalendarPopupElement;
+        internal Button CalendarMonthForwardButton;
+        internal Link DateLink;
+        internal DropDown AssigneeDropdown;
+        internal Button SaveButton;
+        internal Link CustomerOrderingPageLink;
 
         public CreateNewOrderPage(IWebDriver driver)
-            : base(driver)
+           : base(driver)
         {
+            // CVV2Text is unique identifier of CreateNewOrderPage
+            CVV2Text = new TextLabel(Driver, new Locator("CVV2Text",
+                By.XPath("//form[@id='form2']//tr[3]/td[1]/strong")));
+
+            AddItemButton = new Button(Driver, new Locator("AddItemButton",
+                By.XPath("//form[@id='addItem']/input[@value = 'Add Item']")));
+
+            OrderNumberField = new TextInputField(Driver, new Locator("OrderNumberField",
+                By.Id("orderNum")));
+
+            PreferableDeliveryDateChooseLink = new Link(Driver,
+                new Locator("PreferableDeliveryDateChooseLink", By.ClassName("dp-choose-date")));
+
+            CalendarPopupElement = new Element(Driver, new Locator("CalendarPopupElement",
+                By.XPath("//div[@id='dp-popup']")));
+
+            CalendarMonthForwardButton = new Button(Driver, new Locator("CalendarMonthForwardButton",
+                By.XPath("//div[@id='dp-popup']/div[2]/a[2]")));
+
+            DateLink = new Link(Driver, new Locator("DateLink",
+                By.XPath("//div[@id='dp-popup']//tbody/tr[3]/td[4]")));
+
+            AssigneeDropdown = new DropDown(Driver, new Locator("AssigneeDropdown",
+                By.Id("assignee")));
+
+            SaveButton = new Button(Driver, new Locator("SaveButton", By.Id("save")));
+
+            CustomerOrderingPageLink = new Link(Driver, new Locator("ClickCustomerOrderingPageLink",
+                 By.XPath("(//ul[@id='nav']//a)[1]")));
         }
 
         public AddItemPage ClickAddItemButton()
@@ -94,7 +105,7 @@ namespace oms_test_framework_dotNET.PageObject
         public String GetChangedOrderNumber()
         {
             return OrderNumberField
-                .GetAttribute("Value");
+                .GetValue();
         }
 
         public CustomerOrderingPage ClickCustomerOrderingPageLink()

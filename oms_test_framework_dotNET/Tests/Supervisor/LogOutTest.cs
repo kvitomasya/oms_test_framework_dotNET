@@ -18,10 +18,10 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         [TestMethod]
         public void TestItemManagementPageLogOutAbility()
         {
-            Assert.IsTrue(itemManagementPage.SearchByFieldSet.Displayed,
+            Assert.IsTrue(itemManagementPage.SearchByFieldSet.IsDisplayed(),
                 "Item Management page doesn't exist");
             itemManagementPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -29,10 +29,10 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         public void TestSupervisorCreateReportPageLogOutAbility()
         {
             supervisorCreateReportPage = itemManagementPage.ClickCreateReportLink();
-            Assert.IsTrue(supervisorCreateReportPage.SaveReportLink.Displayed,
+            Assert.IsTrue(supervisorCreateReportPage.SaveReportLink.IsDisplayed(),
                 "Supervisor create report page doesn't exist");
             supervisorCreateReportPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -40,10 +40,10 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         public void TestAddProductPageLogOutAbility()
         {
             addProductPage = itemManagementPage.ClickAddProductLink();
-            Assert.IsTrue(addProductPage.OkButton.Displayed,
+            Assert.IsTrue(addProductPage.OkButton.IsDisplayed(),
                 "Add product page doesn't exist");
             addProductPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -51,10 +51,10 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         public void TestEditProductPageLogOutAbility()
         {
             editProductPage = itemManagementPage.ClickEditFirstProductLink();
-            Assert.IsTrue(editProductPage.OkButton.Displayed,
+            Assert.IsTrue(editProductPage.OkButton.IsDisplayed(),
                 "Edit product page doesn't exist");
             editProductPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
     }

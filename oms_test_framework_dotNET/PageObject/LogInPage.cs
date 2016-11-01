@@ -4,25 +4,29 @@ using OpenQA.Selenium.Support.PageObjects;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.DBHelpers;
+using oms_test_framework_dotNET.Wrappers;
+using oms_test_framework_dotNET.Locators;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class LogInPage : PageObject
     {
-        [FindsBy(How = How.Name, Using = "j_username")]
-        public IWebElement UsernameInput { get; set; }
-
-        [FindsBy(How = How.Name, Using = "j_password")]
-        public IWebElement PasswordInput { get; set; }
-
-        [FindsBy(How = How.Name, Using = "submit")]
-        public IWebElement LogInButton { get; set; }
-
-        [FindsBy(How = How.Name, Using = "reset")]
-        public IWebElement CancelButton { get; set; }
+        internal TextInputField UsernameInput;
+        internal TextInputField PasswordInput;
+        internal Button LogInButton;
+        internal Button CancelButton;
 
         public LogInPage(IWebDriver driver) : base(driver)
         {
+            UsernameInput = new TextInputField(Driver, new Locator("UserNameInput",
+                By.Name("j_username")));
+
+            PasswordInput = new TextInputField(Driver, new Locator("PasswordInput",
+                By.Name("j_password")));
+
+            LogInButton = new Button(Driver, new Locator("LogInButton", By.Name("submit")));
+
+            CancelButton = new Button(Driver, new Locator("CancelButton", By.Name("reset")));
         }
 
         public UserInfoPage LogInAs(Roles role)

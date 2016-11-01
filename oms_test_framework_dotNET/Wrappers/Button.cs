@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using oms_test_framework_dotNET.Locators;
+﻿using oms_test_framework_dotNET.Locators;
 using OpenQA.Selenium;
 
 namespace oms_test_framework_dotNET.Wrappers
@@ -12,6 +7,11 @@ namespace oms_test_framework_dotNET.Wrappers
     {
         public Button(IWebDriver driver, Locator locator) : base(driver, locator)
         {
+        }
+
+        public void Submit()
+        {
+            Driver.FindElement(ByLocator).Submit();
         }
 
     }

@@ -18,9 +18,9 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestSwitchTabsAbility()
         {
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
-            Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.Displayed, "Current page is not {0}", customerOrderingPage);
+            Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.IsDisplayed(), "Current page is not {0}", customerOrderingPage);
             customerOrderingPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            Assert.IsTrue(userInfoPage.UserInfoFieldSet.IsDisplayed(), "Current page is not {0}", userInfoPage);
         }
     }
 }
