@@ -119,6 +119,7 @@
     <Compile Include="Tests\Administrator\LogOutTest.cs" />
     <Compile Include="Tests\Administrator\PositiveLogInTest.cs" />
     <Compile Include="Tests\Administrator\SwitchTabsTest.cs" />
+    <Compile Include="Tests\Administrator\UserSearchTest.cs" />
     <Compile Include="Tests\Customer\DeleteOrderTest.cs" />
     <Compile Include="Tests\Customer\EditOrderTest.cs" />
     <Compile Include="Tests\Customer\LogOutTest.cs" />
@@ -171,10 +172,12 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Resources\DataProvider\UserSearchTest.xlsx" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\playlists\LogOutTests.playlist" />
+    <None Include="Resources\scripts\execute_tests_by_cmd.bat" />
     <None Include="Resources\scripts\execute_sql_dump.bat" />
   </ItemGroup>
   <Choose>
