@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using oms_test_framework_dotNET.Locators;
+using oms_test_framework_dotNET.Wrappers;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
@@ -6,34 +8,41 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class CustomerOrderingPage : PageObject
     {
-        //CreateNewOrderLink is unique identifier of CustomerOrderingPage
-        [FindsBy(How = How.XPath, Using = "//div[@id='content']/a")]
-        public IWebElement CreateNewOrderLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
-        public IWebElement UserInfoLink { get; set; }
-
-        [FindsBy(How = How.Id, Using = "search")]
-        public IWebElement SearchOrdersDropdown { get; set; }
-
-        [FindsBy(How = How.Id, Using = "searchValue")]
-        public IWebElement SearchOrdersInputField { get; set; }
-
-        [FindsBy(How = How.Name, Using = "Apply")]
-        public IWebElement ApplyButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "(//div[@id='list']//td/a)[1]")]
-        public IWebElement FirstBodyEditLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[1]")]
-        public IWebElement FirstOrderNameCellTextField { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='list']/table/tbody/tr[2]/td[8]")]
-        public IWebElement FirstBodyDeleteLink { get; set; }
+        internal Link CreateNewOrderLink;
+        internal Link UserInfoLink;
+        internal DropDown SearchOrdersDropdown;
+        internal TextInputField SearchOrdersInputField;
+        internal Button ApplyButton;
+        internal Link FirstBodyEditLink;
+        internal Element FirstOrderNameCellTextField;
+        internal Link FirstBodyDeleteLink;
 
         public CustomerOrderingPage(IWebDriver driver)
             : base(driver)
         {
+            //CreateNewOrderLink is unique identifier of CustomerOrderingPage
+            CreateNewOrderLink = new Link(Driver, new Locator("CreateNewOrderLink",
+                By.XPath("//div[@id='content']/a")));
+
+            UserInfoLink = new Link(Driver, new Locator("UserInfoLink",
+                By.XPath("//ul[@id='nav']/li[2]/a")));
+
+            SearchOrdersDropdown = new DropDown(Driver, new Locator("SearchOrdersDropdown",
+                By.Id("search")));
+
+            SearchOrdersInputField = new TextInputField(Driver, new Locator("SearchOrdersInputField",
+                By.Id("searchValue")));
+
+            ApplyButton = new Button(Driver, new Locator("ApplyButton", By.Name("Apply")));
+
+            FirstBodyEditLink = new Link(Driver, new Locator("FirstBodyEditLink",
+                By.XPath("(//div[@id='list']//td/a)[1]")));
+
+            FirstOrderNameCellTextField = new Element(Driver, new Locator("FirstOrderNameCellTextField",
+                By.XPath("//div[@id='list']//td[1]")));
+
+            FirstBodyDeleteLink = new Link(Driver, new Locator("FirstBodyDeleteLink",
+                By.XPath("//div[@id='list']/table/tbody/tr[2]/td[8]")));
         }
 
         public UserInfoPage ClickUserInfoLink()
@@ -63,7 +72,7 @@ namespace oms_test_framework_dotNET.PageObject
 
         public String GetOrderName()
         {
-            return FirstOrderNameCellTextField.Text;
+            return FirstOrderNameCellTextField.GetText();
         }
 
         public CreateNewOrderPage ClickCreateNewOrderLink()

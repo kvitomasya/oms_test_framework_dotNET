@@ -18,10 +18,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         [TestMethod]
         public void TestAdministrationPageLogOutAbility()
         {
-            Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed,
+            Assert.IsTrue(administrationPage.FoundUsersTextLabel.IsDisplayed(),
                 "Administration page doesn't exist");
             administrationPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -29,10 +29,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestCreateReportPageLogOutAbility()
         {
             administratorCreateReportPage = administrationPage.ClickCreateReportLink();
-            Assert.IsTrue(administratorCreateReportPage.SaveReportLink.Displayed,
+            Assert.IsTrue(administratorCreateReportPage.SaveReportLink.IsDisplayed(),
                 "Create Report page doesn't exist");
             administratorCreateReportPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -40,10 +40,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestCreateUserPageLogOutAbility()
         {
             createUserPage = administrationPage.ClickCreateNewUser();
-            Assert.IsTrue(createUserPage.LoginNameLabel.Displayed,
+            Assert.IsTrue(createUserPage.LoginNameLabel.IsDisplayed(),
                 "Create new user page doesn't exists");
             createUserPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -51,10 +51,10 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestEditUserPageLogOutAbility()
         {
             editUserPage = administrationPage.ClickEditFirstUserLink();
-            Assert.IsTrue(editUserPage.ConfirmPasswordText.Displayed,
+            Assert.IsTrue(editUserPage.ConfirmPasswordText.IsDisplayed(),
                 "Edit user page doesn't exists");
             editUserPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.Displayed,
+            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
                 "Logout is not working");
         }
     }

@@ -34,11 +34,11 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
             Assert.IsTrue(merchandiserOrderingPage
                 .FirstOrderNameCell
-                .Text
+                .GetText()
                 .Equals(testOrder.OrderName), "Order is not present");
 
             Assert.IsTrue(merchandiserOrderingPage
-                .FirstOrderDeleteCell.Displayed, "Link delete order is not present");
+                .FirstOrderDeleteCell.IsDisplayed(), "Link delete order is not present");
         }
 
         [TestMethod]
