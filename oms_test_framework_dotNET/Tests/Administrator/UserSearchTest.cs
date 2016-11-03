@@ -36,9 +36,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
 
         }
 
@@ -57,9 +57,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
         }
 
         [TestMethod]
@@ -77,9 +77,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
         }
 
         [TestMethod]
@@ -97,9 +97,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
         }
 
         [TestMethod]
@@ -117,9 +117,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
         }
 
         [TestMethod]
@@ -137,9 +137,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
                .FillSearchInputField(SearchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue,
+            Assert.AreEqual(administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue,
                 "The found user login: {0} is not the expected one: {1}",
-                administrationPage.LogInFirstCellLink.Text, ExpectedFoundValue);
+                administrationPage.LogInFirstCellLink.GetText(), ExpectedFoundValue);
         }
     }
 }
