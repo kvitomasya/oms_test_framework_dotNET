@@ -4,13 +4,22 @@ namespace oms_test_framework_dotNET.Locators
 {
     class Locator
     {
-        public string name { get; set; }
-        public By locator { get; set; }
+        private string name;
+        private By locatorValue;
 
-       public Locator(string name, By locator)
+       public Locator(string name, By locatorValue)
         {
             this.name = name;
-            this.locator = locator;
+            this.locatorValue = locatorValue;
+        }
+        internal By GetLocatorValue()
+        {
+            return locatorValue;
+        }
+
+        internal string GetName()
+        {
+            return name;
         }
     }
 }

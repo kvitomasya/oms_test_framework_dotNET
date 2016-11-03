@@ -15,7 +15,17 @@ namespace oms_test_framework_dotNET.Wrappers
         {
             this.Driver = driver;
             this.Locator = locator;
-            ByLocator = Locator.locator;
+            ByLocator = Locator.GetLocatorValue();
+        }
+
+        internal By GetLocatorValue()
+        {
+            return Locator.GetLocatorValue();
+        }
+
+        internal string GetLocatorName()
+        {
+            return Locator.GetName();
         }
 
         public bool IsDisplayed()
