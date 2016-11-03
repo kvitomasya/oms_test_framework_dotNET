@@ -16,7 +16,6 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void SetUpTest()
         {
             userInfoPage = logInPage.LogInAs(Roles.ADMINISTRATOR);
-
             administrationPage = userInfoPage.ClickAdministrationLink();
         }
 
