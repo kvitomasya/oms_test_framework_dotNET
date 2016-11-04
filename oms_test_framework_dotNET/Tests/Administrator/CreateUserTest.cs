@@ -19,13 +19,13 @@ namespace oms_test_framework_dotNET.Tests
                      .ClickAdministrationLink();
 
             Assert
-                .IsTrue(administrationPage.FoundUsersTextLabel.IsDisplayed(),
+                .IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(),
                 "The Admin page should be displayed!");
 
             createUserPage = administrationPage.ClickCreateNewUser();
 
             Assert
-                .IsTrue(createUserPage.LoginNameLabel.IsDisplayed(),
+                .IsTrue(createUserPage.loginNameLabel.IsDisplayed(),
                 "The CreateNewUserPage should be displayed!");
 
             createUserPage
@@ -43,7 +43,7 @@ namespace oms_test_framework_dotNET.Tests
             createdUserId = DBUserHandler.GetUserByLogin(userLogin).Id;
 
             Assert
-                .IsTrue(administrationPage.FoundUsersTextLabel.IsDisplayed(),
+                .IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(),
                 "The Admin page should be displayed!");
 
             administrationPage
@@ -53,7 +53,7 @@ namespace oms_test_framework_dotNET.Tests
                 .ClickSearchButton();
 
             Assert
-                .AreEqual("StefDevis", administrationPage.LogInFirstCellLink.GetText(),
+                .AreEqual("StefDevis", administrationPage.logInFirstCellLink.GetText(),
                 "As a result of the search should be a user with the specified login");
 
             administrationPage.DeleteUserByLogIn("StefDevis");

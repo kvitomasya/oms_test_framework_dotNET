@@ -11,7 +11,7 @@ namespace oms_test_framework_dotNET.Wrappers
 
         public void Submit()
         {
-            Driver.FindElement(ByLocator).Submit();
+            Driver.FindElement(byLocator).Submit();
         }
 
     }

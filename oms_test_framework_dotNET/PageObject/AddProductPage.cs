@@ -8,73 +8,73 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AddProductPage : PageObject
     {
-        internal Button OkButton;
-        internal Button CancelButton;
-        internal TextInputField ProductNameInput;
-        internal TextInputField ProductDescriptionInput;
-        internal TextInputField ProductPriceInput;
-        internal Element ProductNameErrorText;
-        internal Element ProductDescriptionErrorText;
-        internal Element ProductPriceErrorText;
+        internal Button okButton;
+        internal Button cancelButton;
+        internal TextInputField productNameInput;
+        internal TextInputField productDescriptionInput;
+        internal TextInputField productPriceInput;
+        internal Element productNameErrorText;
+        internal Element productDescriptionErrorText;
+        internal Element productPriceErrorText;
 
         public AddProductPage(IWebDriver driver) : base(driver)
         {
             // OkButton is unique identifier of AddProductPage
-            OkButton = new Button(Driver, new Locator("OkButton",
+            okButton = new Button(Driver, new Locator("OkButton",
                 By.XPath("//form[@id='productModel']/input[2]")));
 
-            CancelButton = new Button(Driver, new Locator("CancelButton",
+            cancelButton = new Button(Driver, new Locator("CancelButton",
                 By.XPath("//form[@id='productModel']/input[3]")));
 
-            ProductNameInput = new TextInputField(Driver,
+            productNameInput = new TextInputField(Driver,
                 new Locator("ProductNameInput", By.Id("name")));
 
-            ProductDescriptionInput = new TextInputField(Driver,
+            productDescriptionInput = new TextInputField(Driver,
                 new Locator("TextInputField", By.Id("description")));
 
-            ProductPriceInput = new TextInputField(Driver,
+            productPriceInput = new TextInputField(Driver,
                 new Locator("ProducrPriceInput", By.Id("price")));
 
-            ProductNameErrorText = new Element(Driver, new Locator("ProductNameErrorText",
+            productNameErrorText = new Element(Driver, new Locator("ProductNameErrorText",
                 By.XPath("//form[@id='productModel']/table/tbody/tr[1]/td[3]")));
 
-            ProductDescriptionErrorText = new Element(Driver, new Locator("ProductDescriptionErrorText",
+            productDescriptionErrorText = new Element(Driver, new Locator("ProductDescriptionErrorText",
                 By.XPath("//form[@id='productModel']/table/tbody/tr[2]/td[3]")));
 
-            ProductPriceErrorText = new Element(Driver, new Locator("ProductPriceErrorText",
+            productPriceErrorText = new Element(Driver, new Locator("ProductPriceErrorText",
                 By.XPath("//form[@id='productModel']/table/tbody/tr[3]/td[3]")));
         }
 
         public ItemManagementPage ClickOkButton()
         {
-            OkButton.Click();
+            okButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public ItemManagementPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public AddProductPage FillProductNameInput(String productName)
         {
-            ProductNameInput.Clear();
-            ProductNameInput.SendKeys(productName);
+            productNameInput.Clear();
+            productNameInput.SendKeys(productName);
             return this;
         }
 
         public AddProductPage FillProductDescriptionInput(String productDescription)
         {
-            ProductDescriptionInput.Clear();
-            ProductDescriptionInput.SendKeys(productDescription);
+            productDescriptionInput.Clear();
+            productDescriptionInput.SendKeys(productDescription);
             return this;
         }
 
         public AddProductPage FillProductPriceInput(String productPrice)
         {
-            ProductPriceInput.Clear();
-            ProductPriceInput.SendKeys(productPrice);
+            productPriceInput.Clear();
+            productPriceInput.SendKeys(productPrice);
             return this;
         }
     }

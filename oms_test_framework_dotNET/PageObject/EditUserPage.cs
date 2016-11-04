@@ -7,12 +7,12 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class EditUserPage : PageObject
     {
-        internal TextInputField ConfirmPasswordText;
+        internal TextInputField confirmPasswordText;
 
         public EditUserPage(IWebDriver driver) : base(driver)
         {
             // ConfirmPasswordText is unique identifier of EditUserPage
-            ConfirmPasswordText = new TextInputField(Driver, new Locator("ConfirmPasswordText",
+            confirmPasswordText = new TextInputField(Driver, new Locator("ConfirmPasswordText",
                 By.Id("confirmPassword")));
         }
     }

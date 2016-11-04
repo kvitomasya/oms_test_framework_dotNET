@@ -33,12 +33,12 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
                 .ClickApplyButton();
 
             Assert.IsTrue(merchandiserOrderingPage
-                .FirstOrderNameCell
+                .firstOrderNameCell
                 .GetText()
                 .Equals(testOrder.OrderName), "Order is not present");
 
             Assert.IsTrue(merchandiserOrderingPage
-                .FirstOrderDeleteCell.IsDisplayed(), "Link delete order is not present");
+                .firstOrderDeleteCell.IsDisplayed(), "Link delete order is not present");
         }
 
         [TestMethod]

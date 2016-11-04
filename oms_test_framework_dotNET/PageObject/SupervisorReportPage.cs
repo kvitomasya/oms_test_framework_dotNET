@@ -7,12 +7,12 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class SupervisorReportPage : PageObject
     {
-        internal TextLabel ReportPageExists;
+        internal TextLabel reportPageExists;
 
         public SupervisorReportPage(IWebDriver driver) : base(driver)
         {
             // ReportPageExists is unique identifier of SupervisorReportPage
-            ReportPageExists = new TextLabel(Driver, new Locator("ReportPageExists", By.Id("grid")));
+            reportPageExists = new TextLabel(Driver, new Locator("ReportPageExists", By.Id("grid")));
         }
     }
 }

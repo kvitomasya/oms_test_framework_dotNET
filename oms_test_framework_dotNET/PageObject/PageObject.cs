@@ -6,18 +6,18 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public abstract class PageObject
     {
-        internal Button LogOutButton;
+        internal Button logOutButton;
         protected IWebDriver Driver { get; set; }
 
         public PageObject(IWebDriver driver)
         {
             this.Driver = driver;
-            LogOutButton = new Button(Driver, new Locator("LogOutButton", By.Id("logout")));
+            logOutButton = new Button(Driver, new Locator("LogOutButton", By.Id("logout")));
         }
 
         public LogInPage DoLogOut()
         {
-            LogOutButton.Click();
+            logOutButton.Click();
             AcceptAlert();
             return new LogInPage(Driver);
         }

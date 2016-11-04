@@ -7,12 +7,12 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class OrderItemsErrorMessagePage : PageObject
     {
-        internal Element OrderItemsErrorMessageText;
+        internal Element orderItemsErrorMessageText;
 
         public OrderItemsErrorMessagePage(IWebDriver driver) : base(driver)
         {
             // OrderItemsErrorMessageText is unique identifier of OrderItemsErrorMessagePage
-            OrderItemsErrorMessageText = new Element(Driver, new Locator("OrderItemsErrorMessageText",
+            orderItemsErrorMessageText = new Element(Driver, new Locator("OrderItemsErrorMessageText",
                 By.XPath("//div[@id='content']/ancestor::div[@id='site_content']")));
         }
     }

@@ -11,13 +11,13 @@ namespace oms_test_framework_dotNET.Wrappers
 
         public void Clear()
         {
-            Driver.FindElement(ByLocator).Clear();
+            Driver.FindElement(byLocator).Clear();
         }
 
         public void SendKeys(string inputText)
         {
-            Driver.FindElement(ByLocator).Clear();
-            Driver.FindElement(ByLocator).SendKeys(inputText);
+            Driver.FindElement(byLocator).Clear();
+            Driver.FindElement(byLocator).SendKeys(inputText);
         }
     }
 }

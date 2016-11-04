@@ -12,7 +12,7 @@ namespace oms_test_framework_dotNET.Wrappers
 
         public T Click()
         {
-            Driver.FindElement(ByLocator).Click();
+            Driver.FindElement(byLocator).Click();
             return (T)Convert.ChangeType(this, typeof(T));
         }
     }

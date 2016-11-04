@@ -18,10 +18,10 @@ namespace oms_test_framework_dotNET.Tests.Customer
         [TestMethod]
         public void TestCustomerOrderingPageLogOutAbility()
         {
-            Assert.IsTrue(customerOrderingPage.CreateNewOrderLink.IsDisplayed(),
+            Assert.IsTrue(customerOrderingPage.createNewOrderLink.IsDisplayed(),
                 "Customer Ordering page doesn't exist");
             customerOrderingPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -29,10 +29,10 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestCreateNewOrderPageLogOutAbility()
         {
             createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
-            Assert.IsTrue(createNewOrderPage.CVV2Text.IsDisplayed(),
+            Assert.IsTrue(createNewOrderPage.cVV2Text.IsDisplayed(),
                 "Create new order page doesn't exists");
             createNewOrderPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -41,10 +41,10 @@ namespace oms_test_framework_dotNET.Tests.Customer
         {
             createNewOrderPage = customerOrderingPage.ClickCreateNewOrderLink();
             addItemPage = createNewOrderPage.ClickAddItemButton();
-            Assert.IsTrue(addItemPage.ResetButton.IsDisplayed(),
+            Assert.IsTrue(addItemPage.resetButton.IsDisplayed(),
                 "Add item page doesn't exists");
             addItemPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -57,7 +57,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
                 .ClickSelectFirstItemLink()
                 .ClickDoneButton();
             createNewOrderPage
-                .OrderNumberField
+                .orderNumberField
                 .Clear();
             orderItemsErrorMessagePage = createNewOrderPage
                             .ClickPreferableDeliveryDateChooseLink()
@@ -65,10 +65,10 @@ namespace oms_test_framework_dotNET.Tests.Customer
                             .ClickDateLink()
                             .SelectAssigneeDropdown("login1")
                             .ClickSaveButtonFail();
-            Assert.IsTrue(orderItemsErrorMessagePage.OrderItemsErrorMessageText.IsDisplayed(),
+            Assert.IsTrue(orderItemsErrorMessagePage.orderItemsErrorMessageText.IsDisplayed(),
                 "Order items error message page doesn't exists");
             orderItemsErrorMessagePage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
     }

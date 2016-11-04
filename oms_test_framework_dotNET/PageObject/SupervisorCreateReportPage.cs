@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class SupervisorCreateReportPage : PageObject
     {
-        internal Link SaveReportLink;
+        internal Link saveReportLink;
 
         public SupervisorCreateReportPage(IWebDriver driver) : base(driver)
         {
             // SaveReportLink is unique identifier of SupervisorCreateReportPage
-            SaveReportLink = new Link(Driver, new Locator("SaveReportLink",
+            saveReportLink = new Link(Driver, new Locator("SaveReportLink",
                 By.XPath("//div[@id='list']/a")));
         }
 
         public SupervisorReportPage ClickSaveReportLink()
         {
-            SaveReportLink.Click();
+            saveReportLink.Click();
             return new SupervisorReportPage(Driver);
         }
     }

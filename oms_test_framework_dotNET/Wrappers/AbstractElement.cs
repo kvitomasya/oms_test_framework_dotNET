@@ -8,70 +8,70 @@ namespace oms_test_framework_dotNET.Wrappers
     abstract class AbstractElement
     {
         protected IWebDriver Driver;
-        protected Locator Locator;
-        protected By ByLocator;
+        protected Locator locator;
+        protected By byLocator;
 
         protected AbstractElement(IWebDriver driver, Locator locator)
         {
             this.Driver = driver;
-            this.Locator = locator;
-            ByLocator = Locator.GetLocatorValue();
+            this.locator = locator;
+            byLocator = locator.GetLocatorValue();
         }
 
         internal By GetLocatorValue()
         {
-            return Locator.GetLocatorValue();
+            return locator.GetLocatorValue();
         }
 
         internal string GetLocatorName()
         {
-            return Locator.GetName();
+            return locator.GetName();
         }
 
         public bool IsDisplayed()
         {
-            return Driver.FindElement(ByLocator).Displayed;
+            return Driver.FindElement(byLocator).Displayed;
         }
 
         public bool IsEnabled()
         {
-            return Driver.FindElement(ByLocator).Enabled;
+            return Driver.FindElement(byLocator).Enabled;
         }
 
         public string GetText()
         {
-            return Driver.FindElement(ByLocator).Text;
+            return Driver.FindElement(byLocator).Text;
         }
 
         public IReadOnlyCollection<IWebElement> GetElements()
         {
-            return Driver.FindElements(ByLocator);
+            return Driver.FindElements(byLocator);
         }
 
         public String GetId()
         {
-            return Driver.FindElement(ByLocator).GetAttribute("id");
+            return Driver.FindElement(byLocator).GetAttribute("id");
         }
 
         public String GetNameAttribute()
         {
-            return Driver.FindElement(ByLocator).GetAttribute("name");
+            return Driver.FindElement(byLocator).GetAttribute("name");
         }
 
         public String GetValue()
         {
-            return Driver.FindElement(ByLocator).GetAttribute("value");
+            return Driver.FindElement(byLocator).GetAttribute("value");
         }
 
         public string GetCssValue(string value)
         {
-            return Driver.FindElement(ByLocator).GetCssValue(value);
+            return Driver.FindElement(byLocator).GetCssValue(value);
         }
 
         public String GetType()
         {
 
-            return Driver.FindElement(ByLocator).GetAttribute("type");
+            return Driver.FindElement(byLocator).GetAttribute("type");
         }
 
     }

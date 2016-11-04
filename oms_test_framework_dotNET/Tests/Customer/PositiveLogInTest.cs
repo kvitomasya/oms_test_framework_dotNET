@@ -12,7 +12,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestValidLogInCustomer()
         {
             userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.GetText().Equals("User Info"), "Login with customer valid credentials is not successful");
+            Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with customer valid credentials is not successful");
         }
     }
 }

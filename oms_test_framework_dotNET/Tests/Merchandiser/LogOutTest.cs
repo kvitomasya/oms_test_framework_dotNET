@@ -18,10 +18,10 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void TestMerchandiserOrderingPageLogOutAbility()
         {
-            Assert.IsTrue(merchandiserOrderingPage.SearchByText.IsDisplayed(),
+            Assert.IsTrue(merchandiserOrderingPage.searchByText.IsDisplayed(),
                 "Merchandiser Ordering page doesn't exist");
             merchandiserOrderingPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
 
@@ -29,10 +29,10 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         public void TestMerchandiserEditOrderPageLogOutAbility()
         {
             merchandiserEditOrderPage = merchandiserOrderingPage.ClickEditFirstOrderLink();
-            Assert.IsTrue(merchandiserEditOrderPage.IsGiftCheckbox.IsDisplayed(),
+            Assert.IsTrue(merchandiserEditOrderPage.isGiftCheckbox.IsDisplayed(),
                 "Merchandiser edit order page doesn't exist");
             merchandiserEditOrderPage.DoLogOut();
-            Assert.IsTrue(logInPage.UsernameInput.IsDisplayed(),
+            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
                 "Logout is not working");
         }
     }

@@ -7,68 +7,68 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class UserInfoPage : PageObject
     {
-        internal TextLabel UserInfoFieldSet;
-        internal Link AdministrationLink;
-        internal Link CustomerOrderingLink;
-        internal Link MerchandiserOrderingLink;
-        internal Link ItemManagementLink;
-        internal Link UserInfoLink;
+        internal TextLabel userInfoFieldSet;
+        internal Link administrationLink;
+        internal Link customerOrderingLink;
+        internal Link merchandiserOrderingLink;
+        internal Link itemManagementLink;
+        internal Link userInfoLink;
 
         public UserInfoPage(IWebDriver driver) : base(driver)
         {
             // UserInfoFieldSet is unique element on UserInfoPage
-            UserInfoFieldSet = new TextLabel(Driver, new Locator("UserInfoFieldSet",
+            userInfoFieldSet = new TextLabel(Driver, new Locator("UserInfoFieldSet",
                 By.XPath("//div[@id='content']//legend")));
 
-            AdministrationLink = new Link(Driver, new Locator("AdministrationLink",
+            administrationLink = new Link(Driver, new Locator("AdministrationLink",
                 By.XPath("//ul[@id='nav']/descendant::a[@href='users.htm']")));
 
-            CustomerOrderingLink = new Link(Driver, new Locator("CustomerOrderingLink",
+            customerOrderingLink = new Link(Driver, new Locator("CustomerOrderingLink",
                 By.XPath("//ul[@id='nav']/descendant::a[@href='order.htm']")));
 
-            MerchandiserOrderingLink = new Link(Driver, new Locator("MerchandiserOrderingLink",
+            merchandiserOrderingLink = new Link(Driver, new Locator("MerchandiserOrderingLink",
                 By.XPath("//ul[@id='nav']/descendant::a[@href='order.htm']")));
 
-            ItemManagementLink = new Link(Driver, new Locator("ItemManagementLink",
+            itemManagementLink = new Link(Driver, new Locator("ItemManagementLink",
                 By.XPath("//ul[@id='nav']/descendant::a[@href='itemManagement.htm']")));
 
-            UserInfoLink = new Link(Driver, new Locator("UserInfoLink",
+            userInfoLink = new Link(Driver, new Locator("UserInfoLink",
                 By.XPath("//ul[@id='nav']/li[2]/a")));
         }
 
         public AdministrationPage ClickAdministrationLink()
         {
-            AdministrationLink.Click();
+            administrationLink.Click();
             return new AdministrationPage(Driver);
         }
 
         public CustomerOrderingPage ClickCustomerOrderingLink()
         {
-            CustomerOrderingLink.Click();
+            customerOrderingLink.Click();
             return new CustomerOrderingPage(Driver);
         }
 
         public MerchandiserOrderingPage ClickMerchandiserOrderingLink()
         {
-            MerchandiserOrderingLink.Click();
+            merchandiserOrderingLink.Click();
             return new MerchandiserOrderingPage(Driver);
         }
 
         public ItemManagementPage ClickItemManagementLink()
         {
-            ItemManagementLink.Click();
+            itemManagementLink.Click();
             return new ItemManagementPage(Driver);
         }
 
         public CustomerOrderingPage ClickCustomerOrdetingLink()
         {
-            CustomerOrderingLink.Click();
+            customerOrderingLink.Click();
             return new CustomerOrderingPage(Driver);
         }
 
         public UserInfoPage ClickUserInfoLink()
         {
-            UserInfoLink.Click();
+            userInfoLink.Click();
             return new UserInfoPage(Driver);
         }
     }

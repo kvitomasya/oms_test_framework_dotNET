@@ -7,11 +7,11 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class MerchandiserEditOrderPage : PageObject
     {
-        internal CheckBox IsGiftCheckbox;
+        internal CheckBox isGiftCheckbox;
         public MerchandiserEditOrderPage(IWebDriver driver) : base(driver)
         {
             // IsGiftCheckbox is unique identifier of MerchandiserEditOrderPage
-            IsGiftCheckbox = new CheckBox(Driver, new Locator("IsGiftCheckbox",
+            isGiftCheckbox = new CheckBox(Driver, new Locator("IsGiftCheckbox",
                 By.XPath("//input[@type='checkbox']")));
         }
     }

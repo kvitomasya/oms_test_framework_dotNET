@@ -7,11 +7,11 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AdministratorReportPage : PageObject
     {
-        internal TextLabel ReportPageExists;
+        internal TextLabel reportPageExists;
         public AdministratorReportPage(IWebDriver driver) : base(driver)
         {
             // ReportPageExists is unique identifier of AdministratorReportPage
-            ReportPageExists = new TextLabel(Driver, new Locator("ReportPageExists", By.Id("grid")));
+            reportPageExists = new TextLabel(Driver, new Locator("ReportPageExists", By.Id("grid")));
         }
     }
 }

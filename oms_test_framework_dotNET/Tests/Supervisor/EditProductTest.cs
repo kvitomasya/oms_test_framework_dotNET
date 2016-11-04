@@ -21,11 +21,11 @@ namespace oms_test_framework_dotNET.Tests
 
             editProductPage = itemManagementPage.ClickEditFirstProductLink();
 
-            testProductName = editProductPage.ProductPriceInput
+            testProductName = editProductPage.productPriceInput
                 .GetValue();
-            testProductDescription = editProductPage.ProductDescriptionInput
+            testProductDescription = editProductPage.productDescriptionInput
                 .GetValue();
-            testProductPrice = editProductPage.ProductPriceInput
+            testProductPrice = editProductPage.productPriceInput
                 .GetValue();
         }
 
@@ -44,23 +44,23 @@ namespace oms_test_framework_dotNET.Tests
             itemManagementPage.FillSearchInput(testProductName)
                 .ClickSearchButton();
 
-            Assert.IsTrue(itemManagementPage.CountOfProductFound.GetText().Equals("0"),
+            Assert.IsTrue(itemManagementPage.countOfProductFound.GetText().Equals("0"),
                 "Old Product still exists !");
 
             itemManagementPage.FillSearchInput(ProductNameForChange)
                 .ClickSearchButton();
 
-            Assert.AreEqual(itemManagementPage.FirstProductNameText.GetText(),
+            Assert.AreEqual(itemManagementPage.firstProductNameText.GetText(),
                 ProductNameForChange, "Product Name (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductNameText.GetText(), ProductNameForChange);
+                itemManagementPage.firstProductNameText.GetText(), ProductNameForChange);
 
-            Assert.AreEqual(itemManagementPage.FirstProductDescriptionText.GetText(),
+            Assert.AreEqual(itemManagementPage.firstProductDescriptionText.GetText(),
                 ProductDescriptionForChange, "Product Description (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductDescriptionText.GetText(), ProductDescriptionForChange);
+                itemManagementPage.firstProductDescriptionText.GetText(), ProductDescriptionForChange);
 
-            Assert.AreEqual(itemManagementPage.FirstProductPriceText.GetText(),
+            Assert.AreEqual(itemManagementPage.firstProductPriceText.GetText(),
                 ProductPriceForChange, "Product Price (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.FirstProductPriceText.GetText(), ProductPriceForChange);
+                itemManagementPage.firstProductPriceText.GetText(), ProductPriceForChange);
         }
 
         [TestCleanup]

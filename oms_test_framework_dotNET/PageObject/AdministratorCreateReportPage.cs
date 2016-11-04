@@ -7,18 +7,18 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class AdministratorCreateReportPage : PageObject
     {
-        internal Link SaveReportLink;
+        internal Link saveReportLink;
 
         public AdministratorCreateReportPage(IWebDriver driver) : base(driver)
         {
             // SaveReportLink is unique identifier of AdministratorCreateReportPage
-            SaveReportLink = new Link(Driver, new Locator("SaveReportLink",
+            saveReportLink = new Link(Driver, new Locator("SaveReportLink",
                 By.XPath("//div[@id='list']/a")));
         }
 
         public AdministratorReportPage ClickSaveReportLink()
         {
-            SaveReportLink.Click();
+            saveReportLink.Click();
             return new AdministratorReportPage(Driver);
         }
     }

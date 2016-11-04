@@ -11,22 +11,22 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class LogInPage : PageObject
     {
-        internal TextInputField UsernameInput;
-        internal TextInputField PasswordInput;
-        internal Button LogInButton;
-        internal Button CancelButton;
+        internal TextInputField usernameInput;
+        internal TextInputField passwordInput;
+        internal Button logInButton;
+        internal Button cancelButton;
 
         public LogInPage(IWebDriver driver) : base(driver)
         {
-            UsernameInput = new TextInputField(Driver, new Locator("UserNameInput",
+            usernameInput = new TextInputField(Driver, new Locator("UserNameInput",
                 By.Name("j_username")));
 
-            PasswordInput = new TextInputField(Driver, new Locator("PasswordInput",
+            passwordInput = new TextInputField(Driver, new Locator("PasswordInput",
                 By.Name("j_password")));
 
-            LogInButton = new Button(Driver, new Locator("LogInButton", By.Name("submit")));
+            logInButton = new Button(Driver, new Locator("LogInButton", By.Name("submit")));
 
-            CancelButton = new Button(Driver, new Locator("CancelButton", By.Name("reset")));
+            cancelButton = new Button(Driver, new Locator("CancelButton", By.Name("reset")));
         }
 
         public UserInfoPage LogInAs(Roles role)
@@ -56,27 +56,27 @@ namespace oms_test_framework_dotNET.PageObject
 
         public LogInPage FillUsernameInput(String userName)
         {
-            UsernameInput.Clear();
-            UsernameInput.SendKeys(userName);
+            usernameInput.Clear();
+            usernameInput.SendKeys(userName);
             return this;
         }
 
         public LogInPage FillPasswordInput(String password)
         {
-            PasswordInput.Clear();
-            PasswordInput.SendKeys(password);
+            passwordInput.Clear();
+            passwordInput.SendKeys(password);
             return this;
         }
 
         public UserInfoPage ClickLogInButton()
         {
-            LogInButton.Click();
+            logInButton.Click();
             return new UserInfoPage(Driver);
         }
 
         public LogInPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return this;
         }
     }

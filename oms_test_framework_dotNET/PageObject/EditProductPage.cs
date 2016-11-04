@@ -8,60 +8,60 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class EditProductPage : PageObject
     {
-        internal TextInputField ProductNameInput;
-        internal TextInputField ProductDescriptionInput;
-        internal TextInputField ProductPriceInput;
-        internal Button OkButton;
-        internal Button CancelButton;
+        internal TextInputField productNameInput;
+        internal TextInputField productDescriptionInput;
+        internal TextInputField productPriceInput;
+        internal Button okButton;
+        internal Button cancelButton;
 
         public EditProductPage(IWebDriver driver) : base(driver)
         {
-            ProductNameInput = new TextInputField(Driver, new Locator("ProductNameInput",
+            productNameInput = new TextInputField(Driver, new Locator("ProductNameInput",
                 By.Id("name")));
 
-            ProductDescriptionInput = new TextInputField(Driver, new Locator("ProductDescriptionInput",
+            productDescriptionInput = new TextInputField(Driver, new Locator("ProductDescriptionInput",
                 By.Id("description")));
 
-            ProductPriceInput = new TextInputField(Driver, new Locator("ProductPriceInput",
+            productPriceInput = new TextInputField(Driver, new Locator("ProductPriceInput",
                 By.Id("price")));
 
-            OkButton = new Button(Driver, new Locator("OkButton",
+            okButton = new Button(Driver, new Locator("OkButton",
                 By.XPath("//form[@id='productModel']/input[2]")));
 
-            CancelButton = new Button(Driver, new Locator("CancelButton",
+            cancelButton = new Button(Driver, new Locator("CancelButton",
                 By.XPath("//form[@id='productModel']/input[3]")));
         }
 
         public EditProductPage FillProductNameInput(String productName)
         {
-            ProductNameInput.Clear();
-            ProductNameInput.SendKeys(productName);
+            productNameInput.Clear();
+            productNameInput.SendKeys(productName);
             return this;
         }
 
         public EditProductPage FillProductDescriptionInput(String productDescription)
         {
-            ProductDescriptionInput.Clear();
-            ProductDescriptionInput.SendKeys(productDescription);
+            productDescriptionInput.Clear();
+            productDescriptionInput.SendKeys(productDescription);
             return this;
         }
 
         public EditProductPage FillProductPriceInput(String productPrice)
         {
-            ProductPriceInput.Clear();
-            ProductPriceInput.SendKeys(productPrice);
+            productPriceInput.Clear();
+            productPriceInput.SendKeys(productPrice);
             return this;
         }
 
         public ItemManagementPage ClickOkButton()
         {
-            OkButton.Click();
+            okButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public ItemManagementPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return new ItemManagementPage(Driver);
         }
     }

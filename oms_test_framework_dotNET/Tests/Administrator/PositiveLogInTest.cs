@@ -11,7 +11,7 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestValidLogInAdministrator()
         {
             userInfoPage = logInPage.LogInAs(Roles.ADMINISTRATOR);
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.GetText().Equals("User Info"), "Login with administrator valid credentials is not successful");
+            Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with administrator valid credentials is not successful");
         }
     }
 }

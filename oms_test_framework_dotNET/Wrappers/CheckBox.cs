@@ -11,7 +11,7 @@ namespace oms_test_framework_dotNET.Wrappers
 
         public void Select()
         {
-            if (!Driver.FindElement(ByLocator).Selected)
+            if (!Driver.FindElement(byLocator).Selected)
             {
                 this.Click();
             }
@@ -19,7 +19,7 @@ namespace oms_test_framework_dotNET.Wrappers
 
         public void Deselect()
         {
-            if (Driver.FindElement(ByLocator).Selected)
+            if (Driver.FindElement(byLocator).Selected)
             {
                 this.Click();
             }
