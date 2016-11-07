@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
 {
@@ -18,22 +19,23 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         [TestMethod]
         public void TestMerchandiserOrderingPageLogOutAbility()
         {
-            Assert.IsTrue(merchandiserOrderingPage.searchByText.IsDisplayed(),
-                "Merchandiser Ordering page doesn't exist");
+            AssertThat(merchandiserOrderingPage.searchByText).IsDisplayed();
+
             merchandiserOrderingPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
 
         [TestMethod]
         public void TestMerchandiserEditOrderPageLogOutAbility()
         {
             merchandiserEditOrderPage = merchandiserOrderingPage.ClickEditFirstOrderLink();
-            Assert.IsTrue(merchandiserEditOrderPage.isGiftCheckbox.IsDisplayed(),
-                "Merchandiser edit order page doesn't exist");
+
+            AssertThat(merchandiserEditOrderPage.isGiftCheckbox).IsDisplayed();
+
             merchandiserEditOrderPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
     }
 }

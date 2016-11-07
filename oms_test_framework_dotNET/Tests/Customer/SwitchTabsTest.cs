@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -18,9 +19,12 @@ namespace oms_test_framework_dotNET.Tests.Customer
         public void TestSwitchTabsAbility()
         {
             customerOrderingPage = userInfoPage.ClickCustomerOrderingLink();
-            Assert.IsTrue(customerOrderingPage.createNewOrderLink.IsDisplayed(), "Current page is not {0}", customerOrderingPage);
+
+            AssertThat(customerOrderingPage.createNewOrderLink).IsDisplayed();
+
             customerOrderingPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.userInfoFieldSet.IsDisplayed(), "Current page is not {0}", userInfoPage);
+
+            AssertThat(userInfoPage.userInfoFieldSet).IsDisplayed();
         }
     }
 }

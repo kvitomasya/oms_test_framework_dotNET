@@ -3,6 +3,8 @@ using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 using System.Threading;
+using static oms_test_framework_dotNET.Asserts.OrderAsserts;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {
@@ -32,9 +34,7 @@ namespace oms_test_framework_dotNET.Tests.Customer
                .ClickDeleteLink()
                .DismissAlert();
 
-            Assert.AreEqual(customerOrderingPage
-                .GetOrderName(), "NewOrderName",
-                "Order name should be equals");
+            AssertThat(customerOrderingPage.firstOrderNameCellTextField).TextEquals("NewOrderName");
 
             customerOrderingPage
                 .ClickDeleteLink()
@@ -42,8 +42,8 @@ namespace oms_test_framework_dotNET.Tests.Customer
 
             Thread.Sleep(1000);
 
-            Assert.IsTrue(DBOrderHandler.GetOrderById(testOrderId) == null,
-                "Deleted order still exists !");
+            AssertThat(DBOrderHandler.GetOrderById(testOrderId)).IsNull();
+            
         }
 
         [TestCleanup]

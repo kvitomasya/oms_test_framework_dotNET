@@ -4,6 +4,8 @@ using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 using System.Threading;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
+using static oms_test_framework_dotNET.Asserts.OrderAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
 {
@@ -32,13 +34,9 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
                 .FillSearchInput(testOrder.OrderName)
                 .ClickApplyButton();
 
-            Assert.IsTrue(merchandiserOrderingPage
-                .firstOrderNameCell
-                .GetText()
-                .Equals(testOrder.OrderName), "Order is not present");
+            AssertThat(merchandiserOrderingPage.firstOrderNameCell).TextEquals(testOrder.OrderName);
 
-            Assert.IsTrue(merchandiserOrderingPage
-                .firstOrderDeleteCell.IsDisplayed(), "Link delete order is not present");
+            AssertThat(merchandiserOrderingPage.firstOrderDeleteCell).IsDisplayed();
         }
 
         [TestMethod]
@@ -53,10 +51,8 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
                 .ClickDeleteFirstOrderLink()
                 .DismissAlert();
 
-            Assert.IsTrue(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber)
-                .OrderNumber
-                .Equals(testOrder.OrderNumber), "Order has been deleted");
+            AssertThat(DBOrderHandler
+                .GetOrderByNumber(testOrder.OrderNumber)).AreEquals(testOrder);
         }
 
         [TestMethod]
@@ -73,8 +69,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
 
             Thread.Sleep(1000);
 
-            Assert.IsTrue(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber) == null, "Deleted order still exists!");
+            AssertThat(DBOrderHandler.GetOrderByNumber(testOrder.OrderNumber)).IsNull();
         }
 
         [TestCleanup]

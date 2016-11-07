@@ -43,6 +43,11 @@ namespace oms_test_framework_dotNET.Wrappers
             return Driver.FindElement(byLocator).Text;
         }
 
+        public IWebElement GetElement()
+        {
+            return Driver.FindElement(byLocator);
+        }
+
         public IReadOnlyCollection<IWebElement> GetElements()
         {
             return Driver.FindElements(byLocator);

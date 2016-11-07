@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
+
 
 namespace oms_test_framework_dotNET.Tests.Merchandiser
 {
@@ -12,7 +14,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
         public void TestValidLogInMerchandiser()
         {
             userInfoPage = logInPage.LogInAs(Roles.MERCHANDISER);
-            Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with merchandiser valid credentials is not successful");
+            AssertThat(userInfoPage.userInfoFieldSet).TextEquals("User Info");
         }
     }
 }

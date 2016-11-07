@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.DBHelpers;
+using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -18,15 +19,11 @@ namespace oms_test_framework_dotNET.Tests
                      .LogInAs(Roles.ADMINISTRATOR)
                      .ClickAdministrationLink();
 
-            Assert
-                .IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(),
-                "The Admin page should be displayed!");
+            AssertThat(administrationPage.foundUsersTextLabel).IsDisplayed();
 
             createUserPage = administrationPage.ClickCreateNewUser();
 
-            Assert
-                .IsTrue(createUserPage.loginNameLabel.IsDisplayed(),
-                "The CreateNewUserPage should be displayed!");
+            AssertThat(createUserPage.loginNameLabel).IsDisplayed();
 
             createUserPage
             .FillLoginField(userLogin)
@@ -42,9 +39,7 @@ namespace oms_test_framework_dotNET.Tests
 
             createdUserId = DBUserHandler.GetUserByLogin(userLogin).Id;
 
-            Assert
-                .IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(),
-                "The Admin page should be displayed!");
+            AssertThat(administrationPage.foundUsersTextLabel).IsDisplayed();
 
             administrationPage
                 .FillFieldFilter("Login")
@@ -52,9 +47,7 @@ namespace oms_test_framework_dotNET.Tests
                 .FillSearchInputField("StefDevis")
                 .ClickSearchButton();
 
-            Assert
-                .AreEqual("StefDevis", administrationPage.logInFirstCellLink.GetText(),
-                "As a result of the search should be a user with the specified login");
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals("StefDevis");
 
             administrationPage.DeleteUserByLogIn("StefDevis");
         }
