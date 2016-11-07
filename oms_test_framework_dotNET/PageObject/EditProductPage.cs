@@ -1,62 +1,68 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using oms_test_framework_dotNET.Wrappers;
+using oms_test_framework_dotNET.Locators;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class EditProductPage : PageObject
     {
-        [FindsBy(How = How.Id, Using = "name")]
-        public IWebElement ProductNameInput { get; set; }
-
-        [FindsBy(How = How.Id, Using = "description")]
-        public IWebElement ProductDescriptionInput { get; set; }
-
-        [FindsBy(How = How.Id, Using = "price")]
-        public IWebElement ProductPriceInput { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/input[2]")]
-        public IWebElement OkButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/input[3]")]
-        public IWebElement CancelButton { get; set; }
+        internal TextInputField productNameInput;
+        internal TextInputField productDescriptionInput;
+        internal TextInputField productPriceInput;
+        internal Button okButton;
+        internal Button cancelButton;
 
         public EditProductPage(IWebDriver driver) : base(driver)
         {
+            productNameInput = new TextInputField(Driver, new Locator("ProductNameInput",
+                By.Id("name")));
+
+            productDescriptionInput = new TextInputField(Driver, new Locator("ProductDescriptionInput",
+                By.Id("description")));
+
+            productPriceInput = new TextInputField(Driver, new Locator("ProductPriceInput",
+                By.Id("price")));
+
+            okButton = new Button(Driver, new Locator("OkButton",
+                By.XPath("//form[@id='productModel']/input[2]")));
+
+            cancelButton = new Button(Driver, new Locator("CancelButton",
+                By.XPath("//form[@id='productModel']/input[3]")));
         }
 
         public EditProductPage FillProductNameInput(String productName)
         {
-            ProductNameInput.Clear();
-            ProductNameInput.SendKeys(productName);
+            productNameInput.Clear();
+            productNameInput.SendKeys(productName);
             return this;
         }
 
         public EditProductPage FillProductDescriptionInput(String productDescription)
         {
-            ProductDescriptionInput.Clear();
-            ProductDescriptionInput.SendKeys(productDescription);
+            productDescriptionInput.Clear();
+            productDescriptionInput.SendKeys(productDescription);
             return this;
         }
 
         public EditProductPage FillProductPriceInput(String productPrice)
         {
-            ProductPriceInput.Clear();
-            ProductPriceInput.SendKeys(productPrice);
+            productPriceInput.Clear();
+            productPriceInput.SendKeys(productPrice);
             return this;
         }
 
         public ItemManagementPage ClickOkButton()
         {
-            OkButton.Click();
+            okButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public ItemManagementPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return new ItemManagementPage(Driver);
         }
     }
-
 }

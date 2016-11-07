@@ -1,24 +1,23 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+﻿using oms_test_framework_dotNET.Locators;
+using oms_test_framework_dotNET.Wrappers;
+using OpenQA.Selenium;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public abstract class PageObject
     {
-        [FindsBy(How = How.Id, Using = "logout")]
-        public IWebElement LogOutButton { get; set; }
-
+        internal Button logOutButton;
         protected IWebDriver Driver { get; set; }
 
         public PageObject(IWebDriver driver)
         {
             this.Driver = driver;
-            PageFactory.InitElements(driver, this);
+            logOutButton = new Button(Driver, new Locator("LogOutButton", By.Id("logout")));
         }
 
         public LogInPage DoLogOut()
         {
-            LogOutButton.Click();
+            logOutButton.Click();
             AcceptAlert();
             return new LogInPage(Driver);
         }

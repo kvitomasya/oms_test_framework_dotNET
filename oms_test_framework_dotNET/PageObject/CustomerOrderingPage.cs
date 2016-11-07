@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using oms_test_framework_dotNET.Locators;
+using oms_test_framework_dotNET.Wrappers;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 
@@ -6,75 +8,82 @@ namespace oms_test_framework_dotNET.PageObject
 {
     public class CustomerOrderingPage : PageObject
     {
-        //CreateNewOrderLink is unique identifier of CustomerOrderingPage
-        [FindsBy(How = How.XPath, Using = "//div[@id='content']/a")]
-        public IWebElement CreateNewOrderLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//ul[@id='nav']/li[2]/a")]
-        public IWebElement UserInfoLink { get; set; }
-
-        [FindsBy(How = How.Id, Using = "search")]
-        public IWebElement SearchOrdersDropdown { get; set; }
-
-        [FindsBy(How = How.Id, Using = "searchValue")]
-        public IWebElement SearchOrdersInputField { get; set; }
-
-        [FindsBy(How = How.Name, Using = "Apply")]
-        public IWebElement ApplyButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "(//div[@id='list']//td/a)[1]")]
-        public IWebElement FirstBodyEditLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='list']//td[1]")]
-        public IWebElement FirstOrderNameCellTextField { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@id='list']/table/tbody/tr[2]/td[8]")]
-        public IWebElement FirstBodyDeleteLink { get; set; }
+        internal Link createNewOrderLink;
+        internal Link userInfoLink;
+        internal DropDown searchOrdersDropdown;
+        internal TextInputField searchOrdersInputField;
+        internal Button applyButton;
+        internal Link firstBodyEditLink;
+        internal Element firstOrderNameCellTextField;
+        internal Link firstBodyDeleteLink;
 
         public CustomerOrderingPage(IWebDriver driver)
             : base(driver)
         {
+            //CreateNewOrderLink is unique identifier of CustomerOrderingPage
+            createNewOrderLink = new Link(Driver, new Locator("CreateNewOrderLink",
+                By.XPath("//div[@id='content']/a")));
+
+            userInfoLink = new Link(Driver, new Locator("UserInfoLink",
+                By.XPath("//ul[@id='nav']/li[2]/a")));
+
+            searchOrdersDropdown = new DropDown(Driver, new Locator("SearchOrdersDropdown",
+                By.Id("search")));
+
+            searchOrdersInputField = new TextInputField(Driver, new Locator("SearchOrdersInputField",
+                By.Id("searchValue")));
+
+            applyButton = new Button(Driver, new Locator("ApplyButton", By.Name("Apply")));
+
+            firstBodyEditLink = new Link(Driver, new Locator("FirstBodyEditLink",
+                By.XPath("(//div[@id='list']//td/a)[1]")));
+
+            firstOrderNameCellTextField = new Element(Driver, new Locator("FirstOrderNameCellTextField",
+                By.XPath("//div[@id='list']//td[1]")));
+
+            firstBodyDeleteLink = new Link(Driver, new Locator("FirstBodyDeleteLink",
+                By.XPath("//div[@id='list']/table/tbody/tr[2]/td[8]")));
         }
 
         public UserInfoPage ClickUserInfoLink()
         {
-            UserInfoLink.Click();
+            userInfoLink.Click();
             return new UserInfoPage(Driver);
         }
 
         public CustomerOrderingPage SelectOrderByName(String orderName)
         {
-            SearchOrdersInputField.Clear();
-            SearchOrdersInputField.SendKeys(orderName);
+            searchOrdersInputField.Clear();
+            searchOrdersInputField.SendKeys(orderName);
             return this;
         }
 
         public CustomerOrderingPage ClickAplyButton()
         {
-            ApplyButton.Click();
+            applyButton.Click();
             return this;
         }
 
         public CreateNewOrderPage ClickEditLink()
         {
-            FirstBodyEditLink.Click();
+            firstBodyEditLink.Click();
             return new CreateNewOrderPage(Driver);
         }
 
         public String GetOrderName()
         {
-            return FirstOrderNameCellTextField.Text;
+            return firstOrderNameCellTextField.GetText();
         }
 
         public CreateNewOrderPage ClickCreateNewOrderLink()
         {
-            CreateNewOrderLink.Click();
+            createNewOrderLink.Click();
             return new CreateNewOrderPage(Driver);
         }
 
         public CustomerOrderingPage ClickDeleteLink()
         {
-            FirstBodyDeleteLink.Click();
+            firstBodyDeleteLink.Click();
             return new CustomerOrderingPage(Driver);
         }
     }

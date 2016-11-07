@@ -18,9 +18,9 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestSwitchTabsAbility()
         {
             administrationPage = userInfoPage.ClickAdministrationLink();
-            Assert.IsTrue(administrationPage.FoundUsersTextLabel.Displayed, "Current page is not {0}", administrationPage);
+            Assert.IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(), "Current page is not {0}", administrationPage);
             administrationPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.UserInfoFieldSet.Displayed, "Current page is not {0}", userInfoPage);
+            Assert.IsTrue(userInfoPage.userInfoFieldSet.IsDisplayed(), "Current page is not {0}", userInfoPage);
         }
     }
 }

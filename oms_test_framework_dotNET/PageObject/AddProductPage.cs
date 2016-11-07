@@ -1,71 +1,80 @@
 ﻿using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using oms_test_framework_dotNET.Wrappers;
+using oms_test_framework_dotNET.Locators;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class AddProductPage : PageObject
     {
-        // OkButton is unique identifier of AddProductPage
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/input[2]")]
-        public IWebElement OkButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/input[3]")]
-        public IWebElement CancelButton { get; set; }
-
-        [FindsBy(How = How.Id, Using = "name")]
-        public IWebElement ProductNameInput { get; set; }
-
-        [FindsBy(How = How.Id, Using = "description")]
-        public IWebElement ProductDescriptionInput { get; set; }
-
-        [FindsBy(How = How.Id, Using = "price")]
-        public IWebElement ProductPriceInput { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/table/tbody/tr[1]/td[3]")]
-        public IWebElement ProductNameErrorText { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/table/tbody/tr[2]/td[3]")]
-        public IWebElement ProductDescriptionErrorText { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//form[@id='productModel']/table/tbody/tr[3]/td[3]")]
-        public IWebElement ProductPriceErrorText { get; set; }
+        internal Button okButton;
+        internal Button cancelButton;
+        internal TextInputField productNameInput;
+        internal TextInputField productDescriptionInput;
+        internal TextInputField productPriceInput;
+        internal Element productNameErrorText;
+        internal Element productDescriptionErrorText;
+        internal Element productPriceErrorText;
 
         public AddProductPage(IWebDriver driver) : base(driver)
         {
+            // OkButton is unique identifier of AddProductPage
+            okButton = new Button(Driver, new Locator("OkButton",
+                By.XPath("//form[@id='productModel']/input[2]")));
 
+            cancelButton = new Button(Driver, new Locator("CancelButton",
+                By.XPath("//form[@id='productModel']/input[3]")));
+
+            productNameInput = new TextInputField(Driver,
+                new Locator("ProductNameInput", By.Id("name")));
+
+            productDescriptionInput = new TextInputField(Driver,
+                new Locator("TextInputField", By.Id("description")));
+
+            productPriceInput = new TextInputField(Driver,
+                new Locator("ProducrPriceInput", By.Id("price")));
+
+            productNameErrorText = new Element(Driver, new Locator("ProductNameErrorText",
+                By.XPath("//form[@id='productModel']/table/tbody/tr[1]/td[3]")));
+
+            productDescriptionErrorText = new Element(Driver, new Locator("ProductDescriptionErrorText",
+                By.XPath("//form[@id='productModel']/table/tbody/tr[2]/td[3]")));
+
+            productPriceErrorText = new Element(Driver, new Locator("ProductPriceErrorText",
+                By.XPath("//form[@id='productModel']/table/tbody/tr[3]/td[3]")));
         }
 
         public ItemManagementPage ClickOkButton()
         {
-            OkButton.Click();
+            okButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public ItemManagementPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return new ItemManagementPage(Driver);
         }
 
         public AddProductPage FillProductNameInput(String productName)
         {
-            ProductNameInput.Clear();
-            ProductNameInput.SendKeys(productName);
+            productNameInput.Clear();
+            productNameInput.SendKeys(productName);
             return this;
         }
 
         public AddProductPage FillProductDescriptionInput(String productDescription)
         {
-            ProductDescriptionInput.Clear();
-            ProductDescriptionInput.SendKeys(productDescription);
+            productDescriptionInput.Clear();
+            productDescriptionInput.SendKeys(productDescription);
             return this;
         }
 
         public AddProductPage FillProductPriceInput(String productPrice)
         {
-            ProductPriceInput.Clear();
-            ProductPriceInput.SendKeys(productPrice);
+            productPriceInput.Clear();
+            productPriceInput.SendKeys(productPrice);
             return this;
         }
     }

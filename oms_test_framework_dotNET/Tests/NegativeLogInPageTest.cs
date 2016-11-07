@@ -15,28 +15,28 @@ namespace oms_test_framework_dotNET.Tests
         public void TestEmptyFieldsLogIn()
         {
                 userInfoPage = logInPage.LogInAs(EmptyField, EmptyField);
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with empty fields is not successful");
+                Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with empty fields is not successful");
         }
 
         [TestMethod]
         public void TestEmptyUserNameLogIn()
         {
                 userInfoPage = logInPage.LogInAs(EmptyField, ValidPassword);
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with empty name is not successful");
+                Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with empty name is not successful");
         }
 
         [TestMethod]
         public void TestEmptyPasswordLogIn()
         {
                 userInfoPage = logInPage.LogInAs(ValidName, EmptyField);
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with empty password is not successful");
+                Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with empty password is not successful");
         }
 
         [TestMethod]
         public void TestInvalidLogIn()
         {
                 userInfoPage = logInPage.LogInAs(Roles.INVALID_USER);
-                Assert.IsTrue(userInfoPage.UserInfoFieldSet.Text.Equals("User Info"), "Login with invalid credentials is not successful");
+                Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with invalid credentials is not successful");
         }
     }
 }

@@ -4,25 +4,29 @@ using OpenQA.Selenium.Support.PageObjects;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.DBHelpers;
+using oms_test_framework_dotNET.Wrappers;
+using oms_test_framework_dotNET.Locators;
 
 namespace oms_test_framework_dotNET.PageObject
 {
     public class LogInPage : PageObject
     {
-        [FindsBy(How = How.Name, Using = "j_username")]
-        public IWebElement UsernameInput { get; set; }
-
-        [FindsBy(How = How.Name, Using = "j_password")]
-        public IWebElement PasswordInput { get; set; }
-
-        [FindsBy(How = How.Name, Using = "submit")]
-        public IWebElement LogInButton { get; set; }
-
-        [FindsBy(How = How.Name, Using = "reset")]
-        public IWebElement CancelButton { get; set; }
+        internal TextInputField usernameInput;
+        internal TextInputField passwordInput;
+        internal Button logInButton;
+        internal Button cancelButton;
 
         public LogInPage(IWebDriver driver) : base(driver)
         {
+            usernameInput = new TextInputField(Driver, new Locator("UserNameInput",
+                By.Name("j_username")));
+
+            passwordInput = new TextInputField(Driver, new Locator("PasswordInput",
+                By.Name("j_password")));
+
+            logInButton = new Button(Driver, new Locator("LogInButton", By.Name("submit")));
+
+            cancelButton = new Button(Driver, new Locator("CancelButton", By.Name("reset")));
         }
 
         public UserInfoPage LogInAs(Roles role)
@@ -52,27 +56,27 @@ namespace oms_test_framework_dotNET.PageObject
 
         public LogInPage FillUsernameInput(String userName)
         {
-            UsernameInput.Clear();
-            UsernameInput.SendKeys(userName);
+            usernameInput.Clear();
+            usernameInput.SendKeys(userName);
             return this;
         }
 
         public LogInPage FillPasswordInput(String password)
         {
-            PasswordInput.Clear();
-            PasswordInput.SendKeys(password);
+            passwordInput.Clear();
+            passwordInput.SendKeys(password);
             return this;
         }
 
         public UserInfoPage ClickLogInButton()
         {
-            LogInButton.Click();
+            logInButton.Click();
             return new UserInfoPage(Driver);
         }
 
         public LogInPage ClickCancelButton()
         {
-            CancelButton.Click();
+            cancelButton.Click();
             return this;
         }
     }
