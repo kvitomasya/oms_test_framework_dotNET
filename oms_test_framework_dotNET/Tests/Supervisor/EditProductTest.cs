@@ -2,6 +2,7 @@
 using oms_test_framework_dotNET.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -44,23 +45,16 @@ namespace oms_test_framework_dotNET.Tests
             itemManagementPage.FillSearchInput(testProductName)
                 .ClickSearchButton();
 
-            Assert.IsTrue(itemManagementPage.countOfProductFound.GetText().Equals("0"),
-                "Old Product still exists !");
+            AssertThat(itemManagementPage.countOfProductFound).TextEquals("0");
 
             itemManagementPage.FillSearchInput(ProductNameForChange)
                 .ClickSearchButton();
 
-            Assert.AreEqual(itemManagementPage.firstProductNameText.GetText(),
-                ProductNameForChange, "Product Name (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.firstProductNameText.GetText(), ProductNameForChange);
+            AssertThat(itemManagementPage.firstProductNameText).TextEquals(ProductNameForChange);
 
-            Assert.AreEqual(itemManagementPage.firstProductDescriptionText.GetText(),
-                ProductDescriptionForChange, "Product Description (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.firstProductDescriptionText.GetText(), ProductDescriptionForChange);
+            AssertThat(itemManagementPage.firstProductDescriptionText).TextEquals(ProductDescriptionForChange);
 
-            Assert.AreEqual(itemManagementPage.firstProductPriceText.GetText(),
-                ProductPriceForChange, "Product Price (actual={0}) should be changed to (expected={1})",
-                itemManagementPage.firstProductPriceText.GetText(), ProductPriceForChange);
+            AssertThat(itemManagementPage.firstProductPriceText).TextEquals(ProductPriceForChange);
         }
 
         [TestCleanup]

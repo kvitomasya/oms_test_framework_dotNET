@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
-using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Administrator
 {

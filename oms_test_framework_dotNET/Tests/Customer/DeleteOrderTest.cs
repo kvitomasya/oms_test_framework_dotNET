@@ -3,8 +3,7 @@ using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 using System.Threading;
-using static oms_test_framework_dotNET.Asserts.OrderAsserts;
-using static oms_test_framework_dotNET.Asserts.AbstractElementAsserts;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Customer
 {

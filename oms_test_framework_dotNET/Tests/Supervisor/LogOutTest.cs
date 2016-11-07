@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Supervisor
 {
@@ -18,44 +19,47 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         [TestMethod]
         public void TestItemManagementPageLogOutAbility()
         {
-            Assert.IsTrue(itemManagementPage.searchByFieldSet.IsDisplayed(),
-                "Item Management page doesn't exist");
+            AssertThat(itemManagementPage.searchByFieldSet).IsDisplayed();
+
             itemManagementPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
 
         [TestMethod]
         public void TestSupervisorCreateReportPageLogOutAbility()
         {
             supervisorCreateReportPage = itemManagementPage.ClickCreateReportLink();
-            Assert.IsTrue(supervisorCreateReportPage.saveReportLink.IsDisplayed(),
-                "Supervisor create report page doesn't exist");
+
+            AssertThat(supervisorCreateReportPage.saveReportLink).IsDisplayed();
+
             supervisorCreateReportPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
 
         [TestMethod]
         public void TestAddProductPageLogOutAbility()
         {
             addProductPage = itemManagementPage.ClickAddProductLink();
-            Assert.IsTrue(addProductPage.okButton.IsDisplayed(),
-                "Add product page doesn't exist");
+
+            AssertThat(addProductPage.okButton).IsDisplayed();
+
             addProductPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
 
         [TestMethod]
         public void TestEditProductPageLogOutAbility()
         {
             editProductPage = itemManagementPage.ClickEditFirstProductLink();
-            Assert.IsTrue(editProductPage.okButton.IsDisplayed(),
-                "Edit product page doesn't exist");
+
+            AssertThat(editProductPage.okButton).IsDisplayed();
+
             editProductPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
     }
 }

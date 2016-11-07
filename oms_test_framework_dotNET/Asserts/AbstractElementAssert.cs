@@ -1,16 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Remote;
 using oms_test_framework_dotNET.Wrappers;
 
 namespace oms_test_framework_dotNET.Asserts
 {
-    class AbstractElementAsserts
+    internal class AbstractElementAsserts
     {
         private AbstractElement actual;
 
-        private AbstractElementAsserts(AbstractElement actual)
+       internal AbstractElementAsserts(AbstractElement actual)
         {
             this.actual = actual;
         }
