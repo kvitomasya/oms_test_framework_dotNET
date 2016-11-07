@@ -4,18 +4,18 @@ using oms_test_framework_dotNET.Domains;
 
 namespace oms_test_framework_dotNET.Asserts
 {
-    internal class OrderAsserts
+    internal class OrderAssert
     {
         private Order actual;
 
-        internal OrderAsserts(Order actual)
+        internal OrderAssert(Order actual)
         {
             this.actual = actual;
         }
 
-        public static OrderAsserts AssertThat(Order actual)
+        public static OrderAssert AssertThat(Order actual)
         {
-            return new OrderAsserts(actual);
+            return new OrderAssert(actual);
         }
 
         public void IsNull()
@@ -26,7 +26,7 @@ namespace oms_test_framework_dotNET.Asserts
             }
         }
 
-        public void AreEquals(Order condition)
+        public void AreEqual(Order condition)
         {
             if (!(actual.OrderNumber == condition.OrderNumber))
             {

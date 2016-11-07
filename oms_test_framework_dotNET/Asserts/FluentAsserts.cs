@@ -5,14 +5,14 @@ namespace oms_test_framework_dotNET.Asserts
 {
     internal class FluentAsserts
     {
-       internal static AbstractElementAsserts AssertThat(AbstractElement actual)
+       internal static AbstractElementAssert AssertThat(AbstractElement actual)
         {
-            return new AbstractElementAsserts(actual);
+            return new AbstractElementAssert(actual);
         }
 
-       internal static OrderAsserts AssertThat(Order actual)
+       internal static OrderAssert AssertThat(Order actual)
         {
-            return new OrderAsserts(actual);
+            return new OrderAssert(actual);
         }
     }
 }

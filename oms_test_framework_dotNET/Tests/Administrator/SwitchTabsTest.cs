@@ -19,8 +19,11 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestSwitchTabsAbility()
         {
             administrationPage = userInfoPage.ClickAdministrationLink();
+
             AssertThat(administrationPage.foundUsersTextLabel).IsDisplayed();
+
             administrationPage.ClickUserInfoLink();
+
             AssertThat(userInfoPage.userInfoFieldSet).IsDisplayed();
         }
     }

@@ -5,21 +5,21 @@ using oms_test_framework_dotNET.Wrappers;
 
 namespace oms_test_framework_dotNET.Asserts
 {
-    internal class AbstractElementAsserts
+    internal class AbstractElementAssert
     {
         private AbstractElement actual;
 
-       internal AbstractElementAsserts(AbstractElement actual)
+       internal AbstractElementAssert(AbstractElement actual)
         {
             this.actual = actual;
         }
 
-        public static AbstractElementAsserts AssertThat(AbstractElement actual)
+        public static AbstractElementAssert AssertThat(AbstractElement actual)
         {
-            return new AbstractElementAsserts(actual);
+            return new AbstractElementAssert(actual);
         }
 
-        public AbstractElementAsserts IsDisplayed()
+        public AbstractElementAssert IsDisplayed()
         {
             isNotNull();
             if (!actual.IsDisplayed())
@@ -30,7 +30,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsNotDisplayed()
+        public AbstractElementAssert IsNotDisplayed()
         {
             isNotNull();
             if (actual.IsDisplayed())
@@ -41,7 +41,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts TextContains(string condition)
+        public AbstractElementAssert TextContains(string condition)
         {
             isNotNull();
             if (!actual.GetText().Contains(condition))
@@ -52,7 +52,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts TextEquals(string condition)
+        public AbstractElementAssert TextEquals(string condition)
         {
             isNotNull();
             if (!actual.GetText().Equals(condition))
@@ -63,7 +63,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts TextNotEquals(string condition)
+        public AbstractElementAssert TextNotEquals(string condition)
         {
             isNotNull();
             if (actual.GetText().Equals(condition))
@@ -74,7 +74,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts ValueContains(string condition)
+        public AbstractElementAssert ValueContains(string condition)
         {
             isNotNull();
             if (!actual.GetValue().Contains(condition))
@@ -85,7 +85,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts ValueEquals(string condition)
+        public AbstractElementAssert ValueEquals(string condition)
         {
             isNotNull();
             if (!actual.GetValue().Equals(condition))
@@ -96,7 +96,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts ValueNotEqual(string condition)
+        public AbstractElementAssert ValueNotEqual(string condition)
         {
             isNotNull();
             if (actual.GetValue().Equals(condition))
@@ -107,7 +107,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsValueEmpty()
+        public AbstractElementAssert IsValueEmpty()
         {
             isNotNull();
             if (!string.IsNullOrWhiteSpace(actual.GetValue()))
@@ -118,7 +118,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsValueNotEmpty()
+        public AbstractElementAssert IsValueNotEmpty()
         {
             isNotNull();
             if (string.IsNullOrWhiteSpace(actual.GetValue()))
@@ -129,7 +129,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsTextBold()
+        public AbstractElementAssert IsTextBold()
         {
             isNotNull();
             if (!"700".Equals(actual.GetCssValue("font-weight")))
@@ -139,7 +139,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsTextEmpty()
+        public AbstractElementAssert IsTextEmpty()
         {
             isNotNull();
             if (!string.IsNullOrWhiteSpace(actual.GetText()))
@@ -150,7 +150,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsTextNotEmpty()
+        public AbstractElementAssert IsTextNotEmpty()
         {
             isNotNull();
             if (string.IsNullOrWhiteSpace(actual.GetText()))
@@ -160,7 +160,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsEnabled()
+        public AbstractElementAssert IsEnabled()
         {
             isNotNull();
             if (!actual.IsEnabled())
@@ -170,7 +170,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts IsDisabled()
+        public AbstractElementAssert IsDisabled()
         {
             isNotNull();
             if (actual.IsEnabled())
@@ -180,7 +180,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts SelectedDropdownEquals(string condition)
+        public AbstractElementAssert SelectedOptionEquals(string condition)
         {
             isNotNull();
             if (!condition.Equals(new SelectElement(actual.GetElement()).SelectedOption.Text))
@@ -191,7 +191,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts SelectedDropdownEqualsIgnorCase(string condition)
+        public AbstractElementAssert SelectedOptionEqualsIgnorCase(string condition)
         {
             isNotNull();
             if (!condition.Equals(new SelectElement(actual.GetElement()).SelectedOption.Text,
@@ -203,7 +203,7 @@ namespace oms_test_framework_dotNET.Asserts
             return this;
         }
 
-        public AbstractElementAsserts isNotNull()
+        public AbstractElementAssert isNotNull()
         {
             if (actual == null)
             {

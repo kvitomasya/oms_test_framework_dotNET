@@ -51,7 +51,7 @@ namespace oms_test_framework_dotNET.Tests.Merchandiser
                 .DismissAlert();
 
             AssertThat(DBOrderHandler
-                .GetOrderByNumber(testOrder.OrderNumber)).AreEquals(testOrder);
+                .GetOrderByNumber(testOrder.OrderNumber)).AreEqual(testOrder);
         }
 
         [TestMethod]
