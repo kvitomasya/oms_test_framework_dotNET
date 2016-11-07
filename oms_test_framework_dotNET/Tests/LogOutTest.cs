@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -12,8 +13,8 @@ namespace oms_test_framework_dotNET.Tests
         public void TestLogInPageLogOutAbility()
         {
             logInPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
 
         [TestMethod]
@@ -21,8 +22,8 @@ namespace oms_test_framework_dotNET.Tests
         {
             userInfoPage = logInPage.LogInAs(Roles.CUSTOMER);
             userInfoPage.DoLogOut();
-            Assert.IsTrue(logInPage.usernameInput.IsDisplayed(),
-                "Logout is not working");
+
+            AssertThat(logInPage.usernameInput).IsDisplayed();
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Administrator
 {
@@ -25,20 +26,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithAllColumnsFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
-
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);              
         }
 
         [TestMethod]
@@ -46,19 +44,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithFirstNameFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);
         }
 
         [TestMethod]
@@ -66,19 +62,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithLastNameFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);
         }
 
         [TestMethod]
@@ -86,19 +80,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithLoginFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);
         }
 
         [TestMethod]
@@ -106,19 +98,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithRoleFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);
         }
 
         [TestMethod]
@@ -126,19 +116,17 @@ namespace oms_test_framework_dotNET.Tests.Administrator
 
         public void TestUserSearchWithRegionFilter()
         {
-            String FirstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
-            String SecondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
-            String SearchingValue = TestContext.DataRow["SearchingValue"].ToString();
-            String ExpectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
+            String firstSearchFilter = TestContext.DataRow["FirstSearchFilter"].ToString();
+            String secondSearchFilter = TestContext.DataRow["SecondSearchFilter"].ToString();
+            String searchingValue = TestContext.DataRow["SearchingValue"].ToString();
+            String expectedFoundValue = TestContext.DataRow["ExpectedFoundValue"].ToString();
 
-            administrationPage.FillFieldFilter(FirstSearchFilter)
-               .FillConditionFilter(SecondSearchFilter)
-               .FillSearchInputField(SearchingValue)
+            administrationPage.FillFieldFilter(firstSearchFilter)
+               .FillConditionFilter(secondSearchFilter)
+               .FillSearchInputField(searchingValue)
                .ClickSearchButton();
 
-            Assert.AreEqual(administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue,
-                "The found user login: {0} is not the expected one: {1}",
-                administrationPage.logInFirstCellLink.GetText(), ExpectedFoundValue);
+            AssertThat(administrationPage.logInFirstCellLink).TextEquals(expectedFoundValue);
         }
     }
 }

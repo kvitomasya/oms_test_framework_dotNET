@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Administrator
 {
@@ -18,9 +19,12 @@ namespace oms_test_framework_dotNET.Tests.Administrator
         public void TestSwitchTabsAbility()
         {
             administrationPage = userInfoPage.ClickAdministrationLink();
-            Assert.IsTrue(administrationPage.foundUsersTextLabel.IsDisplayed(), "Current page is not {0}", administrationPage);
+
+            AssertThat(administrationPage.foundUsersTextLabel).IsDisplayed();
+
             administrationPage.ClickUserInfoLink();
-            Assert.IsTrue(userInfoPage.userInfoFieldSet.IsDisplayed(), "Current page is not {0}", userInfoPage);
+
+            AssertThat(userInfoPage.userInfoFieldSet).IsDisplayed();
         }
     }
 }

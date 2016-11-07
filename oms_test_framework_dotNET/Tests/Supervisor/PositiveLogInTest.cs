@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Utils;
 using oms_test_framework_dotNET.Enums;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Supervisor
 {
@@ -12,7 +13,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
         public void TestValidLogInSupervisor()
         {
             userInfoPage = logInPage.LogInAs(Roles.SUPERVISOR);
-            Assert.IsTrue(userInfoPage.userInfoFieldSet.GetText().Equals("User Info"), "Login with supervisor valid credentials is not successful");
+            AssertThat(userInfoPage.userInfoFieldSet).TextEquals("User Info");
         }
     }
 }

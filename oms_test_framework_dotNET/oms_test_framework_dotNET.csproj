@@ -85,6 +85,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Asserts\AbstractElementAssert.cs" />
+    <Compile Include="Asserts\FluentAsserts.cs" />
+    <Compile Include="Asserts\OrderAsserts.cs" />
     <Compile Include="DBHelpers\DBOrderHandler.cs" />
     <Compile Include="DBHelpers\DBOrderItemHandler.cs" />
     <Compile Include="DBHelpers\DBProductHandler.cs" />

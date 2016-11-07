@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Domains;
 using oms_test_framework_dotNET.DBHelpers;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests.Supervisor
 {
@@ -35,17 +36,14 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
             itemManagementPage.FillSearchInput(ValidProductName)
                 .ClickSearchButton();
 
-            Assert.AreEqual(itemManagementPage.firstProductNameText.GetText(),
-                ValidProductName, "Product name {0} does not equal to created one {1}",
-                itemManagementPage.firstProductNameText.GetText(), ValidProductName);
+            AssertThat(itemManagementPage.firstProductNameText)
+                .TextEquals(ValidProductName);
 
-            Assert.AreEqual(itemManagementPage.firstProductDescriptionText.GetText(),
-                ValidProductDescription, "Product description {0} does not equal to created one {1}",
-                itemManagementPage.firstProductDescriptionText.GetText(), ValidProductDescription);
+            AssertThat(itemManagementPage.firstProductDescriptionText)
+                .TextEquals(ValidProductDescription);
 
-            Assert.AreEqual(itemManagementPage.firstProductPriceText.GetText(),
-                ValidProductPrice, "Product price {0} does not equal to created one {1}",
-                itemManagementPage.firstProductPriceText.GetText(), ValidProductPrice);
+            AssertThat(itemManagementPage.firstProductPriceText)
+                .TextEquals(ValidProductPrice);
 
             DBProductHandler.DeleteProduct(testProduct.Id);
         }
@@ -61,8 +59,7 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
             itemManagementPage.FillSearchInput(ValidProductName)
                .ClickSearchButton();
 
-            Assert.AreEqual(itemManagementPage.countOfProductFound.GetText(), "0",
-                "Product has been unexpectely created !");
+            AssertThat(itemManagementPage.countOfProductFound).TextEquals("0");
         }
 
         [TestMethod]
@@ -78,36 +75,33 @@ namespace oms_test_framework_dotNET.Tests.Supervisor
                     .FillProductPriceInput("")
                     .ClickOkButton();
 
-            Assert.AreEqual(addProductPage.productNameErrorText.GetText(),
-                "Please enter product name!", "Error message is not appeared or is incorrect !");
-            Assert.IsTrue(addProductPage.productDescriptionErrorText.GetText() == "",
-                "Unexpected error message !");
-            Assert.AreEqual(addProductPage.productPriceErrorText.GetText(),
-                "Please enter product price!", "Error message is not appeared or is incorrect !");
+            AssertThat(addProductPage.productNameErrorText).TextEquals("Please enter product name!");
+
+            AssertThat(addProductPage.productDescriptionErrorText).TextEquals("");
+
+            AssertThat(addProductPage.productPriceErrorText).TextEquals("Please enter product price!");
 
             addProductPage.FillProductNameInput(InvalidShortName)
                     .FillProductDescriptionInput(InvalidDescription)
                     .FillProductPriceInput(InvalidPrice)
                     .ClickOkButton();
 
-            Assert.AreEqual(addProductPage.productNameErrorText.GetText(),
-                "Enter value in range: 3-13", "Error message is not appeared or is incorrect !");
-            Assert.AreEqual(addProductPage.productDescriptionErrorText.GetText(),
-                "Enter less then 25 letters", "Error message is not appeared or is incorrect !");
-            Assert.AreEqual(addProductPage.productPriceErrorText.GetText(),
-                "Please enter double value!", "Error message is not appeared or is incorrect !");
+            AssertThat(addProductPage.productNameErrorText).TextEquals("Enter value in range: 3-13");
+
+            AssertThat(addProductPage.productDescriptionErrorText).TextEquals("Enter less then 25 letters");
+
+            AssertThat(addProductPage.productPriceErrorText).TextEquals("Please enter double value!");
 
             addProductPage.FillProductNameInput(InvalidLongName)
                     .FillProductDescriptionInput(InvalidDescription)
                     .FillProductPriceInput(InvalidPrice)
                     .ClickOkButton();
 
-            Assert.AreEqual(addProductPage.productNameErrorText.GetText(),
-                "Enter value in range: 3-13", "Error message is not appeared or is incorrect !");
-            Assert.AreEqual(addProductPage.productDescriptionErrorText.GetText(),
-                "Enter less then 25 letters", "Error message is not appeared or is incorrect !");
-            Assert.AreEqual(addProductPage.productPriceErrorText.GetText(),
-                "Please enter double value!", "Error message is not appeared or is incorrect !");
+            AssertThat(addProductPage.productNameErrorText).TextEquals("Enter value in range: 3-13");
+
+            AssertThat(addProductPage.productDescriptionErrorText).TextEquals("Enter less then 25 letters");
+
+            AssertThat(addProductPage.productPriceErrorText).TextEquals("Please enter double value!");
         }
 
     }

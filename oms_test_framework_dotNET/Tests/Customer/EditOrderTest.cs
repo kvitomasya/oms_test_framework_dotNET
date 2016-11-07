@@ -3,6 +3,7 @@ using oms_test_framework_dotNET.DBHelpers;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.Utils;
 using System;
+using static oms_test_framework_dotNET.Asserts.FluentAsserts;
 
 namespace oms_test_framework_dotNET.Tests
 {
@@ -47,8 +48,8 @@ namespace oms_test_framework_dotNET.Tests
         [TestMethod]
         public void TestEditOrder()
         {
-            Assert.AreEqual(customerOrderingPage.GetOrderName(), changedSearchedOrderName,
-                "Order numbers should be different");
+            AssertThat(customerOrderingPage.firstOrderNameCellTextField)
+                .TextEquals(changedSearchedOrderName);
         }
 
         [TestCleanup]
