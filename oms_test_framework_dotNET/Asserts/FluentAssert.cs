@@ -1,18 +1,18 @@
-﻿using oms_test_framework_dotNET.Wrappers;
-using oms_test_framework_dotNET.Domains;
+﻿using oms_test_framework_dotNET.Domains;
+using oms_test_framework_dotNET.Wrappers;
 
 namespace oms_test_framework_dotNET.Asserts
 {
-    internal class FluentAsserts
+    internal class FluentAssert
     {
-       internal static AbstractElementAssert AssertThat(AbstractElement actual)
+        internal static AbstractElementAssert AssertThat(AbstractElement actual)
         {
-            return new AbstractElementAssert(actual);
+            return AbstractElementAssert.AssertThat(actual);
         }
 
-       internal static OrderAssert AssertThat(Order actual)
+        internal static OrderAssert AssertThat(Order actual)
         {
-            return new OrderAssert(actual);
+            return OrderAssert.AssertThat(actual);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using oms_test_framework_dotNET.Domains;
+using System;
+using static oms_test_framework_dotNET.Utils.LoggerNLog;
 
 namespace oms_test_framework_dotNET.Asserts
 {
@@ -8,7 +9,7 @@ namespace oms_test_framework_dotNET.Asserts
     {
         private Order actual;
 
-        internal OrderAssert(Order actual)
+        private OrderAssert(Order actual)
         {
             this.actual = actual;
         }
@@ -20,9 +21,14 @@ namespace oms_test_framework_dotNET.Asserts
 
         public void IsNull()
         {
-            if(!(actual == null))
+            if (!(actual == null))
             {
+                LogFail(String.Format("Required order should be null !"));
                 Assert.Fail(String.Format("Required order should be null !"));
+            }
+            else
+            {
+                LogPass(String.Format("Required order is null !"));
             }
         }
 
@@ -30,7 +36,12 @@ namespace oms_test_framework_dotNET.Asserts
         {
             if (!(actual.OrderNumber == condition.OrderNumber))
             {
+                LogFail(String.Format("Required order should be !"));
                 Assert.Fail(String.Format("Required order should be !"));
+            }
+            else
+            {
+                LogPass(String.Format("Required order is present !"));
             }
         }
 
