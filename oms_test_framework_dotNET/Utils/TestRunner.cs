@@ -5,6 +5,7 @@ using oms_test_framework_dotNET.PageObject;
 using oms_test_framework_dotNET.Enums;
 using System.Drawing.Imaging;
 using System.IO;
+using static oms_test_framework_dotNET.Utils.LoggerNLog;
 
 namespace oms_test_framework_dotNET.Utils
 {
@@ -57,11 +58,10 @@ namespace oms_test_framework_dotNET.Utils
         [TestCleanup]
         public void TestCleanup()
         {
-            LoggerNLog log = new LoggerNLog();
 
             if (TestContext.CurrentTestOutcome == UnitTestOutcome.Passed)
             {
-                log.LogInfo(TestContext.FullyQualifiedTestClassName);
+                LogInfo(TestContext.TestName);
             }
             else
             {
@@ -69,7 +69,7 @@ namespace oms_test_framework_dotNET.Utils
 
                 String screenshotFileName = DateTime.Now.ToString("yyyy-MM-dd_H-mm-ss") + ".png";
 
-                log.LogFail(TestContext.CurrentTestOutcome.ToString(), TestContext.FullyQualifiedTestClassName, screenshotFileName);
+                LogFail(TestContext.CurrentTestOutcome.ToString(), TestContext.TestName, screenshotFileName);
 
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "/" + "../../logs/screenshots/");
 

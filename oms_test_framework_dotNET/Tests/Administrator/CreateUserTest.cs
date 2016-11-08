@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using oms_test_framework_dotNET.Enums;
 using oms_test_framework_dotNET.DBHelpers;
-using static oms_test_framework_dotNET.Asserts.FluentAsserts;
+using static oms_test_framework_dotNET.Asserts.FluentAssert;
 
 namespace oms_test_framework_dotNET.Tests
 {

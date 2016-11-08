@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using oms_test_framework_dotNET.Wrappers;
 using oms_test_framework_dotNET.Locators;
 
